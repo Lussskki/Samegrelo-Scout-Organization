@@ -128,8 +128,8 @@ function App() {
         <ul className={isMenuOpen ? "nav-links active" : "nav-links"}>
           <li><Link to="/" onClick={() => setIsMenuOpen(false)}>მთავარი</Link></li>
           <li><Link to="/gallery" onClick={() => setIsMenuOpen(false)}>ფოტოები</Link></li>
-          <li><a href="#activities" onClick={() => setIsMenuOpen(false)}>აქტივობები</a></li>
-          <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>კონტაქტი</a></li>
+          <li><a href="/#activities" onClick={() => setIsMenuOpen(false)}>აქტივობები</a></li>
+          <li><a href="/#contact" onClick={() => setIsMenuOpen(false)}>კონტაქტი</a></li>
         </ul>
       </nav>
 

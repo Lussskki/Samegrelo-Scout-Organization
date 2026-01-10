@@ -205,13 +205,63 @@ nav a:hover { color: var(--scout-green); }
 .modal-content { max-width: 90%; max-height: 80%; border-radius: 10px; }
 .close { position: absolute; top: 30px; right: 50px; color: white; font-size: 50px; cursor: pointer; }
 
-footer { 
-    background: var(--dark); 
-    color: #ffffff; 
-    text-align: center; 
-    padding: 40px 20px; 
-    width: 100%;
-    box-sizing: border-box; /* კრიტიკული შესწორება */
+/* ... (ზედა სტილები რჩება უცვლელი) ... */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 40px;
+    background: var(--dark);
+    color: white;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.8rem; /* იკონკის ზომა */
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: var(--scout-green);
+    transform: translateY(-3px);
+}
+
+/* მობილურისთვის */
+@media (max-width: 768px) {
+    footer {
+        padding: 30px 10px;
+    }
+    .social-links a {
+        font-size: 1.5rem;
+    }
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+/* ფერი როცა მაუსს მიიტან */
+.social-links a:hover {
+    color: var(--scout-green);
+    transform: translateY(-3px);
 }
 
 /* 10. IMAGES */

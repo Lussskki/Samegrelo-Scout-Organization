@@ -38,6 +38,7 @@ function HomePage({ images, setSelectedImg }) {
     <>
       <header className="hero">
         <div className="hero-text">
+          <p style={{ color: '#ffc107', marginTop: '10px', fontSize: '1rem' }}>"საიტი დეველოპმეტის პროცესშია"</p>
           <h1>სამეგრელო-ზემო სვანეთი</h1>
           <p>აღმოაჩინე კოლხეთი და სვანეთის მწვერვალები</p>
           <a href="#contact" className="cta-btn">შემოგვიერთდი</a>

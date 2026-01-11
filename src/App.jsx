@@ -1,12 +1,11 @@
-import { useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import './App.css'
 
 const translations = {
   ka: {
     dev: "საიტი დეველოპმეტის პროცესშია",
-    // title: "საქართველოს სკაუტური მოძრაობის სამეგრელოს სარეგისტრაციო ფორმა",
-    subtitle: "საქართველოს სკაუტური მოძრაობის სამეგრელოს ორგანიზაციის სარეგისტრაციო ფორმა",
+    subtitle: "საქართველოს სკაუტური მოძრაობის სამეგრელოს ორგანიზაციის წევრთა სარეგისტრაციო ფორმა",
     join: "შემოგვიერთდი",
     region: "ჩვენი რეგიონი",
     samegrelo: "სამეგრელო",
@@ -34,8 +33,6 @@ const translations = {
   },
   en: {
     dev: "Site is under development",
-    // title: "Samegrelo-Zemo Svaneti",
-    // subtitle: "Discover Kolkheti and Svaneti Peaks",
     join: "Join Us",
     region: "Our Region",
     samegrelo: "Samegrelo",
@@ -66,6 +63,10 @@ const translations = {
 function FullGallery({ images, lang }) {
   const [localSelectedImg, setLocalSelectedImg] = useState(null);
   const t = translations[lang];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="gallery-container gallery-page">
@@ -103,7 +104,7 @@ function HomePage({ images, setSelectedImg, lang }) {
       <header className="hero">
         <div className="hero-text">
           <p style={{ color: '#ffc107', marginTop: '10px', fontSize: '1rem' }}>"{t.dev}"</p>
-          <h1>{t.title}</h1>
+          {/* <h1>{translations[lang].title || "სამეგრელოს სკაუტები"}</h1> */}
           <p>{t.subtitle}</p>
           <a href="#contact" className="cta-btn">{t.join}</a>
         </div>
@@ -157,6 +158,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lang, setLang] = useState('ka');
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const location = useLocation();
 
   const t = translations[lang];
 
@@ -168,10 +170,16 @@ function App() {
     '/assets/photos/chveni-fotoebi/9.jpg', '/assets/photos/chveni-fotoebi/10.jpg'
   ];
 
+  // გვერდის შეცვლისას მენიუ ავტომატურად დაიხუროს
+  useEffect(() => {
+    setIsMenuOpen(false);
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <div className={`app-container ${isDarkMode ? 'dark-mode' : ''}`}>
       <nav>
-        <Link to="/" className="logo" onClick={() => setIsMenuOpen(false)}>სამეგრელოს სკაუტები</Link>
+        <Link to="/" className="logo">სამეგრელოს სკაუტები</Link>
         
         <div className="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>{isMenuOpen ? '✕' : '☰'}</div>
 
@@ -184,10 +192,10 @@ function App() {
               {isDarkMode ? t.day : t.night}
             </button>
           </li>
-          <li><Link to="/" onClick={() => setIsMenuOpen(false)}>{t.main}</Link></li>
-          <li><Link to="/gallery" onClick={() => setIsMenuOpen(false)}>{t.gallery}</Link></li>
-          <li><a href="/#activities" onClick={() => setIsMenuOpen(false)}>{t.activities}</a></li>
-          <li><a href="/#contact" onClick={() => setIsMenuOpen(false)}>{t.contact}</a></li>
+          <li><Link to="/">{t.main}</Link></li>
+          <li><Link to="/gallery">{t.gallery}</Link></li>
+          <li><a href="/#activities">{t.activities}</a></li>
+          <li><a href="/#contact">{t.contact}</a></li>
         </ul>
       </nav>
 

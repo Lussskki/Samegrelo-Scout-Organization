@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import emailjs from '@emailjs/browser'
 import './App.css'
 
 const translations = {
   ka: {
+    title: "სამეგრელოს სკაუტები",
     dev: "საიტი დეველოპმეტის პროცესშია",
     subtitle: "საქართველოს სკაუტური მოძრაობის სამეგრელოს ორგანიზაციის წევრთა სარეგისტრაციო ფორმა",
     join: "შემოგვიერთდი",
@@ -32,6 +34,7 @@ const translations = {
     night: "🌙 ღამე"
   },
   en: {
+    title: "Scouts of Samegrelo",
     dev: "Site is under development",
     subtitle: "Registration form of the members of the Samegrelo organization of the Scout Movement of Georgia",
     join: "Join Us",
@@ -67,12 +70,13 @@ function FullGallery({ images, lang }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    document.title = `${t.fullGallery} | ${translations[lang].title}`;
+  }, [t.fullGallery, lang]);
 
   return (
     <div className="gallery-container gallery-page">
       <div className="section-title">
-        <h2>{t.fullGallery}</h2>
+        <h1>{t.fullGallery}</h1>
         <Link to="/" className="cta-btn back-btn">{t.back}</Link>
       </div>
       <div className="gallery-grid">
@@ -80,6 +84,8 @@ function FullGallery({ images, lang }) {
           <div 
             key={index} 
             className="gallery-item" 
+            role="img"
+            aria-label="Scout activity photo"
             style={{ backgroundImage: `url(${img})` }}
             onClick={() => setLocalSelectedImg(img)}
           ></div>
@@ -96,16 +102,39 @@ function FullGallery({ images, lang }) {
 }
 
 function HomePage({ images, setSelectedImg, lang }) {
+  const form = useRef();
   const dadianiPhoto = '/assets/photos/dadianebis-sasakhle-palace-of-dadiani.jpg';
   const ushguliPhoto = '/assets/photos/ushguli.jpg';
   const t = translations[lang];
+
+  useEffect(() => {
+    document.title = `${translations[lang].title} | ${t.subtitle}`;
+  }, [lang, t.subtitle]);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    // აიდები ჩასმულია შენი სკრინშოტების მიხედვით
+emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,   //
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,  //
+      form.current, 
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+    .then((result) => {
+        alert(lang === 'ka' ? 'შეტყობინება გაიგზავნა!' : 'Message sent!');
+        form.current.reset();
+    }, (error) => {
+        alert(lang === 'ka' ? 'შეცდომაა, სცადეთ მოგვიანებით.' : 'Error, please try again.');
+    });
+  };
 
   return (
     <>
       <header className="hero">
         <div className="hero-text">
           <p style={{ color: '#ffc107', marginTop: '10px', fontSize: '1rem' }}>"{t.dev}"</p>
-          {/* <h1>{translations[lang].title || "სამეგრელოს სკაუტები"}</h1> */}
+          <h1>{translations[lang].title}</h1>
           <p>{t.subtitle}</p>
           <a href="#contact" className="cta-btn">{t.join}</a>
         </div>
@@ -133,7 +162,14 @@ function HomePage({ images, setSelectedImg, lang }) {
         <div className="section-title"><h2>{t.photos}</h2></div>
         <div className="gallery-grid">
           {images.slice(0, 6).map((img, index) => (
-            <div key={index} className="gallery-item" style={{ backgroundImage: `url(${img})` }} onClick={() => setSelectedImg(img)}></div>
+            <div 
+              key={index} 
+              className="gallery-item" 
+              role="img"
+              aria-label="Gallery preview"
+              style={{ backgroundImage: `url(${img})` }} 
+              onClick={() => setSelectedImg(img)}
+            ></div>
           ))}
         </div>
         <div style={{ textAlign: 'center', marginTop: '40px' }}>
@@ -143,10 +179,11 @@ function HomePage({ images, setSelectedImg, lang }) {
 
       <section className="contact-container" id="contact">
         <div className="section-title"><h2>{t.contact}</h2></div>
-        <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-          <input type="text" placeholder={t.name} required />
-          <input type="email" placeholder={t.email} required />
-          <textarea placeholder={t.message}></textarea>
+        <form ref={form} className="contact-form" onSubmit={sendEmail}>
+          {/* name ატრიბუტები ზუსტად ემთხვევა შენს EmailJS Template-ს */}
+          <input type="text" name="name" placeholder={t.name} required />
+          <input type="email" name="email" placeholder={t.email} required />
+          <textarea name="message" placeholder={t.message} required></textarea>
           <button type="submit" className="cta-btn">{t.send}</button>
         </form>
       </section>
@@ -171,7 +208,6 @@ function App() {
     '/assets/photos/chveni-fotoebi/9.jpg', '/assets/photos/chveni-fotoebi/10.jpg'
   ];
 
-  // გვერდის შეცვლისას მენიუ ავტომატურად დაიხუროს
   useEffect(() => {
     setIsMenuOpen(false);
     window.scrollTo(0, 0);
@@ -182,7 +218,14 @@ function App() {
       <nav>
         <Link to="/" className="logo">სამეგრელოს სკაუტები</Link>
         
-        <div className="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>{isMenuOpen ? '✕' : '☰'}</div>
+        <div 
+          className="menu-icon" 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          role="button"
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? '✕' : '☰'}
+        </div>
 
         <ul className={isMenuOpen ? "nav-links active" : "nav-links"}>
           <li className="nav-controls">
@@ -216,8 +259,8 @@ function App() {
         <div className="footer-content">
             <p>© 2026 Scout Of Samegrelo</p>
             <div className="social-links">
-                <a href="https://www.facebook.com/profile.php?id=100064482258846" target="_blank" rel="noreferrer"><i className="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/scoutsofsamegrelo/" target="_blank" rel="noreferrer"><i className="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100064482258846" target="_blank" rel="noreferrer" aria-label="Facebook"><i className="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/scoutsofsamegrelo/" target="_blank" rel="noreferrer" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
             </div>
         </div>
       </footer>
@@ -227,8 +270,8 @@ function App() {
 
 function RegionCard({ title, text, imgClass, onClick }) {
   return (
-    <div className="region-card" onClick={onClick}>
-      <div className={`region-img ${imgClass}`}></div>
+    <div className="region-card" onClick={onClick} role="button" aria-label={`View ${title}`}>
+      <div className={`region-img ${imgClass}`} role="img" aria-label={title}></div>
       <div className="region-info"><h3>{title}</h3><p>{text}</p></div>
     </div>
   )

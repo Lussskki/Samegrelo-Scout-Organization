@@ -10,6 +10,10 @@ const translations = {
         subtitle: "საქართველოს სკაუტური მოძრაობის სამეგრელოს ორგანიზაციის წევრთა სარეგისტრაციო ფორმა",
         join: "შემოგვიერთდი",
         region: "ჩვენი რეგიონი",
+        donation: "დონაცია",
+        donationTitle: "მხარი დაგვიჭირეთ",
+        donationText: "თქვენი წვლილი გვეხმარება უფრო მეტი საინტერესო პროექტი და ბანაკი შევთავაზოთ ახალგაზრდებს.",
+        donateBtn: "გაიღე წვლილი",
         samegrelo: "სამეგრელო",
         samegreloText: "ზუგდიდი და დადიანების სასახლე.",
         svaneti: "ზემო სვანეთი",
@@ -46,6 +50,10 @@ const translations = {
         subtitle: "Registration form for members of the Samegrelo organization of the Scout Movement of Georgia",
         join: "Join Us",
         region: "Our Region",
+        donation: "Donation",
+        donationTitle: "Support Us",
+        donationText: "Your contribution helps us offer more interesting projects and camps for young people.",
+        donateBtn: "Donate Now",
         samegrelo: "Samegrelo",
         samegreloText: "Zugdidi and Dadiani Palace.",
         svaneti: "Upper Svaneti",
@@ -230,6 +238,15 @@ function HomePage({ images, lang }) {
                 <div className="centered-text"><p>{t.missionText}</p></div>
             </section>
 
+            {/* --- NEW DONATION SECTION --- */}
+            <section className="container donation-section" id="donation">
+                <div className="section-title"><h2>{t.donationTitle}</h2></div>
+                <div className="centered-text">
+                    <p>{t.donationText}</p>
+                    <button className="cta-btn" style={{marginTop: '20px'}}>{t.donateBtn}</button>
+                </div>
+            </section>
+
             <section className="gallery-container" id="gallery-section">
                 <div className="section-title"><h2>{t.photos}</h2></div>
                 <div className="gallery-grid">
@@ -330,10 +347,13 @@ function App() {
                     <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>{t.whoWeAre}</a></li>
                     <li><a href="#activities" onClick={(e) => scrollToSection(e, 'activities')}>{t.whatWeDo}</a></li>
                     <li><a href="#mission" onClick={(e) => scrollToSection(e, 'mission')}>{t.mission}</a></li>
+                    <li><a href="#region" onClick={(e) => scrollToSection(e, 'region-section')}>{t.region}</a></li>
+                    {/* Navigation now correctly targets #donation */}
+                    <li><a href="#donation" onClick={(e) => scrollToSection(e, 'donation')}>{t.donation}</a></li>
+                    
                     <li><a href="#gallery" onClick={(e) => scrollToSection(e, 'gallery-section')}>{t.gallery}</a></li>
                     <li><a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>{t.contact}</a></li>
                     
-                    {/* Controls inside the UL so they hide/show with the hamburger menu */}
                     <li className="nav-controls-wrapper">
                         <div className="nav-controls">
                             <button className="lang-btn" onClick={() => setLang(lang === 'ka' ? 'en' : 'ka')}>

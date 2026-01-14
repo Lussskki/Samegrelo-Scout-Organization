@@ -422,3 +422,29 @@ footer {
         display: flex; 
     }
 }
+
+/* Donation Section Styling */
+.donation-section {
+    background-color: var(--secondary-color); /* Or a light grey/gold color */
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 15px;
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.dark-mode .donation-section {
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+}
+
+.donation-section h2 {
+    margin-bottom: 20px;
+    color: #ffc107; /* Scout Gold */
+}
+
+.donation-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}

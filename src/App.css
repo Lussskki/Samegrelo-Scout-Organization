@@ -387,3 +387,38 @@ footer {
     font-weight: bold;
     display: inline-block;
 }
+
+/* --- Desktop Styles (Default) --- */
+.menu-icon {
+    display: none; /* Hide the hamburger on desktop */
+}
+
+.nav-links {
+    display: flex; /* Show links in a row on desktop */
+    list-style: none;
+    gap: 20px;
+}
+
+/* --- Mobile Styles (Screens smaller than 768px) --- */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Show the hamburger on mobile */
+        cursor: pointer;
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        display: none; /* Hide the full list by default on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #fff; /* Or your theme color */
+    }
+
+    /* When the hamburger is clicked, React adds the "active" class */
+    .nav-links.active {
+        display: flex; 
+    }
+}

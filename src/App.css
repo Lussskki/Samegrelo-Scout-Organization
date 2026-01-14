@@ -5,10 +5,14 @@
     box-sizing: border-box;
 }
 
-html, body {
+html {
+    scroll-behavior: smooth;
     width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    /* FIX: Standard fixed nav behavior requires no overflow-x on body */
     background-color: #f5f3ef;
     font-family: 'Segoe UI', sans-serif;
     color: #1a1a1a;
@@ -25,7 +29,7 @@ html, body {
     --white: #ffffff;
 }
 
-/* 2. Navigation */
+/* 2. Navigation - FIXED VERSION */
 nav {
     background-color: var(--dark-green);
     display: flex;
@@ -33,9 +37,21 @@ nav {
     padding: 0 5%;
     height: 70px;
     width: 100%;
-    position: sticky;
+    /* FIX: position: fixed is more reliable than sticky for main site headers */
+    position: fixed; 
     top: 0;
-    z-index: 1000;
+    left: 0;
+    z-index: 5000; /* Higher z-index to stay above everything else */
+}
+
+/* FIX: Add spacing to the top of your site so the fixed nav doesn't cover content */
+.app-container, .hero, .gallery-page {
+    margin-top: 0; 
+}
+
+/* If using a main wrapper, add padding-top equal to nav height */
+body {
+    padding-top: 70px; 
 }
 
 .logo {
@@ -185,6 +201,8 @@ nav {
     background-position: center;
     border: 3px solid var(--white);
     border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
 }
 
 /* 8. Footer - FIXED CENTERING */
@@ -219,7 +237,7 @@ footer {
     max-width: 600px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column; /* Stacked vertically */
+    flex-direction: column; 
     gap: 15px;
 }
 
@@ -251,14 +269,16 @@ footer {
     .nav-links.active {
         display: flex;
         flex-direction: column;
-        position: absolute;
+        /* FIX: Changed absolute to fixed so menu stays in place while open */
+        position: fixed;
         top: 70px;
         left: 0;
         width: 100%;
+        height: calc(100vh - 70px);
         background-color: var(--dark-green);
         padding: 20px 0;
         align-items: center;
-        z-index: 1001;
+        z-index: 5001;
     }
 
     .nav-controls {
@@ -301,263 +321,6 @@ footer {
 }
 
 /* Utility */
-.cta-btn {
-    background-color: var(--bright-green);
-    color: white;
-    padding: 12px 25px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
-}
-/* 1. Base Parameters */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    background-color: #f5f3ef;
-    font-family: 'Segoe UI', sans-serif;
-    color: #1a1a1a;
-}
-
-:root {
-    --dark-green: #162e21;
-    --bright-green: #2e7d32;
-    --gold: #ffc107;
-    --white: #ffffff;
-}
-
-/* 2. Navigation */
-nav {
-    background-color: var(--dark-green);
-    display: flex;
-    align-items: center;
-    padding: 0 5%;
-    height: 70px;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo {
-    color: var(--gold) !important;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-right: auto;
-}
-
-.nav-links {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    align-items: center;
-}
-
-.nav-links a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
-
-.nav-controls {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.theme-btn, .lang-btn {
-    cursor: pointer;
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid var(--gold);
-    background: transparent;
-    color: var(--gold);
-    font-weight: bold;
-    font-size: 0.8rem;
-    white-space: nowrap;
-}
-
-/* 3. Gallery Title Fixes */
-.gallery-page .section-title {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 0 20px 0;
-}
-
-.gallery-page .section-title h1 {
-    font-size: 1.8rem !important; /* Smaller size */
-    color: var(--dark-green);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.back-btn {
-    padding: 8px 20px;
-    font-size: 0.9rem;
-}
-
-/* 4. Carousel Buttons */
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: none;
-    font-size: 2.5rem;
-    padding: 20px;
-    cursor: pointer;
-    z-index: 2002;
-    transition: 0.3s;
-}
-
-.nav-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.prev { left: 20px; }
-.next { right: 20px; }
-
-/* 5. Modal & Gallery */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-}
-
-.modal-content {
-    max-width: 85%;
-    max-height: 80%;
-    border: 3px solid var(--white);
-    object-fit: contain;
-}
-
-.close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: var(--white);
-    font-size: 40px;
-    cursor: pointer;
-    z-index: 2001;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 15px;
-}
-
-.gallery-item {
-    height: 250px;
-    border: 3px solid var(--white);
-    border-radius: 8px;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-/* 6. Footer & Contact */
-footer {
-    background-color: var(--dark-green);
-    color: var(--white);
-    padding: 40px 5%;
-    text-align: center;
-    width: 100%;
-    margin-top: 50px;
-    border-top: 4px solid var(--gold);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 15px;
-}
-
-.social-links a {
-    color: var(--gold);
-    font-size: 1.8rem;
-}
-
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* 7. Mobile Version */
-@media (max-width: 768px) {
-    .menu-icon { 
-        display: block !important; 
-        color: var(--gold);
-        font-size: 2rem; 
-        cursor: pointer;
-    }
-
-    .nav-links { display: none; }
-
-    .nav-links.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: var(--dark-green);
-        padding: 20px 0;
-        align-items: center;
-        z-index: 1001;
-    }
-
-    .nav-btn {
-        padding: 10px;
-        font-size: 1.5rem;
-    }
-
-    .gallery-page .section-title h1 {
-        font-size: 1.4rem !important;
-    }
-}
-
-.dark-mode { background-color: #1a1a1a !important; color: white !important; }
-.dark-mode .container, .dark-mode body { background-color: #1a1a1a !important; }
-
 .cta-btn {
     background-color: var(--bright-green);
     color: white;

@@ -152,11 +152,14 @@ function FullGallery({ images, lang }) {
           </div>
         ))}
       </div>
+
       {selectedIndex !== null && (
-        <div className="modal" onClick={() => setSelectedIndex(null)}>
-          <span className="close">&times;</span>
+        <div className="modal-overlay" onClick={() => setSelectedIndex(null)}>
+          <span className="close-modal">&times;</span>
           <button className="nav-btn prev" onClick={prevImg}>&#10094;</button>
-          <img className="modal-content" src={images[selectedIndex]} alt="Enlarged" />
+          <div className="modal-content-wrapper" onClick={(e) => e.stopPropagation()}>
+             <img className="modal-content" src={images[selectedIndex]} alt="Enlarged" />
+          </div>
           <button className="nav-btn next" onClick={nextImg}>&#10095;</button>
         </div>
       )}
@@ -258,10 +261,12 @@ function HomePage({ images, lang }) {
       </section>
 
       {selectedIndex !== null && (
-        <div className="modal" onClick={() => setSelectedIndex(null)}>
-          <span className="close">&times;</span>
+        <div className="modal-overlay" onClick={() => setSelectedIndex(null)}>
+          <span className="close-modal">&times;</span>
           <button className="nav-btn prev" onClick={prevImg}>&#10094;</button>
-          <img className="modal-content" src={images[selectedIndex]} alt="Enlarged" />
+          <div className="modal-content-wrapper" onClick={(e) => e.stopPropagation()}>
+            <img className="modal-content" src={images[selectedIndex]} alt="Enlarged" />
+          </div>
           <button className="nav-btn next" onClick={nextImg}>&#10095;</button>
         </div>
       )}

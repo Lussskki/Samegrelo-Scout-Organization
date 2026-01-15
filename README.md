@@ -1,16 +1,75 @@
-# React + Vite
+# Samegrelo-Zemo Svaneti Scout Organization
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive web platform designed to manage and showcase scouting activities in the Samegrelo-Zemo Svaneti region. This project serves as a digital hub for organization members and the local community.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Status: Work In Progress (WIP)
 
-## React Compiler
+This project is currently in its final development phase. Once the remaining milestones are completed, the repository will be **archived** and maintained as a read-only project.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Final Milestones:**
+- [ ] Integration of the **Donation** module.
+- [ ] Final deployment to [www.scoutsofsamegrelo.com](http://www.scoutsofsamegrelo.com).
+- [ ] Project Archiving (Read-Only mode).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Website Structure
+
+The website is designed with a clear hierarchy to ensure scouts and visitors can find information quickly:
+
+* **Home Page**: Regional introduction, mission statement, and key highlights.
+* **About Us**: History, core values, and leadership details.
+* **Programs & Activities**: Information on scout ranks, seasonal camps, and weekly schedules.
+* **News & Events**: Updates on registration deadlines and community events.
+* **Gallery**: Photo documentation of past expeditions and ceremonies.
+* **Contact / Join**: Registration portal for new members.
+
+---
+
+## Screens & Interface
+
+Below is a breakdown of the primary screens within the application:
+
+| Screen Name | Description | Key Features |
+| :--- | :--- | :--- |
+| **Landing Dashboard** | The primary entry point for all users. | Hero section, CTA buttons, Quick links. |
+| **Event Management** | View for upcoming scouting events. | Date filters, Event descriptions, Location maps. |
+| **Member Portal** | Private area for registered scouts. | Profile management, progress tracking. |
+| **Admin Panel** | Backend interface for organization leaders. | Content management (CMS), user moderation. |
+
+---
+
+## Getting Started
+
+### Prerequisites
+* A modern web browser (Chrome, Firefox, Safari)
+
+### Installation
+1. Clone the repository:
+```bash 
+git clone https://github.com/Lussskki/Samegrelo-Zemo-Svaneti-Scout-Organization.git
+```
+2. Navigate to the folder
+```bash
+cd Samegrelo-Zemo-Svaneti-Scout-Organization
+```
+3. Install dependencies
+```bash
+npm install
+```
+4. Start the development server Open your terminal and run:
+```bash
+npm run dev
+
+The application will typically be available at http://localhost:5173.
+```
+5. Launch the project.
+
+## Archive Notice
+Once the final version is pushed, this repository will be archived.
+
+**No further updates:** The code will no longer be maintained or updated.
+
+**Read-Only:** The repository will remain public for educational and portfolio purposes, but pull requests and issues will be disabled.

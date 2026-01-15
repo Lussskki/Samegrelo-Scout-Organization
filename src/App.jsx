@@ -85,8 +85,8 @@ const translations = {
         mission: "Mission & Vision",
         aboutText: "We are a voluntary, non-political educational movement for young people.",
         missionText: "Our mission is to contribute to the education of young people through a value system.",
-        logoLine1: "Samegrelo",
-        logoLine2: "Scouts"
+        logoLine1: "Scouts",
+        logoLine2: " Of Samegrelo"
     }
 };
 

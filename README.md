@@ -43,6 +43,23 @@ Below is a breakdown of the primary screens within the application:
 
 ## Getting Started
 
+## Environment Configuration
+
+To run this project, you need to set up environment variables for both the backend and frontend.
+
+### Backend Variables (`.env`)
+```env
+PORT=5000
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
+### Frontend Variables (.env)
+```env
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+```
 ### Prerequisites
 * A modern web browser (Chrome, Firefox, Safari)
 

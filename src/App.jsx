@@ -3,6 +3,31 @@ import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
 import emailjs from '@emailjs/browser';
 import './App.css';
 
+// 1. SHARED DATA SOURCE
+const ALL_PHOTOS = [
+    { id: 1, year: '2026', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345768/scouts_gallery/xihnsdvz89yaim6uy0mq.jpg', title: 'Summer Camp' },
+    { id: 2, year: '2026', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345779/scouts_gallery/bdmgyvbc4u2v84euxevu.jpg', title: 'Mountain Hike' },
+    { id: 3, year: '2026', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345785/scouts_gallery/hq7xlxa83oqeue2v7n5f.jpg', title: 'Eco Project' },
+    { id: 4, year: '2025', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768344314/scouts_gallery/lwlaa6otqrviplveleic.jpg', title: 'Scout Gathering' },
+    { id: 5, year: '2025', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345790/scouts_gallery/suwowi2cp8gsjzulots8.jpg', title: 'Winter Trail' },
+    { id: 6, year: '2024', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345795/scouts_gallery/qi1gguz0ixsjy8plnhwf.jpg', title: 'Community Service' },
+    { id: 7, year: '2024', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345799/scouts_gallery/lgdufaxatpl96ya3o7mc.jpg', title: 'River Camp' },
+    { id: 8, year: '2024', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345804/scouts_gallery/idnuvxc76dalu7mxuwso.jpg', title: 'Forest Adventure' },
+    { id: 9, year: '2024', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345810/scouts_gallery/ne49f5mvrmqeqdoekqiw.jpg', title: 'Scout Workshop' },
+    { id: 10, year: '2024', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345815/scouts_gallery/sainsemc72f3ul9teb3l.jpg', title: 'Night Camp' },
+    { id: 11, year: '2023', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768656455/605735123_1262451279247602_1666760631671871991_n_el2kyc.jpg', title: 'Night Camp' },
+    { id: 12, year: '2022', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768656454/605634855_1262452119247518_1681845932750345038_n_rb0daq.jpg', title: 'Scout Event' },
+    { id: 13, year: '2021', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768656454/605546259_1262451275914269_7638445953210656403_n_ofeuok.jpg', title: 'Hiking Trip' },
+    { id: 14, year: '2021', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768656454/605779944_1262451235914273_8094537458807837207_n_on84ya.jpg', title: 'Summer Memories' },
+    { id: 15, year: '2020', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768656454/605595957_1262451302580933_7443430494405088376_n_srqd3i.jpg', title: 'Project Day' },
+    { id: 16, year: '2019', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657029/606023501_1262451075914289_8549196380556588250_n_sxpnjn.jpg', title: 'Old Camp' },
+    { id: 17, year: '2018', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657028/607210256_1262451145914282_804245334787542014_n_aiedin.jpg', title: 'Forest Walk' },
+    { id: 18, year: '2017', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657028/607712163_1262451169247613_115438784771902412_n_rxlof3.jpg', title: 'Community Work' },
+    { id: 19, year: '2016', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657028/605719325_1262451069247623_2949206353101821358_n_nou34y.jpg', title: 'Gathering' },
+    { id: 20, year: '2015', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657353/605473339_1262450345914362_5766854695694693243_n_stzm3q.jpg', title: 'Adventure' },
+    { id: 21, year: '2014', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657353/605672417_1262450359247694_7351886922705524346_n_wdttxj.jpg', title: 'First Camp' }
+];
+
 const translations = {
     ka: {
         title: "საქართველოს სკაუტური მოძრაობის სამეგრელოს ორგანიზაცია",
@@ -53,7 +78,7 @@ const translations = {
         join: "Join Us",
         region: "Our Region",
         location: "Location", 
-        locationText: "Our office is located in Ingiri, on Tavisupleba Street.",
+        locationText: "Our office is located in Intsiri, on Tavisupleba Street.",
         donation: "Donation",
         donationTitle: "Support Us",
         donationText: "Your contribution helps us offer more interesting projects and camps for young people.",
@@ -90,7 +115,14 @@ const translations = {
     }
 };
 
-// --- Helper Components ---
+// --- NEW COMPONENT: FIXES THE BOTTOM-LAUNCH ISSUE ---
+function ScrollToTop() {
+    const { pathname } = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+    return null;
+}
 
 function RegionCard({ title, text, imgClass }) {
     return (
@@ -138,47 +170,83 @@ function AdminUpload({ lang }) {
     );
 }
 
-function FullGallery({ images, lang }) {
-    const [selectedIndex, setSelectedIndex] = useState(null);
+function FullGallery({ lang }) {
+    const [selectedYear, setSelectedYear] = useState('All');
+    const [currentIndex, setCurrentIndex] = useState(null);
     const t = translations[lang];
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        document.title = `${t.fullGallery} | ${translations[lang].title}`;
-    }, [t.fullGallery, lang]);
+    const years = ['All', '2026', '2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014'];
 
-    const nextImg = (e) => { e.stopPropagation(); setSelectedIndex((prev) => (prev + 1) % images.length); };
-    const prevImg = (e) => { e.stopPropagation(); setSelectedIndex((prev) => (prev - 1 + images.length) % images.length); };
+    const filteredPhotos = selectedYear === 'All' 
+        ? ALL_PHOTOS 
+        : ALL_PHOTOS.filter(photo => photo.year === selectedYear);
+
+    const showNext = (e) => {
+        if (e) e.stopPropagation();
+        setCurrentIndex((prev) => (prev + 1) % filteredPhotos.length);
+    };
+
+    const showPrev = (e) => {
+        if (e) e.stopPropagation();
+        setCurrentIndex((prev) => (prev - 1 + filteredPhotos.length) % filteredPhotos.length);
+    };
+
+    const selectedImg = currentIndex !== null ? filteredPhotos[currentIndex] : null;
 
     return (
-        <div className="gallery-container gallery-page">
-            <div className="section-title">
-                <h1>{t.fullGallery}</h1>
-                <Link to="/" className="cta-btn" style={{marginTop: '10px'}}>{t.back}</Link>
-            </div>
-            <div className="gallery-grid">
-                {images.map((img, index) => (
-                    <div key={index} className="gallery-item" onClick={() => setSelectedIndex(index)}>
-                        <img src={img} alt="Scout" loading="lazy" />
+        <div className="portfolio-app gallery-page-wrapper">
+            <header className="archive-header">
+                <h1>{t.fullGallery} {selectedYear !== 'All' ? `(${selectedYear})` : ''}</h1>
+                <div className="filter-bar">
+                    {years.map(year => (
+                        <button 
+                            key={year} 
+                            className={selectedYear === year ? 'active' : ''} 
+                            onClick={() => {
+                                setSelectedYear(year);
+                                setCurrentIndex(null); 
+                            }}
+                        >
+                            {year}
+                        </button>
+                    ))}
+                </div>
+                <Link to="/" className="cta-btn" style={{marginTop: '30px'}}>{t.back}</Link>
+            </header>
+
+            <div className="masonry-grid">
+                {filteredPhotos.map((img, index) => (
+                    <div key={img.id} className="masonry-item" onClick={() => setCurrentIndex(index)}>
+                        <img src={img.url} alt={img.title} loading="lazy" />
+                        <div className="item-hover-overlay">
+                            <div className="overlay-content">
+                                <h2 className="overlay-type">{img.type}</h2>
+                                <p className="overlay-year">{img.year}</p>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>
 
-            {selectedIndex !== null && (
-                <div className="modal-overlay" onClick={() => setSelectedIndex(null)}>
-                    <span className="close-modal" onClick={() => setSelectedIndex(null)}>&times;</span>
-                    <button className="nav-btn prev" onClick={prevImg}>&#10094;</button>
-                    <div className="modal-content-wrapper" onClick={(e) => e.stopPropagation()}>
-                         <img className="modal-content" src={images[selectedIndex]} alt="Enlarged" />
+            {selectedImg && (
+                <div className="lightbox" onClick={() => setCurrentIndex(null)}>
+                    <button className="close-btn" onClick={() => setCurrentIndex(null)}>×</button>
+                    <button className="nav-arrow left" onClick={showPrev}>❮</button>
+                    <div className="lightbox-center" onClick={(e) => e.stopPropagation()}>
+                        <img src={selectedImg.url} alt={selectedImg.title} className="lightbox-img" />
+                        <div className="lightbox-caption">
+                            <h3>{selectedImg.title}</h3>
+                            <p>{selectedImg.year} - {selectedImg.type}</p>
+                        </div>
                     </div>
-                    <button className="nav-btn next" onClick={nextImg}>&#10095;</button>
+                    <button className="nav-arrow right" onClick={showNext}>❯</button>
                 </div>
             )}
         </div>
     );
 }
 
-function HomePage({ images, lang }) {
+function HomePage({ lang }) {
     const form = useRef();
     const [selectedIndex, setSelectedIndex] = useState(null);
     const t = translations[lang];
@@ -200,8 +268,10 @@ function HomePage({ images, lang }) {
         });
     };
 
-    const nextImg = (e) => { e.stopPropagation(); setSelectedIndex((prev) => (prev + 1) % images.length); };
-    const prevImg = (e) => { e.stopPropagation(); setSelectedIndex((prev) => (prev - 1 + images.length) % images.length); };
+    const previewImages = ALL_PHOTOS.slice(0, 6); 
+
+    const nextImg = (e) => { e.stopPropagation(); setSelectedIndex((prev) => (prev + 1) % previewImages.length); };
+    const prevImg = (e) => { e.stopPropagation(); setSelectedIndex((prev) => (prev - 1 + previewImages.length) % previewImages.length); };
 
     return (
         <>
@@ -242,35 +312,16 @@ function HomePage({ images, lang }) {
                 <div className="centered-text"><p>{t.missionText}</p></div>
             </section>
 
-            {/* --- VETERINARY LOCATION SECTION --- */}
             <section className="container" id="location">
-                <div className="section-title">
-                    <h2>{t.location}</h2>
-                </div>
-
+                <div className="section-title"><h2>{t.location}</h2></div>
                 <div className="centered-text">
                     <p>{t.locationText}</p>
-
                     <div className="map-container" style={{ marginTop: '20px' }}>
-                        <iframe
-                            title="Veterinary Clinic Ingiri"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2960.140492091809!2d41.8297427!3d42.4977788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x405c2506c0f5b005%3A0xe6ae831db81149c0!2z4YOV4YOU4YOi4YOU4YO_4YOY4YOc4YOQ4YO_4YOYIC8gVmV0ZXJpbmFyaWFu!5e0!3m2!1sen!2sge!4v1705312345678"
-                            width="100%"
-                            height="450"
-                            style={{
-                                border: 0,
-                                borderRadius: '12px',
-                                boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
-                            }}
-                            allowFullScreen=""
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                        ></iframe>
+                        <iframe title="Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2960.140492091809!2d41.8297427!3d42.4977788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x405c2506c0f5b005%3A0xe6ae831db81149c0!2z4YOV4YOU4YOi4YOU4YO_4YOY4YOc4YOQ4YO_4YOYIC8gVmV0ZXJpbmFyaWFu!5e0!3m2!1sen!2sge!4v1705312345678" width="100%" height="450" style={{ border: 0, borderRadius: '12px' }} allowFullScreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </section>
 
-            {/* --- NEW DONATION SECTION --- */}
             <section className="container donation-section" id="donation">
                 <div className="section-title"><h2>{t.donationTitle}</h2></div>
                 <div className="centered-text">
@@ -281,10 +332,16 @@ function HomePage({ images, lang }) {
 
             <section className="gallery-container" id="gallery-section">
                 <div className="section-title"><h2>{t.photos}</h2></div>
-                <div className="gallery-grid">
-                    {images.slice(0, 6).map((img, index) => (
-                        <div key={index} className="gallery-item" onClick={() => setSelectedIndex(index)}>
-                            <img src={img} alt="Gallery preview" loading="lazy" />
+                <div className="masonry-grid">
+                    {previewImages.map((img, index) => (
+                        <div key={img.id} className="masonry-item" onClick={() => setSelectedIndex(index)}>
+                            <img src={img.url} alt={img.title} loading="lazy" />
+                            <div className="item-hover-overlay">
+                                <div className="overlay-content">
+                                    <h2 className="overlay-type">{img.type}</h2>
+                                    <p className="overlay-year">{img.year}</p>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -295,12 +352,12 @@ function HomePage({ images, lang }) {
 
             {selectedIndex !== null && (
                 <div className="modal-overlay" onClick={() => setSelectedIndex(null)}>
-                    <span className="close-modal" onClick={() => setSelectedIndex(null)}>&times;</span>
-                    <button className="nav-btn prev" onClick={prevImg}>&#10094;</button>
+                    <span className="close-modal" onClick={() => setSelectedIndex(null)}>×</span>
+                    <button className="nav-btn prev" onClick={prevImg}>❮</button>
                     <div className="modal-content-wrapper" onClick={(e) => e.stopPropagation()}>
-                        <img className="modal-content" src={images[selectedIndex]} alt="Enlarged" />
+                        <img className="modal-content" src={previewImages[selectedIndex].url} alt="Enlarged" />
                     </div>
-                    <button className="nav-btn next" onClick={nextImg}>&#10095;</button>
+                    <button className="nav-btn next" onClick={nextImg}>❯</button>
                 </div>
             )}
 
@@ -317,8 +374,6 @@ function HomePage({ images, lang }) {
     );
 }
 
-// --- Main App Component ---
-
 function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [lang, setLang] = useState('ka');
@@ -327,33 +382,25 @@ function App() {
     const navigate = useNavigate();
     const t = translations[lang];
 
-    const galleryImages = [
-        'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345768/scouts_gallery/xihnsdvz89yaim6uy0mq.jpg', 
-        'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345779/scouts_gallery/bdmgyvbc4u2v84euxevu.jpg',
-        'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345785/scouts_gallery/hq7xlxa83oqeue2v7n5f.jpg', 
-        'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768344314/scouts_gallery/lwlaa6otqrviplveleic.jpg',
-        'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345790/scouts_gallery/suwowi2cp8gsjzulots8.jpg', 
-        'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345795/scouts_gallery/qi1gguz0ixsjy8plnhwf.jpg',
-        'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345799/scouts_gallery/lgdufaxatpl96ya3o7mc.jpg', 
-        'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345804/scouts_gallery/idnuvxc76dalu7mxuwso.jpg',
-        'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345810/scouts_gallery/ne49f5mvrmqeqdoekqiw.jpg', 
-        'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345815/scouts_gallery/sainsemc72f3ul9teb3l.jpg'
-    ];
-
     useEffect(() => { setIsMenuOpen(false); }, [location]);
 
+    // Updated scroll logic to handle both ID navigation and page top resets
     const scrollToSection = (e, id) => {
         if (e) e.preventDefault();
         setIsMenuOpen(false);
         
         const executeScroll = () => {
-            const target = id === 'top' ? document.documentElement : document.getElementById(id);
-            target?.scrollIntoView({ behavior: 'smooth' });
+            if (id === 'top') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const target = document.getElementById(id);
+                target?.scrollIntoView({ behavior: 'smooth' });
+            }
         };
 
         if (location.pathname !== '/') {
             navigate('/');
-            setTimeout(executeScroll, 100);
+            setTimeout(executeScroll, 150);
         } else {
             executeScroll();
         }
@@ -361,6 +408,9 @@ function App() {
 
     return (
         <div className={`app-container ${isDarkMode ? 'dark-mode' : ''}`}>
+            {/* THIS FIXES THE GALLERY SCROLL ISSUE */}
+            <ScrollToTop />
+
             <nav>
                 <div className="logo" onClick={(e) => scrollToSection(e, 'top')} style={{ cursor: 'pointer' }}>
                     <img src="/assets/icon.ico" alt="Logo" style={{ height: '45px', borderRadius: '5px' }} />
@@ -369,23 +419,18 @@ function App() {
                         <span className="line2">{t.logoLine2}</span>
                     </div>
                 </div>
-
                 <div className="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     {isMenuOpen ? '✕' : '☰'}
                 </div>
-
                 <ul className={isMenuOpen ? "nav-links active" : "nav-links"}>
                     <li><a href="/" onClick={(e) => scrollToSection(e, 'top')}>{t.main}</a></li>
                     <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>{t.whoWeAre}</a></li>
                     <li><a href="#activities" onClick={(e) => scrollToSection(e, 'activities')}>{t.whatWeDo}</a></li>
                     <li><a href="#mission" onClick={(e) => scrollToSection(e, 'mission')}>{t.mission}</a></li>
-                    <li><a href="#region" onClick={(e) => scrollToSection(e, 'region-section')}>{t.region}</a></li>
-                    {/* New Location Link */}
                     <li><a href="#location" onClick={(e) => scrollToSection(e, 'location')}>{t.location}</a></li>
                     <li><a href="#donation" onClick={(e) => scrollToSection(e, 'donation')}>{t.donation}</a></li>
                     <li><a href="#gallery" onClick={(e) => scrollToSection(e, 'gallery-section')}>{t.gallery}</a></li>
                     <li><a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>{t.contact}</a></li>
-                    
                     <li className="nav-controls-wrapper">
                         <div className="nav-controls">
                             <button className="lang-btn" onClick={() => setLang(lang === 'ka' ? 'en' : 'ka')}>
@@ -400,8 +445,8 @@ function App() {
             </nav>
 
             <Routes>
-                <Route path="/" element={<HomePage images={galleryImages} lang={lang} />} />
-                <Route path="/gallery" element={<FullGallery images={galleryImages} lang={lang} />} />
+                <Route path="/" element={<HomePage lang={lang} />} />
+                <Route path="/gallery" element={<FullGallery lang={lang} />} />
                 <Route path="/admin-upload" element={<AdminUpload lang={lang} />} />
             </Routes>
 

@@ -446,7 +446,7 @@ function App() {
             </Routes>
 
             <footer>
-                <p>© 2026 Scout Of Samegrelo</p>
+                <p>© 2026 Scouts Of Samegrelo</p>
                 <div className="social-links">
                     <a href="https://facebook.com" target="_blank" rel="noreferrer"><i className="fab fa-facebook"></i></a>
                     <a href="https://instagram.com" target="_blank" rel="noreferrer"><i className="fab fa-instagram"></i></a>

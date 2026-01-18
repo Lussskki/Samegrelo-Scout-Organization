@@ -1,0 +1,23 @@
+export const ALL_PHOTOS = [
+    { id: 1, year: '2026', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345768/scouts_gallery/xihnsdvz89yaim6uy0mq.jpg', title: 'Summer Camp' },
+    { id: 2, year: '2026', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345779/scouts_gallery/bdmgyvbc4u2v84euxevu.jpg', title: 'Mountain Hike' },
+    { id: 3, year: '2026', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345785/scouts_gallery/hq7xlxa83oqeue2v7n5f.jpg', title: 'Eco Project' },
+    { id: 4, year: '2025', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768344314/scouts_gallery/lwlaa6otqrviplveleic.jpg', title: 'Scout Gathering' },
+    { id: 5, year: '2025', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345790/scouts_gallery/suwowi2cp8gsjzulots8.jpg', title: 'Winter Trail' },
+    { id: 6, year: '2024', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345795/scouts_gallery/qi1gguz0ixsjy8plnhwf.jpg', title: 'Community Service' },
+    { id: 7, year: '2024', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345799/scouts_gallery/lgdufaxatpl96ya3o7mc.jpg', title: 'River Camp' },
+    { id: 8, year: '2024', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345804/scouts_gallery/idnuvxc76dalu7mxuwso.jpg', title: 'Forest Adventure' },
+    { id: 9, year: '2024', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345810/scouts_gallery/ne49f5mvrmqeqdoekqiw.jpg', title: 'Scout Workshop' },
+    { id: 10, year: '2024', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345815/scouts_gallery/sainsemc72f3ul9teb3l.jpg', title: 'Night Camp' },
+    { id: 11, year: '2023', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768656455/605735123_1262451279247602_1666760631671871991_n_el2kyc.jpg', title: 'Night Camp' },
+    { id: 12, year: '2022', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768656454/605634855_1262452119247518_1681845932750345038_n_rb0daq.jpg', title: 'Scout Event' },
+    { id: 13, year: '2021', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768656454/605546259_1262451275914269_7638445953210656403_n_ofeuok.jpg', title: 'Hiking Trip' },
+    { id: 14, year: '2021', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768656454/605779944_1262451235914273_8094537458807837207_n_on84ya.jpg', title: 'Summer Memories' },
+    { id: 15, year: '2020', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768656454/605595957_1262451302580933_7443430494405088376_n_srqd3i.jpg', title: 'Project Day' },
+    { id: 16, year: '2019', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657029/606023501_1262451075914289_8549196380556588250_n_sxpnjn.jpg', title: 'Old Camp' },
+    { id: 17, year: '2018', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657028/607210256_1262451145914282_804245334787542014_n_aiedin.jpg', title: 'Forest Walk' },
+    { id: 18, year: '2017', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657028/607712163_1262451169247613_115438784771902412_n_rxlof3.jpg', title: 'Community Work' },
+    { id: 19, year: '2016', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657028/605719325_1262451069247623_2949206353101821358_n_nou34y.jpg', title: 'Gathering' },
+    { id: 20, year: '2015', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657353/605473339_1262450345914362_5766854695694693243_n_stzm3q.jpg', title: 'Adventure' },
+    { id: 21, year: '2014', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768657353/605672417_1262450359247694_7351886922705524346_n_wdttxj.jpg', title: 'First Camp' }
+];

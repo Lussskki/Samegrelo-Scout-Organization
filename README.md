@@ -10,7 +10,7 @@ This project is currently in its final development phase. Once the remaining mil
 
 **Final Milestones:**
 - [ ] Integration of the **Donation** module.
-- [ ] Final deployment to [www.scoutsofsamegrelo.com](http://www.scoutsofsamegrelo.com).
+- [x] Final deployment to [www.scoutsofsamegrelo.com](http://www.scoutsofsamegrelo.com).
 - [ ] Project Archiving (Read-Only mode).
 
 ---

@@ -6,6 +6,13 @@
     padding: 0;
     box-sizing: border-box;
 }
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 
 html {
     scroll-behavior: smooth;
@@ -33,7 +40,7 @@ nav {
     display: flex;
     align-items: center;
     padding: 0 5%;
-    height: 70px;
+    min-height: 70px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -107,12 +114,13 @@ nav {
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 100px 10% 60px 10%;
     padding: 0 10%;
     color: white;
 }
 
 .hero-text h1 {
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 5vw, 3rem);;
     margin-bottom: 20px;
 }
 

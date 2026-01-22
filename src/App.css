@@ -375,3 +375,71 @@ body {
   height: auto;
   object-fit: contain;
 }
+/* ====== Day / Night Theme ====== */
+body.day {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+body.day .header,
+body.day .footer {
+  background-color: var(--dark-purple);
+  color: white;
+}
+
+body.day .hero {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+              url('https://picsum.photos/id/386/1600/900') center/cover;
+}
+
+body.day .activities-section { background-color: var(--green); }
+body.day .gallery { background-color: var(--orange); }
+
+body.night {
+  background-color: #111;
+  color: #eee;
+}
+
+body.night .header,
+body.night .footer {
+  background-color: #222;
+  color: #eee;
+}
+
+body.night .hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+              url('https://picsum.photos/id/386/1600/900') center/cover;
+}
+
+body.night .activities-section { background-color: #333; }
+body.night .gallery { background-color: #444; }
+
+body.night .card-top.purple { background-color: #5a2c7b; }
+body.night .card-top.green { background-color: #2a3a2a; }
+body.night .card-top.orange { background-color: #b77b22; }
+
+body.night .target-card.green-bg { background-color: #2a3a2a; }
+body.night .target-card.orange-bg { background-color: #b77b22; }
+
+body.night .overlay-btn { opacity: 0.9; }
+
+/* ====== Hamburger Mobile Controls ====== */
+.mobile-controls {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.mobile-controls button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  background-color: var(--purple);
+}
+
+body.night .mobile-controls button {
+  background-color: #555;
+}

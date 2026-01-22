@@ -6,8 +6,7 @@ export default function App() {
       {/* HEADER */}
       <header className="header">
         <div className="logo-group">
-          <span className="logo">⚜️</span>
-          <img src="https://via.placeholder.com/100x40?text=LOGO" alt="Scouts Logo" className="logo-img" />
+          <img src="/assets/icon.ico" alt="Logo" style={{ height: '45px', borderRadius: '5px' }} />
         </div>
 
         <nav className="nav">

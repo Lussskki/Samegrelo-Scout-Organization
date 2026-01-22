@@ -1,4 +1,8 @@
 export const ALL_PHOTOS = [
+    { id: 1769064947993, year: '2026', type: 'photo', url: 'https://res.cloudinary.com/dciefkd71/image/upload/v1769064947/scouts_gallery/dkzwckdzh8ivlwo1hyal.jpg', title: 'Untitled' },
+
+    { id: 1769064763380, year: '2026', type: 'photo', url: 'https://res.cloudinary.com/dciefkd71/image/upload/v1769064762/scouts_gallery/rg3idtyrj9o95kulr9h0.jpg', title: 'Untitled' },
+
     // { id: 1, year: '2026', type: 'CAMP', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345768/scouts_gallery/xihnsdvz89yaim6uy0mq.jpg', title: 'Summer Camp' },
     // { id: 2, year: '2026', type: 'HIKE', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345779/scouts_gallery/bdmgyvbc4u2v84euxevu.jpg', title: 'Mountain Hike' },
     // { id: 3, year: '2026', type: 'PROJECT', url: 'https://res.cloudinary.com/dmgtsbro4/image/upload/v1768345785/scouts_gallery/hq7xlxa83oqeue2v7n5f.jpg', title: 'Eco Project' },

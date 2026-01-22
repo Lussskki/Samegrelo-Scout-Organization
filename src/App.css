@@ -443,6 +443,22 @@ body.night .overlay-btn { opacity: 0.9; }
 body.night .mobile-controls button {
   background-color: #555;
 }
+/* ===== FIX: STICKY MOBILE HEADER ===== */
+@media (max-width: 768px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1002;
+  }
+
+  /* Push content down so it doesn't hide under header */
+  .hero {
+    margin-top: 80px;
+  }
+}
+
 
 /* ===== HEADER RIGHT CONTROLS FIX ===== */
 
@@ -461,3 +477,21 @@ body.night .mobile-controls button {
   gap: 12px;
   margin-left: 30px;
 }
+
+@media (max-width: 768px) {
+  .header {
+    position: fixed;
+  }
+}
+
+
+@media (min-width: 769px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1002;
+  }
+}
+

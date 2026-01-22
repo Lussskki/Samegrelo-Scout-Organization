@@ -1,25 +1,45 @@
+import { useState, useEffect } from 'react'
 import './App.css'
 
 export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  // Lock scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : 'auto'
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [menuOpen])
+
   return (
     <div className="container">
       {/* HEADER */}
       <header className="header">
         <div className="logo-group">
-          <img src="/assets/icon.ico" alt="Logo" style={{ height: '45px', borderRadius: '5px' }} />
+          <img src="/assets/icon.ico" alt="Logo" className="logo-img" />
         </div>
 
-        <nav className="nav">
-          <a href="#" className="active">მთავარი</a>
-          <a href="#">ცენტრის შესახებ</a>
-          <a href="#">აქტივობები</a>
-          <a href="#">შემოუერთდი</a>
+        {/* HAMBURGER (mobile only) */}
+        <div
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? '✕' : '☰'}
+        </div>
+
+        {/* FULLSCREEN NAV (opens when hamburger clicked) */}
+        <nav className={`nav ${menuOpen ? 'open' : ''}`}>
+          <a href="#" className="active" onClick={() => setMenuOpen(false)}>მთავარი</a>
+          <a href="#" onClick={() => setMenuOpen(false)}>ცენტრის შესახებ</a>
+          <a href="#" onClick={() => setMenuOpen(false)}>აქტივობები</a>
+          <a href="#" onClick={() => setMenuOpen(false)}>შემოუერთდი</a>
         </nav>
 
         <div className="lang">KA / EN</div>
       </header>
 
-      {/* HERO SECTION */}
+      {/* HERO */}
       <section className="hero">
         <div className="hero-content">
           <h1>თავგადასავალი, ბუნება და ლიდერობა სამეგრელოს გულში.</h1>
@@ -32,7 +52,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* THREE PILLAR SECTION */}
+      {/* ACTIVITIES */}
       <section className="activities-section">
         <h2 className="section-title">ჩვენი ცენტრი ინგირში</h2>
         <div className="activities-grid">
@@ -41,7 +61,7 @@ export default function App() {
               <span className="icon">⛺</span>
               <p>საბანაკე ზონა</p>
             </div>
-            <div className="card-img" style={{backgroundImage: 'url(https://picsum.photos/id/13/400/300)'}}></div>
+            <div className="card-img" style={{ backgroundImage: 'url(https://picsum.photos/id/13/400/300)' }} />
           </div>
 
           <div className="card">
@@ -49,7 +69,7 @@ export default function App() {
               <span className="icon">🧗</span>
               <p>სათავგადასავლო პარკი</p>
             </div>
-            <div className="card-img" style={{backgroundImage: 'url(https://picsum.photos/id/1036/400/300)'}}></div>
+            <div className="card-img" style={{ backgroundImage: 'url(https://picsum.photos/id/1036/400/300)' }} />
           </div>
 
           <div className="card">
@@ -57,12 +77,12 @@ export default function App() {
               <span className="icon">💼</span>
               <p>საგანმანათლებლო სივრცე</p>
             </div>
-            <div className="card-img" style={{backgroundImage: 'url(https://picsum.photos/id/1/400/300)'}}></div>
+            <div className="card-img" style={{ backgroundImage: 'url(https://picsum.photos/id/1/400/300)' }} />
           </div>
         </div>
       </section>
 
-      {/* DUAL TARGET SECTION */}
+      {/* TARGET */}
       <section className="target-section">
         <div className="target-card green-bg">
           <h3>ახალგაზრდებისთვის</h3>
@@ -71,6 +91,7 @@ export default function App() {
             <button className="overlay-btn">გახდი სკაუტი</button>
           </div>
         </div>
+
         <div className="target-card orange-bg">
           <h3>მშობლებისთვის</h3>
           <div className="target-img-container">
@@ -80,13 +101,13 @@ export default function App() {
         </div>
       </section>
 
-      {/* LATEST ACTIVITIES / GALLERY */}
+      {/* GALLERY */}
       <section className="gallery">
         <h2 className="gallery-title">ბოლო აქტივობები</h2>
         <div className="gallery-grid">
-          <div className="photo-card" style={{backgroundImage: 'url(https://picsum.photos/id/1018/400/300)'}}></div>
-          <div className="photo-card" style={{backgroundImage: 'url(https://picsum.photos/id/1015/400/300)'}}></div>
-          <div className="photo-card" style={{backgroundImage: 'url(https://picsum.photos/id/1016/400/300)'}}></div>
+          <div className="photo-card" style={{ backgroundImage: 'url(https://picsum.photos/id/1018/400/300)' }} />
+          <div className="photo-card" style={{ backgroundImage: 'url(https://picsum.photos/id/1015/400/300)' }} />
+          <div className="photo-card" style={{ backgroundImage: 'url(https://picsum.photos/id/1016/400/300)' }} />
         </div>
       </section>
 
@@ -95,7 +116,7 @@ export default function App() {
         <div className="footer-col">
           <h4>SOCIAL MEDIA</h4>
           <div className="social-icons">
-             <span>f</span> <span>t</span> <span>i</span> <span>vk</span>
+            <span>f</span><span>t</span><span>i</span><span>vk</span>
           </div>
           <div className="contact-details">
             <p>📞 533 455 7890</p>
@@ -106,17 +127,14 @@ export default function App() {
 
         <div className="footer-col">
           <h4>CONTACT INFO</h4>
-          <div className="map-placeholder">
-            {/* Map image or iframe would go here */}
-            <img src="https://via.placeholder.com/200x100?text=MAP" alt="Map" />
-          </div>
+          <img src="https://via.placeholder.com/200x100?text=MAP" alt="Map" />
         </div>
 
         <div className="footer-col">
           <h4>PARTNER</h4>
           <div className="partner-logos">
-             <img src="https://via.placeholder.com/50?text=Scout" alt="Partner" />
-             <img src="https://via.placeholder.com/80x40?text=USAID" alt="USAID" />
+            <img src="https://via.placeholder.com/50?text=Scout" />
+            <img src="https://via.placeholder.com/80x40?text=USAID" />
           </div>
         </div>
       </footer>

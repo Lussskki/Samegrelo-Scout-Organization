@@ -226,3 +226,128 @@ body {
   align-items: center;
   gap: 20px;
 }
+
+.logo-img {
+  height: 45px;
+  border-radius: 5px;
+}
+
+/* ========================= */
+/* 📱 RESPONSIVE DESIGN */
+/* ========================= */
+
+@media (max-width: 1024px) {
+  .activities-grid,
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    height: auto;
+    padding: 80px 5%;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .activities-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .target-section {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .partner-logos {
+    justify-content: center;
+  }
+}
+
+/* ========================= */
+/* 🍔 HAMBURGER MENU */
+/* ========================= */
+
+/* ========================= */
+/* 🍔 FULLSCREEN HAMBURGER */
+/* ========================= */
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  z-index: 1001;
+}
+
+/* Mobile fullscreen menu */
+@media (max-width: 768px) {
+
+  .header {
+    position: relative;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--dark-purple);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    transform: translateY(-100%);
+    transition: transform 0.35s ease;
+    z-index: 1000;
+  }
+
+  .nav.open {
+    transform: translateY(0);
+  }
+
+  .nav a {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+
+  .lang {
+    display: none;
+  }
+
+  body {
+    overflow: hidden;
+  }
+}

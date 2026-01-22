@@ -1,16 +1,58 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
 
 export default function App() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [lang, setLang] = useState('KA'); // KA / EN
+  const [theme, setTheme] = useState('day'); // day / night
 
   // Lock scroll when menu is open
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : 'auto'
-    return () => {
-      document.body.style.overflow = 'auto'
+    document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
+  }, [menuOpen]);
+
+  // Set body class for day/night
+  useEffect(() => {
+    document.body.className = theme === 'day' ? 'day' : 'night';
+  }, [theme]);
+
+  // Language content
+  const content = {
+    KA: {
+      home: 'მთავარი',
+      about: 'ცენტრის შესახებ',
+      activities: 'აქტივობები',
+      join: 'შემოუერთდი',
+      sponsors: 'სპონსორები',
+      heroTitle: 'თავგადასავალი, ბუნება და ლიდერობა სამეგრელოს გულში.',
+      heroText: 'ინგირის საერთაშორისო სკაუტური ცენტრი გელით!',
+      joinBtn: 'შემოუერთდი სკაუტებს',
+      learnBtn: 'გაიგე მეტი ცენტრზე',
+      youth: 'ახალგაზრდებისთვის',
+      parents: 'მშობლებისთვის',
+      becomeScout: 'გახდი სკაუტი',
+      membership: 'წევრობის შესახებ',
+      latestActivities: 'ბოლო აქტივობები'
+    },
+    EN: {
+      home: 'Home',
+      about: 'About',
+      activities: 'Activities',
+      join: 'Join',
+      sponsors: 'Sponsors',
+      heroTitle: 'Adventure, Nature, and Leadership in the Heart of Samegrelo.',
+      heroText: 'Welcome to Ingiri International Scout Center!',
+      joinBtn: 'Join the Scouts',
+      learnBtn: 'Learn More About Center',
+      youth: 'For Youth',
+      parents: 'For Parents',
+      becomeScout: 'Become a Scout',
+      membership: 'Membership Info',
+      latestActivities: 'Latest Activities'
     }
-  }, [menuOpen])
+  };
+
+  const langContent = content[lang];
 
   return (
     <div className="container">
@@ -21,41 +63,45 @@ export default function App() {
         </div>
 
         {/* HAMBURGER (mobile only) */}
-        <div
-          className="hamburger"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
+        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? '✕' : '☰'}
         </div>
 
-        {/* FULLSCREEN NAV (opens when hamburger clicked) */}
+        {/* FULLSCREEN NAV */}
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
-          <a href="#hero" className="active" onClick={() => setMenuOpen(false)}>მთავარი</a>
-          <a href="#activities" onClick={() => setMenuOpen(false)}>ცენტრის შესახებ</a>
-          <a href="#target" onClick={() => setMenuOpen(false)}>აქტივობები</a>
-          <a href="#gallery" onClick={() => setMenuOpen(false)}>შემოუერთდი</a>
-          <a href="#sponsors" onClick={() => setMenuOpen(false)}>სპონსორები</a>
-        </nav>
+          <a href="#hero" onClick={() => setMenuOpen(false)}>{langContent.home}</a>
+          <a href="#activities" onClick={() => setMenuOpen(false)}>{langContent.about}</a>
+          <a href="#target" onClick={() => setMenuOpen(false)}>{langContent.activities}</a>
+          <a href="#gallery" onClick={() => setMenuOpen(false)}>{langContent.join}</a>
+          <a href="#sponsors" onClick={() => setMenuOpen(false)}>{langContent.sponsors}</a>
 
-        <div className="lang">KA / EN</div>
+          {/* MOVED: Language and Theme buttons are now inside the menu */}
+          <div className="menu-controls">
+            <button className="control-btn" onClick={() => setLang(lang === 'KA' ? 'EN' : 'KA')}>
+              {lang}
+            </button>
+            <button className="control-btn" onClick={() => setTheme(theme === 'day' ? 'night' : 'day')}>
+              {theme === 'day' ? '🌞' : '🌙'}
+            </button>
+          </div>
+        </nav>
       </header>
 
       {/* HERO */}
       <section id="hero" className="hero">
         <div className="hero-content">
-          <h1>თავგადასავალი, ბუნება და ლიდერობა სამეგრელოს გულში.</h1>
-          <p>ინგირის საერთაშორისო სკაუტური ცენტრი გელით!</p>
-
+          <h1>{langContent.heroTitle}</h1>
+          <p>{langContent.heroText}</p>
           <div className="hero-buttons">
-            <button className="btn purple">შემოუერთდი სკაუტებს</button>
-            <button className="btn green">გაიგე მეტი ცენტრზე</button>
+            <button className="btn purple">{langContent.joinBtn}</button>
+            <button className="btn green">{langContent.learnBtn}</button>
           </div>
         </div>
       </section>
 
       {/* ACTIVITIES */}
       <section id="activities" className="activities-section">
-        <h2 className="section-title">ჩვენი ცენტრი ინგირში</h2>
+        <h2 className="section-title">{langContent.about}</h2>
         <div className="activities-grid">
           <div className="card">
             <div className="card-top purple">
@@ -64,7 +110,6 @@ export default function App() {
             </div>
             <div className="card-img" style={{ backgroundImage: 'url(https://picsum.photos/id/13/400/300)' }} />
           </div>
-
           <div className="card">
             <div className="card-top green">
               <span className="icon">🧗</span>
@@ -72,7 +117,6 @@ export default function App() {
             </div>
             <div className="card-img" style={{ backgroundImage: 'url(https://picsum.photos/id/1036/400/300)' }} />
           </div>
-
           <div className="card">
             <div className="card-top orange">
               <span className="icon">💼</span>
@@ -86,25 +130,25 @@ export default function App() {
       {/* TARGET */}
       <section id="target" className="target-section">
         <div className="target-card green-bg">
-          <h3>ახალგაზრდებისთვის</h3>
+          <h3>{langContent.youth}</h3>
           <div className="target-img-container">
             <img src="https://picsum.photos/id/660/600/400" alt="Youth" />
-            <button className="overlay-btn">გახდი სკაუტი</button>
+            <button className="overlay-btn">{langContent.becomeScout}</button>
           </div>
         </div>
 
         <div className="target-card orange-bg">
-          <h3>მშობლებისთვის</h3>
+          <h3>{langContent.parents}</h3>
           <div className="target-img-container">
             <img src="https://picsum.photos/id/64/600/400" alt="Parents" />
-            <button className="overlay-btn">წევრობის შესახებ</button>
+            <button className="overlay-btn">{langContent.membership}</button>
           </div>
         </div>
       </section>
 
       {/* GALLERY */}
       <section id="gallery" className="gallery">
-        <h2 className="gallery-title">ბოლო აქტივობები</h2>
+        <h2 className="gallery-title">{langContent.latestActivities}</h2>
         <div className="gallery-grid">
           <div className="photo-card" style={{ backgroundImage: 'url(https://picsum.photos/id/1018/400/300)' }} />
           <div className="photo-card" style={{ backgroundImage: 'url(https://picsum.photos/id/1015/400/300)' }} />
@@ -114,7 +158,7 @@ export default function App() {
 
       {/* SPONSORS */}
       <section id="sponsors" className="sponsors-section">
-        <h2 className="section-title">სპონსორები</h2>
+        <h2 className="section-title">{langContent.sponsors}</h2>
         <div className="sponsors-grid">
           <img src="https://via.placeholder.com/150x80?text=Sponsor1" alt="Sponsor 1" />
           <img src="https://via.placeholder.com/150x80?text=Sponsor2" alt="Sponsor 2" />
@@ -145,11 +189,11 @@ export default function App() {
         <div className="footer-col">
           <h4>PARTNER</h4>
           <div className="partner-logos">
-            <img src="https://via.placeholder.com/50?text=Scout" />
-            <img src="https://via.placeholder.com/80x40?text=USAID" />
+            <img src="https://via.placeholder.com/50?text=Scout" alt="Scout" />
+            <img src="https://via.placeholder.com/80x40?text=USAID" alt="USAID" />
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }

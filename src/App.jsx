@@ -170,7 +170,7 @@ export default function App() {
       {/* FOOTER */}
       <footer className="footer">
         <div className="footer-col">
-          <h4>SOCIAL MEDIA</h4>
+          <h4>სოციალური მედია</h4>
           <div className="social-icons">
             <span>f</span><span>t</span><span>i</span><span>vk</span>
           </div>
@@ -182,12 +182,12 @@ export default function App() {
         </div>
 
         <div className="footer-col">
-          <h4>CONTACT INFO</h4>
+          <h4>ადგილმდებარეობა</h4>
           <img src="https://via.placeholder.com/200x100?text=MAP" alt="Map" />
         </div>
 
         <div className="footer-col">
-          <h4>PARTNER</h4>
+          <h4>პარტნიორი</h4>
           <div className="partner-logos">
             <img src="https://via.placeholder.com/50?text=Scout" alt="Scout" />
             <img src="https://via.placeholder.com/80x40?text=USAID" alt="USAID" />

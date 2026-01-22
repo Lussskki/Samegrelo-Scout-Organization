@@ -30,17 +30,18 @@ export default function App() {
 
         {/* FULLSCREEN NAV (opens when hamburger clicked) */}
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
-          <a href="#" className="active" onClick={() => setMenuOpen(false)}>მთავარი</a>
-          <a href="#" onClick={() => setMenuOpen(false)}>ცენტრის შესახებ</a>
-          <a href="#" onClick={() => setMenuOpen(false)}>აქტივობები</a>
-          <a href="#" onClick={() => setMenuOpen(false)}>შემოუერთდი</a>
+          <a href="#hero" className="active" onClick={() => setMenuOpen(false)}>მთავარი</a>
+          <a href="#activities" onClick={() => setMenuOpen(false)}>ცენტრის შესახებ</a>
+          <a href="#target" onClick={() => setMenuOpen(false)}>აქტივობები</a>
+          <a href="#gallery" onClick={() => setMenuOpen(false)}>შემოუერთდი</a>
+          <a href="#sponsors" onClick={() => setMenuOpen(false)}>სპონსორები</a>
         </nav>
 
         <div className="lang">KA / EN</div>
       </header>
 
       {/* HERO */}
-      <section className="hero">
+      <section id="hero" className="hero">
         <div className="hero-content">
           <h1>თავგადასავალი, ბუნება და ლიდერობა სამეგრელოს გულში.</h1>
           <p>ინგირის საერთაშორისო სკაუტური ცენტრი გელით!</p>
@@ -53,7 +54,7 @@ export default function App() {
       </section>
 
       {/* ACTIVITIES */}
-      <section className="activities-section">
+      <section id="activities" className="activities-section">
         <h2 className="section-title">ჩვენი ცენტრი ინგირში</h2>
         <div className="activities-grid">
           <div className="card">
@@ -83,7 +84,7 @@ export default function App() {
       </section>
 
       {/* TARGET */}
-      <section className="target-section">
+      <section id="target" className="target-section">
         <div className="target-card green-bg">
           <h3>ახალგაზრდებისთვის</h3>
           <div className="target-img-container">
@@ -102,12 +103,23 @@ export default function App() {
       </section>
 
       {/* GALLERY */}
-      <section className="gallery">
+      <section id="gallery" className="gallery">
         <h2 className="gallery-title">ბოლო აქტივობები</h2>
         <div className="gallery-grid">
           <div className="photo-card" style={{ backgroundImage: 'url(https://picsum.photos/id/1018/400/300)' }} />
           <div className="photo-card" style={{ backgroundImage: 'url(https://picsum.photos/id/1015/400/300)' }} />
           <div className="photo-card" style={{ backgroundImage: 'url(https://picsum.photos/id/1016/400/300)' }} />
+        </div>
+      </section>
+
+      {/* SPONSORS */}
+      <section id="sponsors" className="sponsors-section">
+        <h2 className="section-title">სპონსორები</h2>
+        <div className="sponsors-grid">
+          <img src="https://via.placeholder.com/150x80?text=Sponsor1" alt="Sponsor 1" />
+          <img src="https://via.placeholder.com/150x80?text=Sponsor2" alt="Sponsor 2" />
+          <img src="https://via.placeholder.com/150x80?text=Sponsor3" alt="Sponsor 3" />
+          <img src="https://via.placeholder.com/150x80?text=Sponsor4" alt="Sponsor 4" />
         </div>
       </section>
 

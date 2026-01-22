@@ -4,6 +4,9 @@ html, body, #root {
   min-height: 100%;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
+
+
 }
 
 :root {
@@ -350,4 +353,25 @@ body {
   body {
     overflow: hidden;
   }
+}
+
+/* SPONSORS */
+.sponsors-section {
+  background-color: #13afe4;
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.sponsors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.sponsors-grid img {
+  max-width: 150px;
+  height: auto;
+  object-fit: contain;
 }

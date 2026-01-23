@@ -215,13 +215,13 @@ export default function App() {
             <p>
               <a href="tel:+9955334557890">
                 <img src="assets/phone.png" alt="Phone" className="contact-icon-small" />
-                533 455 7890
+                + 995 533 455 7890
               </a>
             </p>
             <p>
               <a href="mailto:ScoutsOfsamegrelo@gmail.com">
                 <img src="assets/mail.png" alt="Email" className="contact-icon-small" />
-                ScoutsOfsamegrelo@gmail.com
+                scoutsOfsamegrelo@gmail.com
               </a>
             </p>
             <p>

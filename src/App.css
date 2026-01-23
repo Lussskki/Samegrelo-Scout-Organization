@@ -806,3 +806,8 @@ body.night .mobile-controls button {
     padding-top: 70px;
   }
 }
+
+.dejavu {
+  width: 300px !important;  
+  height: 200px !important;
+}

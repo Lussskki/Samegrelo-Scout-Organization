@@ -273,8 +273,7 @@ export default function App() {
         <div className="footer-col">
           <h4>{langContent.partner}</h4>
           <div className="partner-logos">
-            <img src="https://via.placeholder.com/50?text=Scout" alt="Scout" />
-            <img src="https://via.placeholder.com/80x40?text=USAID" alt="USAID" />
+            <img src="assets/deja-vu.jpg" alt="DEJA VU" className='dejavu'/>
           </div>
         </div>
       </footer>

@@ -205,15 +205,15 @@ export default function App() {
       </section>
 
       {/* SPONSORS */}
-      <section id="sponsors" className="sponsors-section">
-        <h2 className="section-title">{langContent.sponsors}</h2>
-        <div className="sponsors-grid">
+      {/* <section id="sponsors" className="sponsors-section"> */}
+        {/* <h2 className="section-title">{langContent.sponsors}</h2> */}
+        {/* <div className="sponsors-grid"> */}
           {/* <img src="https://via.placeholder.com/150x80?text=Sponsor1" alt="Sponsor 1" />
           <img src="https://via.placeholder.com/150x80?text=Sponsor2" alt="Sponsor 2" />
           <img src="https://via.placeholder.com/150x80?text=Sponsor3" alt="Sponsor 3" />
           <img src="https://via.placeholder.com/150x80?text=Sponsor4" alt="Sponsor 4" /> */}
-        </div>
-      </section>
+        {/* </div> */}
+      {/* </section> */}
 
       {/* FOOTER */}
       <footer className="footer">

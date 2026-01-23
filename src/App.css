@@ -412,9 +412,11 @@ body {
     display: none;
   }
 
-  body {
-    overflow: hidden;
-  }
+body.menu-open {
+  
+  overflow-y: auto !important;
+}
+
 }
 
 /* SPONSORS */
@@ -788,5 +790,19 @@ body.night .mobile-controls button {
     width: 100% !important; /* On very small screens, let it fill the width */
     max-width: 280px;       /* But keep it small */
     height: 180px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1002;
+  }
+
+  body {
+    padding-top: 70px;
   }
 }

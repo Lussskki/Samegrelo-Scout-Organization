@@ -810,4 +810,6 @@ body.night .mobile-controls button {
 .dejavu {
   width: 300px !important;  
   height: 200px !important;
+  margin:  auto;           
+  border-radius: 8px;
 }

@@ -523,8 +523,18 @@ body.night .mobile-controls button {
 
 /* ===== HEADER RIGHT CONTROLS FIX ===== */
 
+/* Change your existing .header block to this: */
 .header {
-  position: relative;
+  background-color: var(--dark-purple);
+  padding: 15px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  /* ADD THESE THREE LINES BELOW */
+  border: none !important;      
+  box-shadow: none !important;   
+  outline: none !important;
 }
 
 .nav {
@@ -542,14 +552,23 @@ body.night .mobile-controls button {
 @media (max-width: 768px) {
   .header {
     position: fixed;
-    /* Reduce vertical and horizontal padding */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1002;
     padding: 10px 5%; 
-    flex-direction: row; /* Keeps logo and hamburger on the same line */
+    flex-direction: row; 
     justify-content: space-between;
-    height: 70px; /* Forces a smaller height */
+    height: 70px; /* FIX: Set a specific height */
+    border-bottom: none !important; /* FIX: Remove the line */
+    box-shadow: none !important; /* FIX: Remove any shadow line */
+  }
+  .hero {
+    margin-top: 70px; /* FIX: Must match the header height exactly */
+    border-top: none !important; /* FIX: Remove any top border */
+    padding-top: 0 !important;
   }
 }
-
 
 @media (min-width: 769px) {
   .header {

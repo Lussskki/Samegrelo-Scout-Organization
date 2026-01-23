@@ -219,7 +219,7 @@ export default function App() {
               </a>
             </p>
             <p>
-              <a href="mailto:ScoutsOfsamegrelo@gmail.com">
+              <a href="mailto:scoutsofsamegrelo@gmail.com">
                 <img src="assets/mail.png" alt="Email" className="contact-icon-small" />
                 scoutsOfsamegrelo@gmail.com
               </a>

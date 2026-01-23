@@ -204,9 +204,9 @@ export default function App() {
       <section id="gallery" className="gallery">
         <h2 className="gallery-title">{langContent.latestActivities}</h2>
         <div className="gallery-grid">
-          <div className="photo-card" style={{ backgroundImage: 'url(https://picsum.photos/id/1018/400/300)' }} />
-          <div className="photo-card" style={{ backgroundImage: 'url(https://picsum.photos/id/1015/400/300)' }} />
-          <div className="photo-card" style={{ backgroundImage: 'url(https://picsum.photos/id/1016/400/300)' }} />
+          <div className="photo-card" style={{ backgroundImage: 'url(https://res.cloudinary.com/dmgtsbro4/image/upload/v1768749124/Screen_Shot_2020-05-28_at_23.36.32_weubjp.png)' }} />
+          <div className="photo-card" style={{ backgroundImage: 'url(https://res.cloudinary.com/dmgtsbro4/image/upload/v1768656454/605634855_1262452119247518_1681845932750345038_n_rb0daq.jpg)' }} />
+          <div className="photo-card" style={{ backgroundImage: 'url(https://res.cloudinary.com/dmgtsbro4/image/upload/v1768744683/116911356_3679924978688520_1237785573083213375_n_tbu95g.jpg)' }} />
         </div>
       </section>
 

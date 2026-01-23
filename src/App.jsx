@@ -23,7 +23,7 @@ export default function App() {
       home: 'მთავარი',
       about: 'ჩვენი ცენტრი ინგირში',
       activities: 'აქტივობები',
-      join: 'შემოუერთდი',
+      join: 'ადგილმდებარეობა',
       sponsors: 'სპონსორები',
       heroTitle: 'თავგადასავალი, ბუნება და ლიდერობა სამეგრელოს გულში.',
       heroText: 'სამეგრელოს  სკაუტური ცენტრი გელით!',
@@ -46,7 +46,7 @@ export default function App() {
       home: 'Home',
       about: 'About',
       activities: 'Activities',
-      join: 'Join',
+      join: 'Location',
       sponsors: 'Sponsors',
       heroTitle: 'Adventure, Nature, and Leadership in the Heart of Samegrelo.',
       heroText: 'Welcome to Samegrelo Scout Center!',
@@ -88,22 +88,49 @@ export default function App() {
         </div>
 
         {/* FULLSCREEN NAV */}
-        <nav className={`nav ${menuOpen ? 'open' : ''}`}>
-          <a href="#hero" onClick={() => setMenuOpen(false)}>{langContent.home}</a>
-          <a href="#activities" onClick={() => setMenuOpen(false)}>{langContent.about}</a>
-          <a href="#target" onClick={() => setMenuOpen(false)}>{langContent.activities}</a>
-          <a href="#gallery" onClick={() => setMenuOpen(false)}>{langContent.join}</a>
-          <a href="#sponsors" onClick={() => setMenuOpen(false)}>{langContent.sponsors}</a>
+      <nav className={`nav ${menuOpen ? 'open' : ''}`}>
+        <a href="#hero" onClick={() => setMenuOpen(false)}>
+          {langContent.home}
+        </a>
 
-          <div className="menu-controls">
-            <button className="control-btn" onClick={() => setLang(lang === 'KA' ? 'EN' : 'KA')}>
-              {lang}
-            </button>
-            <button className="control-btn" onClick={() => setTheme(theme === 'day' ? 'night' : 'day')}>
-              {theme === 'day' ? '🌞' : '🌙'}
-            </button>
-          </div>
-        </nav>
+        <a href="#activities" onClick={() => setMenuOpen(false)}>
+          {langContent.about}
+        </a>
+
+        {/* LOCATION → FOOTER */}
+        <a href="#location" onClick={() => setMenuOpen(false)}>
+          {langContent.location}
+        </a>
+
+        <a href="#target" onClick={() => setMenuOpen(false)}>
+          {langContent.activities}
+        </a>
+
+        <a href="#gallery" onClick={() => setMenuOpen(false)}>
+          {langContent.latestActivities}
+        </a>
+
+        <a href="#sponsors" onClick={() => setMenuOpen(false)}>
+          {langContent.sponsors}
+        </a>
+
+        <div className="menu-controls">
+          <button
+            className="control-btn"
+            onClick={() => setLang(lang === 'KA' ? 'EN' : 'KA')}
+          >
+            {lang}
+          </button>
+
+          <button
+            className="control-btn"
+            onClick={() => setTheme(theme === 'day' ? 'night' : 'day')}
+          >
+            {theme === 'day' ? '🌞' : '🌙'}
+          </button>
+        </div>
+      </nav>
+
       </header>
 
       {/* HERO */}
@@ -234,7 +261,7 @@ export default function App() {
         </div>
       
 
-        <div className="footer-col">
+        <div className="footer-col" id="location">
           <h4>{langContent.location}</h4>
           <div className="map-container" style={{ marginTop: '20px' }}>
             <iframe title="Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2960.140492091809!2d41.8297427!3d42.4977788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x405c2506c0f5b005%3A0xe6ae831db81149c0!2z4YOV4YOU4YOi4YOU4YO_4YOY4YOc4YOQ4YO_4YOYIC8gVmV0ZXJpbmFyaWFu!5e0!3m2!1sen!2sge!4v1705312345678"

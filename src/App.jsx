@@ -22,9 +22,9 @@ export default function App() {
       title: 'სამეგრელოს ორგანიზაციის სკაუტები',
       home: 'მთავარი',
       about: 'ჩვენი ცენტრი ინგირში',
-      activities: 'აქტივობები',
+      // activities: 'აქტივობები',
       join: 'ადგილმდებარეობა',
-      sponsors: 'სპონსორები',
+      // sponsors: 'სპონსორები',
       heroTitle: 'თავგადასავალი, ბუნება და ლიდერობა სამეგრელოს გულში.',
       heroText: 'სამეგრელოს  სკაუტური ცენტრი გელით!',
       joinBtn: 'შემოუერთდი სკაუტებს',
@@ -47,7 +47,7 @@ export default function App() {
       about: 'About',
       activities: 'Activities',
       join: 'Location',
-      sponsors: 'Sponsors',
+      // sponsors: 'Sponsors',
       heroTitle: 'Adventure, Nature, and Leadership in the Heart of Samegrelo.',
       heroText: 'Welcome to Samegrelo Scout Center!',
       joinBtn: 'Join the Scouts',
@@ -93,15 +93,19 @@ export default function App() {
           {langContent.home}
         </a>
 
-        <a href="#activities" onClick={() => setMenuOpen(false)}>
+        {/* <a href="#activities" onClick={() => setMenuOpen(false)}>
           {langContent.about}
-        </a>
+        </a> */}
 
         {/* LOCATION → FOOTER */}
         <a href="#location" onClick={() => setMenuOpen(false)}>
           {langContent.location}
         </a>
 
+        <a href="#target" onClick={() => setMenuOpen(false)}>
+          {langContent.joinBtn}
+        </a>
+        
         <a href="#target" onClick={() => setMenuOpen(false)}>
           {langContent.activities}
         </a>
@@ -110,9 +114,9 @@ export default function App() {
           {langContent.latestActivities}
         </a>
 
-        <a href="#sponsors" onClick={() => setMenuOpen(false)}>
+        {/* <a href="#sponsors" onClick={() => setMenuOpen(false)}>
           {langContent.sponsors}
-        </a>
+        </a> */}
 
         <div className="menu-controls">
           <button

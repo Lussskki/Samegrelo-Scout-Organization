@@ -49,7 +49,7 @@ body {
   align-items: center;
   text-decoration: none;
 }
-
+/* Logos */
 .logo-img {
   height: 40px; /* Adjust based on your current logo size */
   width: auto;
@@ -67,6 +67,19 @@ body {
 .logo-third-img-camp {
   height: 60px;
   width: 60px;
+  cursor: pointer;
+}
+
+.logo-third-img-camp:hover {
+animation: campAlive 1.2s ease-in-out;
+}
+
+
+@keyframes campAlive {
+0% { transform: rotate(0deg) scale(1); }
+40% { transform: rotate(-1.2deg) scale(1.04); }
+70% { transform: rotate(1deg) scale(1.03); }
+100% { transform: rotate(0deg) scale(1); }
 }
 
 /* On mobile, you might want to hide one or make them smaller */
@@ -813,3 +826,5 @@ body.night .mobile-controls button {
   margin:  auto;           
   border-radius: 8px;
 }
+
+/* Icons */

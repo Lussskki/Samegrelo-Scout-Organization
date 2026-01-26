@@ -1,4 +1,4 @@
-# Samegrelo-Zemo Svaneti Scout Organization
+# Samegrelo Scout Organization
 
 A comprehensive web platform designed to manage and showcase scouting activities in the Samegrelo-Zemo Svaneti region. This project serves as a digital hub for organization members and the local community.
 
@@ -66,11 +66,11 @@ VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ### Installation
 1. Clone the repository:
 ```bash 
-git clone https://github.com/Lussskki/Samegrelo-Zemo-Svaneti-Scout-Organization.git
+git clone https://github.com/Lussskki/Samegrelo-Scout-Organization.git
 ```
 2. Navigate to the folder
 ```bash
-cd Samegrelo-Zemo-Svaneti-Scout-Organization
+cd Samegrelo-Scout-Organization
 ```
 3. Install dependencies
 ```bash

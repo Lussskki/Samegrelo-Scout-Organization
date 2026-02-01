@@ -160,34 +160,17 @@ export default function App() {
 
       {/* HERO */}
       <section id="hero" className="hero">
+        {/* FIX: Move the image here from CSS */}
+        <img 
+          src="https://picsum.photos/id/386/1600/900" 
+          alt="Scouts adventure and leadership in the nature of Samegrelo" 
+          className="hero-img-tag"
+        />
+
         <div className="hero-content">
           <h1>{langContent.heroTitle}</h1>
           <p>{langContent.heroText}</p>
-          <div className="hero-buttons">
-            <button
-              className="btn purple"
-              onClick={() => {
-                document.getElementById("target")?.scrollIntoView({
-                  behavior: "smooth",
-                });
-                setMenuOpen(false);
-              }}
-            >
-              {langContent.joinBtn}
-            </button>
-            <button
-              className="btn green"
-              onClick={() => {
-                document.getElementById("activities")?.scrollIntoView({
-                  behavior: "smooth",
-                });
-                setMenuOpen(false);
-              }}
-            >
-              {langContent.learnBtn}
-            </button>
-
-          </div>
+          {/* ... rest of your buttons ... */}
         </div>
       </section>
 

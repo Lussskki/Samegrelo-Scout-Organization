@@ -164,9 +164,11 @@ export default function App() {
             {langContent.home}
           </a>
 
+          {/* ABOUT US DROPDOWN */}
           <div className={`nav-dropdown ${aboutOpen ? 'open' : ''}`}>
             <button className="nav-link" onClick={() => setAboutOpen(!aboutOpen)}>
               {langContent.join}
+              <span className={`dropdown-arrow ${aboutOpen ? 'rotate' : ''}`}>▾</span>
             </button>
             {aboutOpen && (
               <div className="dropdown-panel">
@@ -181,9 +183,11 @@ export default function App() {
           <a href="#services" onClick={() => setMenuOpen(false)}>{langContent.eduTitle}</a>
           <a href="#target" onClick={() => setMenuOpen(false)}>{langContent.youthTitle}</a>
 
-          <div className="nav-dropdown">
+          {/* SERVICES DROPDOWN */}
+          <div className={`nav-dropdown ${servicesOpen ? 'open' : ''}`}>
             <button type="button" className="nav-link" onClick={(e) => { e.stopPropagation(); setServicesOpen(prev => !prev); }}>
               {langContent.services}
+              <span className={`dropdown-arrow ${servicesOpen ? 'rotate' : ''}`}>▾</span>
             </button>
             {servicesOpen && (
               <div className="dropdown-panel">
@@ -246,7 +250,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* SERVICES SECTION */}
       <section id="services" className="services-section">
         <h2 className="section-title">{langContent.services}</h2>
         <div className="services-grid">

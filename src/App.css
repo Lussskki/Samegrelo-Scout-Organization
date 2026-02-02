@@ -2201,3 +2201,18 @@ body.night .target-card {
 .dropdown-arrow.rotate {
   transform: rotate(180deg);
 }
+
+@media (max-width: 768px) {
+  .nav {
+    align-items: center;
+    text-align: center;
+  }
+
+  .nav a,
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+}

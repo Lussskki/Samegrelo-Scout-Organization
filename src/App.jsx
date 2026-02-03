@@ -288,7 +288,7 @@ export default function App() {
                   onClick={() => {
                     setMenuOpen(false);
                     setContactOpen(false);
-                    setLang('EN');
+                    setLang('ENG');
                   }}
                 >
                   {langContent.register}
@@ -436,27 +436,27 @@ export default function App() {
                 </div>
               </div>
             </section>
-            {/* REGISTER SECTION */}
-            <section id="register" className="register-section">
-              <h2 className="section-title">
+            {/* REGISTER SECTION - ID fixed here */}
+          <section id="register" className="register-section">
+            <h2 className="section-title">
+              {langContent.register}
+            </h2>
+
+            <p className="section-subtitle">
+              {langContent.registerSubtitle}
+            </p>
+
+            <div className="register-content">
+              <a
+                href="https://forms.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="register-btn"
+              >
                 {langContent.register}
-              </h2>
-
-              <p className="section-subtitle">
-                {langContent.registerSubtitle}
-              </p>
-
-              <div className="register-content">
-                <a
-                  href="https://forms.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="register-btn"
-                >
-                  {langContent.register}
-                </a>
-              </div>
-            </section>
+              </a>
+            </div>
+          </section>
             {/* Gallery - გალერეა */}
           <section id="gallery" className="gallery-section">
             <h2 className="section-title">{langContent.sponsors}</h2>

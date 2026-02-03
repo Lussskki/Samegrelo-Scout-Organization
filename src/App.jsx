@@ -288,7 +288,6 @@ export default function App() {
                   onClick={() => {
                     setMenuOpen(false);
                     setContactOpen(false);
-                    setLang('ENG');
                   }}
                 >
                   {langContent.register}

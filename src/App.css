@@ -2786,3 +2786,34 @@ body.night .footer p {
     z-index: 2100;
   }
 }
+
+/* =========================
+   FIX: WHITE BOX / IMAGE LOADING
+========================= */
+@media (max-width: 768px) {
+  /* Ensure the grid doesn't collapse */
+  .gallery-grid {
+    display: block !important; /* Switch from grid/masonry to block for stability */
+    width: 100% !important;
+  }
+
+  .photo-card {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 250px; /* Forces a height so it's not a 'zero' pixel box */
+    margin-bottom: 20px;
+    background-color: rgba(255,255,255,0.05); /* Optional: slight ghost box */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .photo-card img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    /* Ensure the image is actually visible */
+    opacity: 1 !important; 
+    visibility: visible !important;
+  }
+}

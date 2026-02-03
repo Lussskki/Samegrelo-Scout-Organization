@@ -6,7 +6,7 @@ const galleryPhotos = [
 { id: 1, src: '/assets/photos/chveni-fotoebi/1.jpg', alt: 'Scouts Camp' },
 { id: 2, src: '/assets/photos/chveni-fotoebi/2.jpg', alt: 'Workspace of anaklia' },
 { id: 3, src: '/assets/photos/chveni-fotoebi/3.jpg', alt: 'Event' },
-{ id: 4, src: '/assets/photos/chveni-fotoebi/4.jpg', alt: 'The Avatar camp' },
+// { id: 4, src: '/assets/photos/chveni-fotoebi/4.jpg', alt: 'The Avatar camp' },
 { id: 5, src: '/assets/photos/chveni-fotoebi/5.jpg', alt: 'Samegrelo Nature' },
 { id: 6, src: '/assets/photos/chveni-fotoebi/6.jpg', alt: 'The Avatar camp' },
 ];

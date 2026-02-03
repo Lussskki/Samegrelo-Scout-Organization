@@ -2495,3 +2495,233 @@ body.night .target-card {
   .nav-btn { padding: 10px; font-size: 20px; }
   .lightbox-content { max-width: 95%; }
 }
+
+/* =========================
+   FULL NIGHT MODE OVERRIDE
+========================= */
+body.night {
+  background-color: #111 !important;
+  color: #eee !important;
+}
+
+body.night .header,
+body.night .footer {
+  background-color: #222 !important;
+  color: #eee !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+body.night .hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)) !important;
+  color: #eee !important;
+}
+
+body.night .hero-content {
+  background: rgba(0,0,0,0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  color: #eee !important;
+}
+
+body.night .hero-content h1,
+body.night .hero-content p,
+body.night .hero-buttons .btn {
+  color: #eee !important;
+}
+
+body.night .activities-section {
+  background-color: #333 !important;
+  color: #eee !important;
+}
+
+body.night .activities-grid .card-top.purple { background-color: #5a2c7b !important; }
+body.night .activities-grid .card-top.green { background-color: #2a3a2a !important; }
+body.night .activities-grid .card-top.orange { background-color: #b77b22 !important; }
+
+body.night .card,
+body.night .card-img,
+body.night .card-top {
+  color: #eee !important;
+  background-color: rgba(0,0,0,0.3) !important;
+}
+
+body.night .target-section .target-card.green-bg { background-color: #2a3a2a !important; }
+body.night .target-section .target-card.orange-bg { background-color: #b77b22 !important; }
+body.night .overlay-btn { color: #fff !important; opacity: 0.9 !important; }
+
+body.night .gallery { background-color: #444 !important; color: #eee !important; }
+body.night .photo-card { background-color: #555 !important; }
+
+body.night .services-section { background-color: #1c1c1c !important; color: #eee !important; }
+body.night .service-card { 
+  background: rgba(255,255,255,0.06) !important; 
+  color: #eaeaea !important;
+}
+body.night .service-card:hover { background: rgba(255,255,255,0.12) !important; }
+body.night .service-card h3 { color: #caa7ff !important; }
+body.night .service-card p { color: #d0d0d0 !important; }
+
+body.night .about-section { background-color: #1c1c1c !important; color: #eaeaea !important; }
+body.night .about-card { background-color: #2a2a32 !important; color: #eaeaea !important; }
+body.night .about-card h3 { color: #caa7ff !important; }
+body.night .about-card p { color: #d0d0d0 !important; }
+
+body.night .developer-section { background-color: #111 !important; color: #eaeaea !important; }
+body.night .developer-text { color: #eaeaea !important; }
+body.night .developer-card { background-color: #222 !important; }
+
+body.night .edu-projects-section { 
+  background: linear-gradient(180deg, #0f1c15, #14261c) !important; 
+  color: #cfe8d6 !important; 
+}
+body.night .edu-card {
+  background-color: #162c22 !important;
+  border-left: 6px solid #4caf73 !important;
+  color: #c1e3d0 !important;
+}
+body.night .edu-card h3 { color: #8ee6b1 !important; }
+body.night .edu-card p { color: #c1e3d0 !important; }
+
+body.night .youth-projects-section { background-color: #111 !important; color: #eee !important; }
+body.night .youth-card { 
+  background: rgba(255,255,255,0.06) !important; 
+  color: #eaeaea !important;
+}
+body.night .youth-card:hover { background: rgba(255,255,255,0.12) !important; }
+body.night .youth-card h3 { color: #caa7ff !important; }
+body.night .youth-card p { color: #d0d0d0 !important; }
+
+body.night .dropdown-panel { 
+  background: rgba(43,15,63,0.96) !important; 
+  color: #eaeaea !important;
+}
+body.night .dropdown-panel a { color: #eaeaea !important; }
+body.night .dropdown-panel a:hover { color: var(--orange) !important; }
+
+body.night .map-container iframe,
+body.night .map-container,
+body.night .dejavu {
+  background-color: #222 !important;
+}
+
+body.night .footer-col,
+body.night .contact-details p,
+body.night .contact-details a {
+  color: #eee !important;
+}
+
+body.night .social-icons img,
+body.night .header-social-icon {
+  filter: brightness(0.9) invert(0.8) !important;
+}
+
+body.night .mobile-controls button {
+  background-color: #555 !important;
+  color: #eee !important;
+}
+
+/* =========================
+   FULL NIGHT MODE - ADDITIONAL PAGES
+========================= */
+
+body.night {
+  background-color: #111 !important;
+  color: #eee !important;
+}
+
+/* FORMS (register, donation) */
+body.night form,
+body.night .form-container,
+body.night .register-form,
+body.night .donation-form {
+  background-color: #1c1c1c !important;
+  color: #eee !important;
+  border: 1px solid #333 !important;
+}
+
+body.night input,
+body.night select,
+body.night textarea {
+  background-color: #222 !important;
+  color: #eee !important;
+  border: 1px solid #444 !important;
+}
+
+body.night input::placeholder,
+body.night textarea::placeholder {
+  color: #bbb !important;
+}
+
+body.night button {
+  background-color: #555 !important;
+  color: #fff !important;
+  border: 1px solid #666 !important;
+}
+
+body.night button:hover {
+  background-color: #666 !important;
+}
+
+/* GALLERY PAGE */
+body.night .gallery,
+body.night .gallery-grid,
+body.night .photo-card {
+  background-color: #222 !important;
+  color: #eee !important;
+}
+
+/* SPECIFIC SECTION BACKGROUNDS */
+body.night .register-section,
+body.night .donation-section {
+  background-color: #1c1c1c !important;
+  color: #eee !important;
+}
+
+body.night .register-section h1,
+body.night .donation-section h1,
+body.night .register-section h2,
+body.night .donation-section h2 {
+  color: #fff !important;
+}
+
+body.night .register-section p,
+body.night .donation-section p {
+  color: #ccc !important;
+}
+
+/* LINKS */
+body.night a {
+  color: #ffb74d !important; /* orange highlight for links */
+}
+
+body.night a:hover {
+  color: #fff !important;
+}
+
+/* TABLES (if any) */
+body.night table {
+  background-color: #222 !important;
+  color: #eee !important;
+  border: 1px solid #444 !important;
+}
+
+body.night th,
+body.night td {
+  border: 1px solid #444 !important;
+  color: #eee !important;
+}
+
+/* MARGINS AND PADDING */
+body.night section,
+body.night div {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+/* FOOTER FIXES */
+body.night .footer,
+body.night .footer a,
+body.night .footer p {
+  background-color: #222 !important;
+  color: #eee !important;
+}

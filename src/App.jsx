@@ -192,7 +192,7 @@ export default function App() {
         <div className="logo-group">
           <a href="#hero" onClick={() => setMenuOpen(false)}>
             <img src="/assets/icon.ico" alt="Logo" className="logo-img" />
-            <img src="assets/mountain-logo.png" className='logo-sec-img' />
+            <img src="assets/mountain-logo.ico" className='logo-sec-img' />
           </a>
         </div>
 

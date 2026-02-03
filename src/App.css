@@ -2727,85 +2727,62 @@ body.night .footer p {
 }
 
 /* =========================
-   GALLERY FIX – MASONRY + MOBILE CAROUSEL
+   FIXED MOBILE LIGHTBOX
 ========================= */
-
-/* Desktop / default */
-.gallery {
-  background-color: var(--orange);
-  padding: 60px 10%;
-  color: white;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-top: 30px;
-}
-
-/* Masonry effect */
-.gallery-grid {
-  grid-auto-rows: 10px;
-}
-
-.photo-card {
-  border-radius: 10px;
-  background-size: cover;
-  background-position: center;
-  display: block;
-}
-
-.photo-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  display: block;
-}
-
-/* Mobile fix */
 @media (max-width: 768px) {
-
-  .gallery {
-    padding: 20px 5%;
+  /* 1. Ensure the background covers the entire mobile screen */
+  .lightbox {
+    padding: 0;
+    display: flex !important; /* Force flex to center content */
+    align-items: center;
+    justify-content: center;
   }
 
-  /* Carousel wrapper full-width */
-  .carousel-wrapper {
-    display: block !important;
-    width: 100% !important;
-    overflow: hidden !important;
-    margin-bottom: 20px;
+  /* 2. Content wrapper: allow it to take more width on mobile */
+  .lightbox-content {
+    max-width: 95% !important;
+    max-height: 90vh !important;
+    width: 100%;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  .carousel-wrapper .carousel-slide {
-    display: block !important;
-    width: 100% !important;
+  /* 3. The Image: The most important part */
+  .lightbox-content img {
+    width: 100% !important;   /* Force full width of container */
+    height: auto !important;  /* Maintain aspect ratio */
+    max-height: 70vh !important; /* Leave room for the caption/close button */
+    object-fit: contain !important; /* Don't crop the photo */
+    border-radius: 4px;
+    margin: 0 auto;
   }
 
-  /* Gallery grid below carousel */
-  .gallery-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important; /* single column mobile masonry */
-    grid-auto-rows: auto;
-    gap: 15px !important;
-    margin-top: 20px;
+  /* 4. Fix Nav Buttons: Make them smaller and more visible */
+  .nav-btn {
+    padding: 12px !important;
+    font-size: 18px !important;
+    background: rgba(0, 0, 0, 0.5) !important; /* Darker background to see on light photos */
+    top: auto !important;
+    bottom: 20px; /* Move them down slightly so they don't block the photo center */
   }
 
-  /* Photo cards for mobile */
-  .photo-card {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-    border-radius: 10px !important;
+  .prev { left: 10px !important; }
+  .next { right: 10px !important; }
+
+  /* 5. Caption: Ensure it doesn't push the photo off-screen */
+  .caption {
+    font-size: 1rem !important;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
   }
 
-  .photo-card img {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: cover !important;
-    border-radius: 10px !important;
-    display: block !important;
+  /* 6. Close Button: Larger hit area for thumbs */
+  .close-btn {
+    top: 10px !important;
+    right: 15px !important;
+    font-size: 35px !important;
+    z-index: 2100;
   }
 }

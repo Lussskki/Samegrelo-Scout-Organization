@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import movaLogo from '/assets/MOVA.jpg' 
-import avatarLogo from '/assets/AVATAR2020.png'
+import avatarLogo from '/assets/AVATAR2020.jpg'
 import redCrossLogo from '/assets/REDCROSS.png'
 import scoutLearnLogo from '/assets/SCOUTLEARN.png'
 import energyLogo from '/assets/ENERGY.png'

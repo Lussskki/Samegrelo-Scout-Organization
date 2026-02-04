@@ -2701,3 +2701,31 @@ body.night .footer p {
     flex: 0 0 calc(50% - 10px);
   }
 }
+
+/* 1. Ensure the card is a flex container */
+.edu-card {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem; /* Adjust based on your design */
+  background: rgba(255, 255, 255, 0.05); /* Example background */
+  border-radius: 15px;
+  height: 100%; /* Makes all cards in a row the same height */
+}
+
+/* 2. Fix the Title Height (This is the magic part) */
+.edu-card h3 {
+  min-height: 3.5rem; 
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-start; /* Keeps text at the top of its allocated space */
+
+}
+
+/* 3. Style the description text */
+.edu-card p {
+  margin: 0;
+  line-height: 1.6;
+  color: #e0e0e0;
+  /* This ensures the text starts immediately after the title's reserved space */
+  vertical-align: top;
+}

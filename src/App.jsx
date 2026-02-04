@@ -101,6 +101,7 @@ export default function App() {
       missText: 'ჩვენი მიზანია ლიდერული, პასუხისმგებელი და ბუნებაზე მზრუნველი თაობის აღზრდა.',
       howTitle: 'როგორ გავხდე სკაუტი',
       howText: 'სკაუტად გახდომა შესაძლებელია რეგისტრაციისა და აქტიურ პროგრამებში ჩართვის გზით.',
+      // მიმდინარე პროექტები - Current project
       youthTitle: 'მიმდინარე პროექტები',
       youthSubtitle: 'ჩვენი მოგზაურობა გრძელდება! ეს განყოფილება მოიცავს ამჟამად შემუშავების პროცესში მყოფ პროექტებს. ეს ინიციატივები საშუალებას აძლევს ჩვენს ახალგაზრდა წევრებს, ისწავლონ პრაქტიკით, უმკლავდებიან რეალურ გამოწვევებს და უჭერენ მხარს ჩვენს ადგილობრივ საზოგადოებას პრაქტიკული მსახურებით.',
       youthCard1T: '',
@@ -119,6 +120,7 @@ export default function App() {
       youthCard7D: 'ლიდერული უნარების განვითარება პრაქტიკული აქტივობებით და გუნდურ გარემოში.',
       youthCard8T: 'საქველმოქმედო ღონისძიებები',
       youthCard8D: 'ლიდერული უნარების განვითარება პრაქტიკული აქტივობებით და გუნდურ გარემოში.',
+
       socialMedia: 'სოციალური მედია',
       location: 'ადგილმდებარობა',
       partner: 'პარტნიორი',
@@ -456,7 +458,7 @@ export default function App() {
         </div>
       </section>
 
-            {/* YOUTH PROJECTS - ახალგაზრდული პროექტები */}
+            {/* მიმდინარე პროექტები - Current project */}
             <section id="target" className="youth-projects-section">
               <h2 className="section-title">{langContent.youthTitle}</h2>
               <p className="section-subtitle">{langContent.youthSubtitle}</p>
@@ -495,6 +497,7 @@ export default function App() {
                 </div>
               </div>
             </section>
+            
           {/* REGISTER SECTION */}
           <section id="register" className="register-section">
             <h2 className="section-title">

@@ -2963,3 +2963,34 @@ body.night .footer p {
     scroll-snap-align: start;
   }
 }
+
+/* MOVA LOGO */
+.icon-wrapper {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  border-radius: 0; /* REMOVE circle */
+}
+
+.mova-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent !important;
+
+  mix-blend-mode: normal; /* REMOVE multiply */
+  display: block;
+}
+
+body.dark .mova-icon {
+  filter: brightness(1.2); 
+  mix-blend-mode: lighten;
+}

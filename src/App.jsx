@@ -1,4 +1,12 @@
 import { useState, useEffect } from 'react'
+import movaLogo from '/assets/MOVA2.png' 
+import avatarLogo from '/assets/AVATAR2020.png'
+import redCrossLogo from '/assets/REDCROSS.png'
+import scoutLearnLogo from '/assets/SCOUTLEARN.png'
+import energyLogo from '/assets/ENERGY.png'
+import nexusLogo from '/assets/NEXUS.png'
+import koreaLogo from '/assets/KOREA.png'
+import charityLogo from '/assets/CHARITY.png'
 import './App.css'
 
 // Gallery
@@ -371,34 +379,58 @@ export default function App() {
         <p className="section-subtitle">{langContent.eduSubtitle}</p>
         <div className="edu-projects-grid">
           <div className="edu-card">
+            <div className="icon-wrapper logo-crop"  >
+            <img src={redCrossLogo} alt="Red cross" className="mova-icon" />
+            </div>
             <h3>{langContent.eduCard1T}</h3>
             <p>{langContent.eduCard1D}</p>
           </div>
           <div className="edu-card">
+            <div className="icon-wrapper logo-crop"  >
+            <img src={avatarLogo} alt="Scout camp 2020 avatar" className="mova-icon" />
+            </div>
             <h3>{langContent.eduCard2T}</h3>
             <p>{langContent.eduCard2D}</p>
           </div>
           <div className="edu-card">
+            <div className="icon-wrapper logo-crop">
+            <img src={movaLogo} alt="MOVA Switzerland Scouting" className="mova-icon" />
+            </div>
             <h3>{langContent.eduCard3T}</h3>
             <p>{langContent.eduCard3D}</p>
           </div>
           <div className="edu-card">
+            <div className="icon-wrapper logo-crop">
+            <img src={scoutLearnLogo} alt="Scout teacher" className="mova-icon" />
+            </div>
             <h3>{langContent.eduCard4T}</h3>
             <p>{langContent.eduCard4D}</p>
           </div>
           <div className="edu-card">
+            <div className="icon-wrapper logo-crop">
+            <img src={energyLogo} alt="Energy" className="mova-icon" />
+            </div>
             <h3>{langContent.eduCard5T}</h3>
             <p>{langContent.eduCard5D}</p>
           </div>
           <div className="edu-card">
+            <div className="icon-wrapper logo-crop">
+            <img src={nexusLogo} alt="Nexus" className="mova-icon" />
+            </div>
             <h3>{langContent.eduCard6T}</h3>
             <p>{langContent.eduCard6D}</p>
           </div>
           <div className="edu-card">
+            <div className="icon-wrapper logo-crop">
+            <img src={koreaLogo} alt="Nexus" className="mova-icon" />
+            </div>
             <h3>{langContent.eduCard7T}</h3>
             <p>{langContent.eduCard7D}</p>
           </div>
           <div className="edu-card">
+            <div className="icon-wrapper logo-crop">
+            <img src={charityLogo} alt="Charity" className="mova-icon" />
+            </div>
             <h3>{langContent.eduCard8T}</h3>
             <p>{langContent.eduCard8D}</p>
           </div>                                        

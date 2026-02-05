@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+
+// განხორიელებული პროექტები
 import movaLogo from '/assets/MOVA.jpg' 
 import avatarLogo from '/assets/AVATAR2020.jpg'
 import redCrossLogo from '/assets/REDCROSS.png'
@@ -7,6 +9,14 @@ import energyLogo from '/assets/ENERGY.png'
 import nexusLogo from '/assets/NEXUS.png'
 import koreaLogo from '/assets/KOREA.png'
 import charityLogo from '/assets/CHARITY.png'
+// მიმდინარე პროექტები
+import currentLogo from '/assets/CURRENT.png'
+// ჩვენს შესახებ
+import aboutUsLogo from '/assets/ABOUTUS.png'
+// სერვისები
+import servicesLogo from '/assets/SERVICES.png'
+
+
 import './App.css'
 
 // Gallery
@@ -83,7 +93,7 @@ export default function App() {
       eduCard7D: 'ჩვენი ქვეყნის წარმომადგენლად მსოფლიო ასპარეზზე, ჩვენი სკაუტები დაესწრნენ მსოფლიო სკაუტურ ჯამბორის. ამ მასშტაბურმა შეკრებამ ჩვენს წევრებს საშუალება მისცა, გაუზიარონ ერთმანეთს კულტურა და იდეები მსოფლიოს ყველა კუთხიდან ჩამოსულ სკაუტებთან, რამაც გააძლიერა ჩვენი კავშირი მსოფლიო სკაუტურ მოძრაობასთან.',
       eduCard8T: 'საქველმოქმედო ღონისძიებები',
       eduCard8D: 'ჩვენი მასშტაბური ბანაკების გარდა, ჩვენ კვლავ ერთგულები ვრჩებით საზოგადოების მუდმივი სამსახურის. სხვადასხვა ადგილობრივი საქველმოქმედო ღონისძიებების მეშვეობით, ჩვენი სკაუტები ავლენენ თანაგრძნობას და ლიდერობას, ორგანიზებით აწყობენ საქველმოქმედო აქციებს და მხარს უჭერენ ჩვენს სამეზობლოში მცხოვრებ გაჭირვებულებს.',
-    
+      // სერვისები
       services: 'სერვისები',
       service1: '',
       service1D: 'ლიდერობის, გუნდურობისა და სკაუტური უნარების განვითარება.',
@@ -101,14 +111,15 @@ export default function App() {
       service7D: 'საერთაშორისო ბანაკები და სკაუტური პარტნიორობები.',
       aboutTitle: 'ჩვენს შესახებ',
       aboutSubtitle: 'სამეგრელოს სკაუტური ცენტრი არის ახალგაზრდული სივრცე, რომელიც აერთიანებს განათლებას, ბუნებასა და ლიდერობას.',
+     // ჩვენს შესახებ
       whoTitle: 'ვინ ვართ ჩვენ',
-      whoText: 'ჩვენ ვართ სკაუტური ორგანიზაცია, რომელიც ხელს უწყობს ახალგაზრდების პიროვნულ განვითარებას, გუნდურ მუშაობასა და აქტიურ მოქალაქეობას.',
+      whoText: 'სამეგრელოში დავიწყეთ მისიით: ვიყოთ საუკეთესოები. 2014 წლიდან ჩვენ მუდმივად ვცდილობთ თვითგანვითარებას, რათა უზრუნველვყოთ, რომ ჩვენმა ახალგაზრდებმა მიიღონ მხოლოდ სკაუტინგის უმაღლესი სტანდარტები. ჩვენ გთავაზობთ არა მხოლოდ გუნდურ მუშაობას - ჩვენ გთავაზობთ ათწლეულის განმავლობაში დადასტურებულ პიროვნულ განვითარებას და აქტიურ მოქალაქეობამდე მიმავალ პირდაპირ გზას. ნუ დაკმაყოფილდებით დამწყებებით; შემოუერთდით ორგანიზაციას, რომელიც წლების განმავლობაში ლიდერობს.',
       histTitle: 'სკაუტინგის ისტორია',
-      histText: 'სკაუტური მოძრაობა დაარსდა 1907 წელს და დღეს მსოფლიოს მილიონობით ახალგაზრდას აერთიანებს საერთო ღირებულებებით.',
+      histText: 'გლობალური ტრადიცია, ადგილობრივი ძალა სკაუტური მოძრაობა 1907 წელს დაიწყო და გლობალური რევოლუცია გამოიწვია, რომელიც ამჟამად მილიონობით ახალგაზრდას საერთო ღირებულებების ქვეშ აერთიანებს. 2014 წლიდან ჩვენ სამეგრელოში მსოფლიო დონის სტანდარტი მოვიყვანეთ. ათწლეულზე მეტი ხნის განმავლობაში ჩვენ უბრალოდ ადგილობრივი ჯგუფი არ ვიყავით - ჩვენ ვართ დისციპლინირებული, განვითარებადი ძალა, რომელიც დაარსების დღიდან ყოველდღე საკუთარ თავზე მუშაობდა, რათა რეგიონის ლიდერები გამხდარიყო ახალგაზრდების განვითარების კუთხით.',
       missTitle: 'მიზანი • მისია • ხედვა',
-      missText: 'ჩვენი მიზანია ლიდერული, პასუხისმგებელი და ბუნებაზე მზრუნველი თაობის აღზრდა.',
+      missText: 'ჩვენ არა მხოლოდ ვასწავლით, არამედ ვაშენებთ. ჩვენი მიზანია, აღვზარდოთ თაობა, რომელიც მიზანმიმართულად წარმართავს, პასუხისმგებლობით მოქმედებს და იცავს ჩვენს ბუნებას. 2014 წელს დაარსებული ჩვენ ვართ სამეგრელოს ძალა ახალგაზრდების რეალური განვითარებისთვის.',
       howTitle: 'როგორ გავხდე სკაუტი',
-      howText: 'სკაუტად გახდომა შესაძლებელია რეგისტრაციისა და აქტიურ პროგრამებში ჩართვის გზით.',
+      howText: 'დარეგისტრირდით. ჩაერთეთ. იხელმძღვანელეთ. თქვენი სკაუტად გახდომის გზა იწყება იმ მომენტიდან, როდესაც შეწყვეტთ ყურებას და დაიწყებთ მოქმედებას.',
       // მიმდინარე პროექტები - Current project
       youthTitle: 'მიმდინარე პროექტები',
       youthSubtitle: 'ჩვენი მოგზაურობა გრძელდება! ეს განყოფილება მოიცავს ამჟამად შემუშავების პროცესში მყოფ პროექტებს. ეს ინიციატივები საშუალებას აძლევს ჩვენს ახალგაზრდა წევრებს, ისწავლონ პრაქტიკით, უმკლავდებიან რეალურ გამოწვევებს და უჭერენ მხარს ჩვენს ადგილობრივ საზოგადოებას პრაქტიკული მსახურებით.',
@@ -128,7 +139,7 @@ export default function App() {
       youthCard7D: 'ლიდერული უნარების განვითარება პრაქტიკული აქტივობებით და გუნდურ გარემოში.',
       youthCard8T: 'საქველმოქმედო ღონისძიებები',
       youthCard8D: 'ლიდერული უნარების განვითარება პრაქტიკული აქტივობებით და გუნდურ გარემოში.',
-
+      // ფუტერი
       socialMedia: 'სოციალური მედია',
       location: 'ადგილმდებარობა',
       partner: 'პარტნიორი',
@@ -172,7 +183,7 @@ export default function App() {
       eduCard7D: 'Representing our country on the ultimate global stage, our scouts attended the World Scout Jamboree. This massive gathering allowed our members to exchange culture and ideas with scouts from every corner of the globe, strengthening our connection to the worldwide scouting movement.',
       eduCard8T: 'Charity events',
       eduCard8D: 'Beyond our large-scale camps, we remain dedicated to consistent community service. Through various local charity events, our scouts practice empathy and leadership by organizing fundraisers and support drives for those in need within our own neighborhoods.',
-      
+      // Services
       services: 'Services',
       service1: 'Scout School',
       service1D: 'Development of leadership, teamwork, and scouting skills.',
@@ -188,16 +199,18 @@ export default function App() {
       service6D: 'Full planning and organization of events.',
       service7: 'International Activities',
       service7D: 'International camps and scouting partnerships.',
+      // About us
       aboutTitle: 'About Us',
       aboutSubtitle: 'Samegrelo Scout Center is a youth space uniting education, nature, and leadership.',
       whoTitle: 'Who We Are',
-      whoText: 'We are a scouting organization promoting personal development, teamwork, and active citizenship.',
+      whoText: 'We started in Samegrelo with a mission: to be the best. Since 2014, we have been in a constant state of self-improvement to ensure our youth get nothing but the highest standard of scouting. We offer more than just teamwork—we offer a decade of proven personal development and a direct path to active citizenship. Don’t settle for beginners; join the organization that has been leading the way for years.',
       histTitle: 'Scouting History',
-      histText: 'The Scout movement was founded in 1907 and today unites millions of youth worldwide through shared values.',
+      histText: 'A Global Tradition, A Local Powerhouse The scouting movement began in 1907, sparking a global revolution that now unites millions of young people under shared values. Since 2014, we have brought that world-class standard to Samegrelo. For over a decade, we have been more than just a local group—we are a disciplined, evolving force that has spent every day since our founding working on ourselves to become the region’s leaders in youth development.',
       missTitle: 'Goal • Mission • Vision',
-      missText: 'Our goal is to raise a leadership-oriented, responsible, and nature-caring generation.',
+      missText: 'We don’t just teach; we build. Our goal is to forge a generation that leads with purpose, acts with responsibility, and protects our nature. Established in 2014, we are Samegrelo’s force for real youth development.',
       howTitle: 'How to Become a Scout',
-      howText: 'Becoming a scout is possible through registration and joining active programs.',
+      howText: 'Register. Engage. Lead. Your journey to becoming a Scout starts the moment you stop watching and start doing.',
+      // Current project
       youthTitle: 'Current projects',
       youthSubtitle: 'Our journey continues! This section features the projects currently in development. These initiatives allow our youth members to learn by doing, as they tackle real-world challenges and support our local community through hands-on service.',
       youthCard1T: 'Youth Leadership',
@@ -208,6 +221,7 @@ export default function App() {
       youthCard3D: 'Sports, hiking, and cultural events for a healthy lifestyle.',
       youthCard4T: 'International Engagement',
       youthCard4D: 'Exchange programs, international camps, and friendship across borders.',
+      // Footer
       socialMedia: 'Social Media',
       location: 'Location',
       partner: 'Partner',
@@ -348,7 +362,7 @@ export default function App() {
                 >
                   {langContent.developer}
                 </a>        
-                        
+
                 <a
                   href="#partner"
                   onClick={() => {
@@ -385,7 +399,71 @@ export default function App() {
         </div>
       </section>
 
+            {/* მიმდინარე პროექტები - Current project */}
+            <section id="target" className="youth-projects-section">
+              <h2 className="section-title">{langContent.youthTitle}</h2>
+              <p className="section-subtitle">{langContent.youthSubtitle}</p>
+              <div className="youth-projects-grid">
+                <div className="youth-card">
+                  <div className="icon-wrapper logo-crop">
+                  <img src={currentLogo} alt="Current project" className="mova-icon" />
+                  </div>
+                  <h3>{langContent.youthCard1T}</h3>
+                  <p>{langContent.youthCard1D}</p>
+                </div>
+                <div className="youth-card">
+                  <div className="icon-wrapper logo-crop">
+                  <img src={currentLogo} alt="Current project" className="mova-icon" />
+                  </div>
+                  <h3>{langContent.youthCard2T}</h3>
+                  <p>{langContent.youthCard2D}</p>
+                </div>
+                <div className="youth-card">
+                  <div className="icon-wrapper logo-crop">
+                  <img src={currentLogo} alt="Current project" className="mova-icon" />
+                  </div>
+                  <h3>{langContent.youthCard3T}</h3>
+                  <p>{langContent.youthCard3D}</p>
+                </div>
+                <div className="youth-card">
+                  <div className="icon-wrapper logo-crop">
+                  <img src={currentLogo} alt="Current project" className="mova-icon" />
+                  </div>
+                  <h3>{langContent.youthCard4T}</h3>
+                  <p>{langContent.youthCard4D}</p>
+                </div>
+                <div className="youth-card">
+                  <div className="icon-wrapper logo-crop">
+                  <img src={currentLogo} alt="Current project" className="mova-icon" />
+                  </div>
+                  <h3>{langContent.youthCard5T}</h3>
+                  <p>{langContent.youthCard5D}</p>
+                </div>
+                <div className="youth-card">
+                  <div className="icon-wrapper logo-crop">
+                  <img src={currentLogo} alt="Current project" className="mova-icon" />
+                  </div>
+                  <h3>{langContent.youthCard6T}</h3>
+                  <p>{langContent.youthCard6D}</p>
+                </div>
+                <div className="youth-card">
+                  <div className="icon-wrapper logo-crop">
+                  <img src={currentLogo} alt="Current project" className="mova-icon" />
+                  </div>
+                  <h3>{langContent.youthCard7T}</h3>
+                  <p>{langContent.youthCard7D}</p>
+                </div>
+                <div className="youth-card">
+                  <div className="icon-wrapper logo-crop">
+                  <img src={currentLogo} alt="Current project" className="mova-icon" />
+                  </div>
+                  <h3>{langContent.youthCard8T}</h3>
+                  <p>{langContent.youthCard8D}</p>
+                </div>
+              </div>
+            </section>
 
+            
       {/* Completed projects - განხორციელებული პროექტები*/}
       <section id="education" className="edu-projects-section">
         <h2 className="section-title">{langContent.eduTitle}</h2>
@@ -458,75 +536,63 @@ export default function App() {
         />
       </section>
 
-            {/* მიმდინარე პროექტები - Current project */}
-            <section id="target" className="youth-projects-section">
-              <h2 className="section-title">{langContent.youthTitle}</h2>
-              <p className="section-subtitle">{langContent.youthSubtitle}</p>
-              <div className="youth-projects-grid">
-                <div className="youth-card">
-                  <h3>{langContent.youthCard1T}</h3>
-                  <p>{langContent.youthCard1D}</p>
-                </div>
-                <div className="youth-card">
-                  <h3>{langContent.youthCard2T}</h3>
-                  <p>{langContent.youthCard2D}</p>
-                </div>
-                <div className="youth-card">
-                  <h3>{langContent.youthCard3T}</h3>
-                  <p>{langContent.youthCard3D}</p>
-                </div>
-                <div className="youth-card">
-                  <h3>{langContent.youthCard4T}</h3>
-                  <p>{langContent.youthCard4D}</p>
-                </div>
-                <div className="youth-card">
-                  <h3>{langContent.youthCard5T}</h3>
-                  <p>{langContent.youthCard5D}</p>
-                </div>
-                <div className="youth-card">
-                  <h3>{langContent.youthCard6T}</h3>
-                  <p>{langContent.youthCard6D}</p>
-                </div>
-                <div className="youth-card">
-                  <h3>{langContent.youthCard7T}</h3>
-                  <p>{langContent.youthCard7D}</p>
-                </div>
-                <div className="youth-card">
-                  <h3>{langContent.youthCard8T}</h3>
-                  <p>{langContent.youthCard8D}</p>
-                </div>
-              </div>
-            </section>
 
       {/* SERVICES SECTION -სერვისების სექცია */}
       <section id="services" className="services-section">
         <h2 className="section-title">{langContent.services}</h2>
         <div className="services-grid">
           <div id="service-school" className="service-card">
+          <div className="icon-wrapper logo-crop">
+            <img src={servicesLogo} alt="Current project" className="service-icon" />
+          </div>            
             <h3>{langContent.service1}</h3>
             <p>{langContent.service1D}</p>
           </div>
+          <div className="icon-wrapper logo-crop">
+            <img src={servicesLogo} alt="Service" className="service-icon" />
+          </div>          
           <div id="service-camps" className="service-card">
+          <div className="icon-wrapper logo-crop">
+            <img src={servicesLogo} alt="Service" className="service-icon" />
+          </div>
             <h3>{langContent.service2}</h3>
             <p>{langContent.service2D}</p>
           </div>
+          <div className="icon-wrapper logo-crop">
+            <img src={servicesLogo} alt="Service" className="service-icon" />
+          </div>          
           <div id="service-schools" className="service-card">
+          <div className="icon-wrapper logo-crop">
+            <img src={servicesLogo} alt="Service" className="service-icon" />
+          </div>
             <h3>{langContent.service3}</h3>
             <p>{langContent.service3D}</p>
           </div>
           <div id="service-eco" className="service-card">
+          <div className="icon-wrapper logo-crop">
+            <img src={servicesLogo} alt="Service" className="service-icon" />
+          </div>
             <h3>{langContent.service4}</h3>
             <p>{langContent.service4D}</p>
           </div>
           <div id="service-venue" className="service-card">
+          <div className="icon-wrapper logo-crop">
+            <img src={servicesLogo} alt="Service" className="service-icon" />
+          </div>
             <h3>{langContent.service5}</h3>
             <p>{langContent.service5D}</p>
           </div>
           <div id="service-event" className="service-card">
+            <div className="icon-wrapper logo-crop">
+              <img src={servicesLogo} alt="Service" className="service-icon" />
+            </div>
             <h3>{langContent.service6}</h3>
             <p>{langContent.service6D}</p>
           </div>
           <div id="service-international" className="service-card">
+          <div className="icon-wrapper logo-crop">
+              <img src={servicesLogo} alt="Service" className="service-icon" />
+          </div>
             <h3>{langContent.service7}</h3>
             <p>{langContent.service7D}</p>
           </div>
@@ -547,18 +613,30 @@ export default function App() {
         <p className="section-subtitle">{langContent.aboutSubtitle}</p>
         <div className="about-content">
           <section id="who" className="about-block">
+          <div className="icon-wrapper logo-crop">
+            <img src={aboutUsLogo} alt="About us" className="service-icon" />
+          </div>            
             <h3>{langContent.whoTitle}</h3>
             <p>{langContent.whoText}</p>
           </section>
           <section id="history" className="about-block">
+          <div className="icon-wrapper logo-crop">
+            <img src={aboutUsLogo} alt="About us" className="service-icon" />
+          </div>            
             <h3>{langContent.histTitle}</h3>
             <p>{langContent.histText}</p>
           </section>
           <section id="mission" className="about-block">
+          <div className="icon-wrapper logo-crop">
+            <img src={aboutUsLogo} alt="About us" className="service-icon" />
+          </div>            
             <h3>{langContent.missTitle}</h3>
             <p>{langContent.missText}</p>
           </section>
           <section id="become" className="about-block">
+          <div className="icon-wrapper logo-crop">
+            <img src={aboutUsLogo} alt="About us" className="service-icon" />
+          </div>            
             <h3>{langContent.howTitle}</h3>
             <p>{langContent.howText}</p>
           </section>

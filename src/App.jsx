@@ -765,6 +765,9 @@ export default function App() {
             <a href="https://www.instagram.com/scoutsofsamegrelo/" target="_blank" rel="noopener noreferrer">
               <img src="assets/instagram.png" alt="Instagram" className="logo-third-img-camp" />
             </a>
+            <a href="https://www.tiktok.com/@scoutsofsamegrelo" target="_blank" rel="noopener noreferrer">
+              <img src="assets/tik-tok.png" alt="Tiktok" className="logo-third-img-camp" />
+            </a>
           </div>
           <div className="contact-details">
             <p><a href="tel:+9955334557890"><img src="assets/phone.png" alt="Phone" className="contact-icon-small" /> + 995 533 455 7890</a></p>

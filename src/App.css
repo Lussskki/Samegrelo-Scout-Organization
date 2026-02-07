@@ -3090,3 +3090,61 @@ body.night .photo-divider img {
   object-fit: contain !important; /* Keeps the logo proportions perfect */
   display: block;
 }
+
+/* Scroll  */
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden; 
+}
+
+.youth-projects-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-behavior: smooth;
+  /* Remove the 60px margins to fill the screen */
+  margin: 0; 
+  /* Add padding so cards don't touch the screen edge on first/last items */
+  padding: 20px;
+  scrollbar-width: none; 
+}
+
+.youth-projects-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.youth-card {
+  /* This ensures the card takes up most of the screen on mobile */
+  min-width: 85%; 
+  flex-shrink: 0;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Semi-transparent background so you can see cards behind them */
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  /* Optional: adds a glass-like blur effect */
+  backdrop-filter: blur(4px);
+}
+
+.carousel-btn.left {
+  left: 10px;
+}
+
+.carousel-btn.right {
+  right: 10px;
+}

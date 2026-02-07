@@ -271,6 +271,17 @@ export default function App() {
   const [contactOpen, setContactOpen] = useState(false);
 
 
+  function scrollCarousel(direction) {
+    const container = document.getElementById('youth-carousel');
+    const scrollAmount = 300; // Adjust how far it scrolls per click
+    if (direction === 'left') {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }
+
+
 
   return (
     <div className="container">
@@ -436,69 +447,34 @@ export default function App() {
         </div>
       </section>
 
-            {/* მიმდინარე პროექტები - Current project */}
-            <section id="target" className="youth-projects-section">
-              <h2 className="section-title">{langContent.youthTitle}</h2>
-              <p className="section-subtitle">{langContent.youthSubtitle}</p>
-              <div className="youth-projects-grid">
-                <div className="youth-card">
-                  <div className="icon-wrapper logo-crop">
+      {/* მიმდინარე პროექტები - Current project */}
+      <section id="target" className="youth-projects-section">
+        <h2 className="section-title">{langContent.youthTitle}</h2>
+        <p className="section-subtitle">{langContent.youthSubtitle}</p>
+
+        <div className="carousel-container">
+          <button className="carousel-btn left" onClick={() => scrollCarousel('left')}>
+            &#10094;
+          </button>
+
+          <div className="youth-projects-grid" id="youth-carousel">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div className="youth-card" key={i}>
+                <div className="icon-wrapper logo-crop">
                   <img src={currentLogo} alt="Current project" className="mova-icon" />
-                  </div>
-                  <h3>{langContent.youthCard1T}</h3>
-                  <p>{langContent.youthCard1D}</p>
                 </div>
-                <div className="youth-card">
-                  <div className="icon-wrapper logo-crop">
-                  <img src={currentLogo} alt="Current project" className="mova-icon" />
-                  </div>
-                  <h3>{langContent.youthCard2T}</h3>
-                  <p>{langContent.youthCard2D}</p>
-                </div>
-                <div className="youth-card">
-                  <div className="icon-wrapper logo-crop">
-                  <img src={currentLogo} alt="Current project" className="mova-icon" />
-                  </div>
-                  <h3>{langContent.youthCard3T}</h3>
-                  <p>{langContent.youthCard3D}</p>
-                </div>
-                <div className="youth-card">
-                  <div className="icon-wrapper logo-crop">
-                  <img src={currentLogo} alt="Current project" className="mova-icon" />
-                  </div>
-                  <h3>{langContent.youthCard4T}</h3>
-                  <p>{langContent.youthCard4D}</p>
-                </div>
-                <div className="youth-card">
-                  <div className="icon-wrapper logo-crop">
-                  <img src={currentLogo} alt="Current project" className="mova-icon" />
-                  </div>
-                  <h3>{langContent.youthCard5T}</h3>
-                  <p>{langContent.youthCard5D}</p>
-                </div>
-                <div className="youth-card">
-                  <div className="icon-wrapper logo-crop">
-                  <img src={currentLogo} alt="Current project" className="mova-icon" />
-                  </div>
-                  <h3>{langContent.youthCard6T}</h3>
-                  <p>{langContent.youthCard6D}</p>
-                </div>
-                <div className="youth-card">
-                  <div className="icon-wrapper logo-crop">
-                  <img src={currentLogo} alt="Current project" className="mova-icon" />
-                  </div>
-                  <h3>{langContent.youthCard7T}</h3>
-                  <p>{langContent.youthCard7D}</p>
-                </div>
-                <div className="youth-card">
-                  <div className="icon-wrapper logo-crop">
-                  <img src={currentLogo} alt="Current project" className="mova-icon" />
-                  </div>
-                  <h3>{langContent.youthCard8T}</h3>
-                  <p>{langContent.youthCard8D}</p>
-                </div>
+                <h3>{langContent[`youthCard${i + 1}T`]}</h3>
+                <p>{langContent[`youthCard${i + 1}D`]}</p>
               </div>
-            </section>
+            ))}
+          </div>
+
+          <button className="carousel-btn right" onClick={() => scrollCarousel('right')}>
+            &#10095;
+          </button>
+        </div>
+      </section>
+
 
 
       {/* Completed projects - განხორციელებული პროექტები*/}

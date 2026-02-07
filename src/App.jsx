@@ -765,7 +765,7 @@ export default function App() {
               <button 
                 className="copy-btn-simple" 
                 onClick={() => {
-                  navigator.clipboard.writeText('GE00TB0000000000000000');
+                  navigator.clipboard.writeText('GE09BG0000000601167751');
                   alert('Copied!');
                 }}
               >

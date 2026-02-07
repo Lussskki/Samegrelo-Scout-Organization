@@ -166,7 +166,7 @@ export default function App() {
       recipient: 'მიმღები: სამეგრელოს სკაუტური ორგანიზაცია',
       donation: 'დონაცია',
       accountNum: 'საბანკო ანგარიში (IBAN): GE09BG0000000601167751',
-      donationText: ' გთხოვთ დანიშნულებაში მიუთითეთ: ,,შემოწირულობა” ',
+      donationText: ' გთხოვთ დანიშნულებაში მიუთითეთ: "შემოწირულობა" ',
       developer: 'დეველოპერი',
       developerTitle: 'საიტის დეველოპერი',
       developerName: 'ლუკა გულედანი',

@@ -3096,55 +3096,97 @@ body.night .photo-divider img {
 .carousel-container {
   position: relative;
   width: 100%;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .youth-projects-grid {
   display: flex;
   overflow-x: auto;
-  gap: 20px;
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  /* Remove the 60px margins to fill the screen */
-  margin: 0; 
-  /* Add padding so cards don't touch the screen edge on first/last items */
-  padding: 20px;
-  scrollbar-width: none; 
-}
-
-.youth-projects-grid::-webkit-scrollbar {
-  display: none;
+  scrollbar-width: none;
+  margin: 0;
+  padding: 0;
 }
 
 .youth-card {
-  /* This ensures the card takes up most of the screen on mobile */
-  min-width: 85%; 
+  min-width: calc(33.33% - 20px);
   flex-shrink: 0;
+  scroll-snap-align: center;
+  box-sizing: border-box;
+  /* Add padding to the bottom so the card doesn't look cut off */
+  padding: 20px 40px 60px 40px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .carousel-btn {
   position: absolute;
-  top: 50%;
+  /* CHANGE THIS: 70% moves them lower than the middle */
+  top: 70%; 
   transform: translateY(-50%);
-  /* Semi-transparent background so you can see cards behind them */
-  background-color: rgba(0, 0, 0, 0.4);
+  
+  z-index: 20;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker for better visibility */
   border: none;
   color: white;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
-  z-index: 10;
-  border-radius: 50%;
-  /* Optional: adds a glass-like blur effect */
   backdrop-filter: blur(4px);
 }
 
+.carousel-btn.left { left: 15px; }
+.carousel-btn.right { right: 15px; }
+
+
+.carousel-btn:hover {
+  opacity: 1;
+}
+
+/* Mobile scroll  */
+
+/* 1. Ensure the container has enough space at the bottom for buttons */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 60px; /* Creates room for the buttons below */
+}
+
+/* 2. The grid remains full width */
+.youth-projects-grid {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+/* 3. Buttons moved to the bottom */
+.carousel-btn {
+  position: absolute;
+  /* Instead of top: 50%, we anchor them to the bottom */
+  top: auto;
+  bottom: -20px; 
+  
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle look */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+}
+
+/* 4. Center the buttons horizontally at the bottom */
 .carousel-btn.left {
-  left: 10px;
+  left: calc(50% - 60px); /* Adjust spacing between arrows */
 }
 
 .carousel-btn.right {
-  right: 10px;
+  right: calc(50% - 60px);
 }
+

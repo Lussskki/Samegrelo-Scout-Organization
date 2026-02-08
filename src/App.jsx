@@ -404,7 +404,7 @@ export default function App() {
                   }}
                 >
                   {langContent.donation}
-                  {langContent.donationText}
+                  
                 </a>                
 
                 <a
@@ -429,8 +429,7 @@ export default function App() {
               </div>
             )}
           </div>
-
-
+              
 
 
           <div className="menu-controls">

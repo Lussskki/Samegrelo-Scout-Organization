@@ -97,21 +97,23 @@ export default function App() {
       services: 'სერვისები',
       service1: 'სკაუტური სკოლა',
       service1D: 'საკვირაო სკოლაში რეგისტაცია შეუძლიათ 6 წლიდან 18 წლამდე ასაკის ახალგაზრდებს. კურსის ხანგრძლივობა 3 თვე ( 12 გაკვეთილი). საწევრო გადასახადი 60 ლარი. (<a href="https://forms.google.com" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a>)',
-      service2: 'მიმდინარე პროექტები',
-      service2D: 'საბანაკე პროგრამები და პრაქტიკული სწავლება ბუნებაში.',
+      service2: 'ახალგაზრდული ბანაკები',
+      service2D: 'რეგიონალური და ნაციონალური ბანაკები წელიწადში 2 ჯერ ტარდება. გარდა დიდი ბანაკებისა ჩვენ ვატარებთ თემატურ ბანაკებს წელიწადის სხვადასხვა დროს ( მეთევზეთა ბანაკი, პროფესიული ორიენტაციის ბანაკი, სამშენებლო, აგრო, ეკო ბანაკები...). (<a href="https://forms.google.com" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a>)  ',
       service3: 'შეთავაზება სკოლებს',
-      service3D: 'საგანმანათლებლო სკაუტური პროგრამები სკოლებისთვის.',
+      service3D: 'სკოლებს ვთავაზობთ საგანმანათლებლო და სასკოლო ტურიზმის ინოვაციურ პაკეტებს: ვიზიტი სკაუტურ სოფელში, ვორქშოფები სკოლის ბაზაზე, სასკოლო ექსკურსიების დაგეგმვა და ორგანიზება, მინი ბანაკები.  (<a href="https://forms.google.com" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a>)',
       service4: 'ეკოტურები და ლაშქრობები',
-      service4D: 'აქტიური დასვენება და ეკოლოგიური ცნობიერების ამაღლება.',
+      service4D: 'იმოგზაურე სკაუტებთან ერთად ! ჩვენი ერთ-ერთი წარმატებული პროექტია, რომლის ფარგლებშიც ვაწყობთ ტურებს მთელი საქართველოს მასშტაბით, აღნიშნული სერვისით სარგებლობა ყველა მსურველს შეუძლია. (<a href="https://forms.google.com" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a>) ',
       service5: 'ადგილი ღონისძიებისთვის',
-      service5D: 'სივრცის გაქირავება ბანაკებისა და ღონისძიებებისთვის.',
-      service6: 'ივენთ მენეჯმენტი',
-      service6D: 'ღონისძიებების სრული დაგეგმვა და ორგანიზება.',
-      service7: 'საერთაშორისო აქტივობები',
-      service7D: 'საერთაშორისო ბანაკები და სკაუტური პარტნიორობები.',
+      service5D: 'DÉJÀ VU hostel & camping sector ყველა ასაკის ადამიანისთვის უსაყვარლესი სივრცეა. სახლი მდინარე ენგურის ნაპირზე მდებარეობს, აქ თქვენ დაგხვდებათ ყველაფერი რაც მეგობრებთან ერთად დროის სასიამოვნოდ გატარებისთვის გჭირდებათ.  ',
+      service6: 'სკაუტური ჰოსტელი ',
+      service6D: 'DÉJÀ VU HOSTEL ბიუჯეტური ტიპის სასტუმროა ენგურის პირას, ეს არის ხის სახლი სადაც სიძველე და თანამედროვეობა ერთამეთს ოსტატურად ერწყმის, ჰოსტელში 10 -12  ადამიანის განთავსებაა შესაძლებელი.  ',
+      service7: 'ღონისძიებების მენეჯმენტი',
+      service7D: 'თუ გსურთ თქვენი ღონისძიება გაამრავალფეროვნოთ სკაუტების გუნდი თემატურ ვორქშოფებსა და გუნდურ თამაშებს გთავაზობენ. თითოეული თამაში და აქტივობა განიხილება, როგორც თქვენი ორგანიზაციული მიზნების მიღწევის საშუალება.  ',
+      service8: 'საერთაშორისო აქტივობები',
+      service8D: '- მსოფლიო სკაუტური ჯემბორი, ევროპის ჯემბორი, INTERCAMP და სხვა უამრავი საერთაშორისო შესაძლებლობა გელოდება შენ ! (<a href="https://forms.google.com" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a>)',
+      // ჩვენს შესახებ
       aboutTitle: 'ჩვენს შესახებ',
       aboutSubtitle: 'სამეგრელოს სკაუტური ცენტრი არის ახალგაზრდული სივრცე, რომელიც აერთიანებს განათლებას, ბუნებასა და ლიდერობას.',
-     // ჩვენს შესახებ
       whoTitle: 'ვინ ვართ ჩვენ',
       whoText: `მსოფლიო სკაუტური მოძრაობის ორგანიზაცია (WOSM) არის დამოუკიდებელი, მსოფლიო, არა-კომერციული, არა-პოლიტიკური ორგანიზაცია, რომელიც ემსახურება სკაუტურ მოძრაობას;
                 მოძრაობა აერთიანებს 176  ქვეყანას და 60 მილიონი წევრს მსოფლიოს გარშემო; WOSM-ი დაყოფილია ხუთ რეგიონად: აფრიკა, არაბეთი, აზია-წყნარი ოკეანე, ევროპა და ინტერ ამერიკა; 
@@ -580,7 +582,7 @@ export default function App() {
                 <img src={servicesLogo} alt="Service" className="service-icon" />
               </div>
               <h3>{langContent.service2}</h3>
-              <p>{langContent.service2D}</p>
+              <p dangerouslySetInnerHTML={{ __html: langContent.service2D }}></p>
             </div>
 
             <div id="service-schools" className="service-card">
@@ -588,7 +590,7 @@ export default function App() {
                 <img src={servicesLogo} alt="Service" className="service-icon" />
               </div>
               <h3>{langContent.service3}</h3>
-              <p>{langContent.service3D}</p>
+              <p dangerouslySetInnerHTML={{ __html: langContent.service3D }}></p>
             </div>
 
             <div id="service-eco" className="service-card">
@@ -596,7 +598,7 @@ export default function App() {
                 <img src={servicesLogo} alt="Service" className="service-icon" />
               </div>
               <h3>{langContent.service4}</h3>
-              <p>{langContent.service4D}</p>
+              <p dangerouslySetInnerHTML={{ __html: langContent.service4D }}></p>
             </div>
 
             <div id="service-venue" className="service-card">
@@ -604,7 +606,7 @@ export default function App() {
                 <img src={servicesLogo} alt="Service" className="service-icon" />
               </div>
               <h3>{langContent.service5}</h3>
-              <p>{langContent.service5D}</p>
+              <p dangerouslySetInnerHTML={{ __html: langContent.service5D }}></p>
             </div>
 
             <div id="service-event" className="service-card">
@@ -612,7 +614,7 @@ export default function App() {
                 <img src={servicesLogo} alt="Service" className="service-icon" />
               </div>
               <h3>{langContent.service6}</h3>
-              <p>{langContent.service6D}</p>
+              <p dangerouslySetInnerHTML={{ __html: langContent.service6D }}></p>
             </div>
 
             <div id="service-international" className="service-card">
@@ -620,15 +622,23 @@ export default function App() {
                 <img src={servicesLogo} alt="Service" className="service-icon" />
               </div>
               <h3>{langContent.service7}</h3>
-              <p>{langContent.service7D}</p>
+              <p dangerouslySetInnerHTML={{ __html: langContent.service7D }}></p>
             </div>
-          </div>
+
+            <div id="service-extra" className="service-card">
+              <div className="icon-wrapper logo-crop">
+                <img src={servicesLogo} alt="Service" className="service-icon" />
+              </div>
+              <h3>{langContent.service8}</h3>
+              <p dangerouslySetInnerHTML={{ __html: langContent.service8D }}></p>
+            </div>
+          </div> 
 
           <button className="carousel-btn right" onClick={() => scrollCarousel('right', 'services-carousel')}>
             &#10095;
           </button>
-        </div>
-      </section>
+        </div> 
+      </section> 
 
       {/* PHOTO DIVIDER */}
       <section className="section-photo">

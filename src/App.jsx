@@ -480,6 +480,14 @@ export default function App() {
                 </button>
               </div>
             </section>
+      {/* PHOTO DIVIDER */}
+      <section className="section-photo">
+        <img 
+          src="/assets/photos/chveni-fotoebi/3.jpg" 
+          alt="Scouts activity" 
+        />
+      </section> 
+
       {/* Completed projects - განხორციელებული პროექტები*/}
       <section id="education" className="edu-projects-section">
         <h2 className="section-title">{langContent.eduTitle}</h2>

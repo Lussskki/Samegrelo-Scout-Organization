@@ -2202,13 +2202,31 @@ body.night .target-card {
 /* Modern Violet Button to match your image */
 .register-btn {
   display: inline-block;
-  background-color: #6a67ce;
-  color: #ffffff;
+  background-color: #1A0B2E; /* Your dark background */
+  color: #f0cfcf;
   padding: 15px 45px;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
-  transition: transform 0.2s ease;
+  border: 1px solid rgba(77, 88, 244, 0.3); /* Subtle border to define the shape */
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  
+  /* The "Smoke" Effect */
+  box-shadow: 
+    0 0 15px rgba(77, 88, 244, 0.2), 
+    0 0 30px rgba(77, 88, 244, 0.1),
+    inset 0 0 10px rgba(77, 88, 244, 0.1);
+}
+
+.register-btn:hover {
+  transform: translateY(-2px);
+  /* Intense smoke/glow on hover */
+  box-shadow: 
+    0 0 25px rgba(77, 88, 244, 0.4), 
+    0 0 50px rgba(77, 88, 244, 0.2);
+  color: #ffffff; /* Brighter text on hover for readability */
 }
 
 .register-btn:hover {

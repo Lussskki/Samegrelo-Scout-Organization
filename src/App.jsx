@@ -444,6 +444,9 @@ export default function App() {
               <div className="hero-content">
                 <h1>{langContent.heroTitle}</h1>
                 <p>{langContent.heroText}</p>
+                <a href="#register" className="hero-btn">
+                  {langContent.heroButton}
+                </a>
               </div>
             </section>
 

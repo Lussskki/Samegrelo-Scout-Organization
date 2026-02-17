@@ -194,8 +194,43 @@ animation: campAlive 1.2s ease-in-out;
   color: #f0f0f0;
 }
 
-.hero-buttons {
-  margin-top: 30px;
+/* HERO BUTTON STYLE */
+.hero-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: var(--orange) !important; /* Your orange variable */
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 50px; /* Rounded shape */
+    border: 2px solid var(--orange);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(216, 139, 45, 0.3); /* Light shadow */
+    cursor: pointer;
+}
+
+/* HOVER EFFECT */
+.hero-btn:hover {
+    background-color: transparent !important;
+    color: var(--orange) !important;
+    transform: translateY(-3px); /* Slight lift upwards */
+    box-shadow: 0 6px 20px rgba(216, 139, 45, 0.5);
+    letter-spacing: 0.5px; /* Slight text expansion */
+}
+
+/* ACTIVE EFFECT */
+.hero-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Hero Content alignment */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .btn {

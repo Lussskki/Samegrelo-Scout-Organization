@@ -3550,3 +3550,15 @@ body.night .photo-divider img {
     gap: 20px;
   }
 }
+
+.hamburger {
+  position: fixed;
+  top: 5%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 10000;
+}
+
+.nav.open {
+  z-index: 1000;
+}

@@ -420,7 +420,9 @@ animation: campAlive 1.2s ease-in-out;
   }
 
   .hero-content h1 {
-    font-size: 2rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  opacity: 0.95;
+  color: #f0f0f0;
   }
 
   .hero-buttons {
@@ -2133,14 +2135,17 @@ body.night .target-card {
   }
 
   .hero-content h1 {
-    font-size: 1.8rem;       /* Adjusted size for Georgian characters */
-    margin-bottom: 10px;
+    font-size: 1rem;
     width: 100%;
   }
 
   .hero-content p {
-    font-size: 1rem;
-    width: 100%;
+
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive size: gets smaller on phones */
+  font-weight: 800;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  color: white;
   }
 }
 
@@ -3358,4 +3363,63 @@ body.night .photo-divider img {
     .nav a {
         font-size: 0.75rem !important;
     }
+}
+
+@media (max-width: 768px) {
+  /* 1. Reset the whole screen - Stop the "Going Right" bug */
+  .nav.open {
+    display: block !important;         /* Simplified from flex to block */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;            /* Lock to screen width */
+    height: 100vh !important;          /* Lock to screen height */
+    padding: 20px 0 !important;        /* MOVE TEXT ALL THE WAY UP */
+    background: #1a0b2e !important;    /* Solid background */
+    overflow-y: auto !important;       /* Allow scrolling if menu is long */
+    overflow-x: hidden !important;     /* KILL THE HORIZONTAL SCROLL */
+    z-index: 9999 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Style the links - Keep them large and centered */
+  .nav.open a, 
+  .nav-link {
+    display: block !important;         /* Each link gets its own line */
+    font-size: 1.6rem !important;      /* Large Georgian text */
+    text-align: center !important;
+    padding: 15px 0 !important;
+    color: white !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* 3. The Dropdown (The Vanishing Fix) */
+  .dropdown-panel {
+    position: static !important;       /* FORCE it to stay in the list */
+    display: block !important;         /* Make it visible as a block */
+    width: 100% !important;
+    height: auto !important;           /* Allow it to grow */
+    background: rgba(255, 255, 255, 0.05) !important;
+    padding: 0 !important;
+    visibility: visible !important;    /* Force visibility */
+    opacity: 1 !important;
+  }
+
+  /* 4. Sub-links inside the dropdown */
+  .dropdown-panel a {
+    font-size: 1.2rem !important;      /* Slightly smaller */
+    color: #ddd !important;
+    padding: 12px 0 !important;
+    border-bottom: none !important;
+  }
+
+  /* 5. Fix bottom buttons */
+  .menu-controls {
+    margin: 40px 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    padding-bottom: 60px !important;
+  }
 }

@@ -3424,39 +3424,29 @@ body.night .photo-divider img {
   }
 }
 
-/* Specific fix for the mobile navigation menu */
 @media (max-width: 768px) {
-  .nav.open {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    /* This prevents horizontal scrolling on the menu */
-    overflow-x: hidden; 
-  }
-
-  /* Target the links and buttons that contain the long words */
   .nav a, 
   .nav-link, 
   .dropdown-panel a {
-    width: 100%;
-    text-align: center;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
     display: block;
-    
-    /* The Magic Sauce for Georgian text */
-    overflow-wrap: break-word; /* Allows words to break */
-    word-wrap: break-word;     /* Legacy support */
-    hyphens: auto;             /* Adds hyphens if the browser supports it */
-    
-    /* Ensure long words don't push the container's width */
-    max-width: 90vw; 
-    margin: 10px auto;
-    white-space: normal; /* Forces text to wrap instead of staying on one line */
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
   }
-}
 
-/* Global utility for long Georgian strings in cards or titles */
-.section-title, .youth-card h3 {
-  overflow-wrap: break-word;
-  word-break: normal;
+  .nav.open {
+    overflow-x: hidden;
+  }
+
+  button.nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
 }

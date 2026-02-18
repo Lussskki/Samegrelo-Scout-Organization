@@ -467,10 +467,10 @@ export default function App() {
               <p className="section-subtitle">{langContent.youthSubtitle}</p>
 
               <div className="carousel-container">
-              <button className="carousel-btn left"
-                onClick={() => scrollCarousel('left', 'youth-carousel')}>
-                &#10094;
-              </button>
+              {/* <button className="carousel-btn left"
+                onClick={() => scrollCarousel('left', 'youth-carousel')}> */}
+                {/* &#10094; */}
+              {/* </button> */}
                 <div className="youth-projects-grid" id="youth-carousel">
                   {Array.from({ length: 3 }).map((_, i) => (
                     <div className="youth-card" key={i}>
@@ -483,10 +483,10 @@ export default function App() {
                   ))}
                 </div>
 
-              <button className="carousel-btn right"
-                onClick={() => scrollCarousel('right', 'youth-carousel')}>
-                &#10095;
-              </button>
+              {/* <button className="carousel-btn right"
+                onClick={() => scrollCarousel('right', 'youth-carousel')}> */}
+                {/* &#10095; */}
+              {/* </button> */}
               </div>
             </section>
       {/* PHOTO DIVIDER */}

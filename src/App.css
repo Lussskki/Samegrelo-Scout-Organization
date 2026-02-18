@@ -42,6 +42,11 @@ body {
   justify-content: space-between;
   align-items: center;
   color: white;
+
+  border: none;            /* Removes any ghost borders */
+  margin-bottom: 0;        /* Ensures no gap below header */
+  position: relative;
+  z-index: 10;             /* Keeps header on top */
 }
 
 .logo-group {
@@ -139,25 +144,42 @@ animation: campAlive 1.2s ease-in-out;
 }
 
 /* UPDATED HERO */
+/* UPDATED HERO - FULL PHOTO VERSION */
 .hero {
-  height: 80vh;
-  display: flex;
-  align-items: center;     /* Vertical center */
-  justify-content: center;  /* Horizontal center */
-  position: relative; 
-  overflow: hidden;
-  padding: 0 20px;         /* Adds breathing room for mobile */
+  height: 80vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important; 
+  overflow: hidden !important;
+  padding: 0 20px !important;
+  
+  /* Matches header color so the "line" disappears naturally */
+  background-color: var(--dark-purple) !important; 
+  margin-top: 0 !important; 
 }
 
-
 .hero-img-tag {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  
+  /* This ensures the full photo is visible without being cut off */
+  object-fit: cover !important; 
+  display: block !important;
+  
+  /* Remove all scaling/zooming */
+  transform: scale(1) !important; 
+  transform-origin: center !important;
+}
+
+/* Ensure the glass box doesn't cover too much important detail */
+.hero-content {
+  z-index: 2 !important;
+  background: rgba(0, 0, 0, 0.4) !important; /* Slightly more transparent */
+  max-width: 90% !important;
 }
 
 .hero-content {

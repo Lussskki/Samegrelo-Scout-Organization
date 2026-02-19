@@ -148,8 +148,7 @@ export default function App() {
       youthTitle: 'მიმდინარე პროექტები',
       youthSubtitle: 'ჩვენი მოგზაურობა გრძელდება! ეს განყოფილება მოიცავს ამჟამად შემუშავების პროცესში მყოფ პროექტებს. ეს ინიციატივები საშუალებას აძლევს ჩვენს ახალგაზრდა წევრებს, ისწავლონ პრაქტიკით, უმკლავდებიან რეალურ გამოწვევებს და უჭერენ მხარს ჩვენს ადგილობრივ საზოგადოებას პრაქტიკული მსახურებით.',
       youthCard1T: 'Intercamp 2026',
-      youthCard1D: ` „ინტერკემპი 2026“ საერთაშორისო სკაუტური ბანაკია, რომელიც სხვადასხვა ქვეყნის ახალგაზრდებს აერთიანებს.
-                    საქართველოს სკაუტები აღფრთოვანებულნი არიან ამ ბანაკში მონაწილეობით, ახალი მეგობრების შეძენით, თავიანთი კულტურის გაზიარებით და გუნდურ მუშაობასა და გარე აქტივობებში ახალი გამოცდილების მიღებით. (<a href="https://intercamp.info/upcoming-camp/" style="color: yellow ; font-weight: bold; text-decoration: underline;">ვებსაიტი და დამატებითი ინფორმაცია</a>)`,
+      youthCard1D: ` Intercamp 2026 გაიმართება რალსკოში, ჩეხეთში. ეს არის საერთაშორისო სკაუტური ბანაკი, რომელიც აერთიანებს ახალგაზრდებს მრავალი ქვეყნიდან. ქართველი სკაუტები სიხარულით მიიღებენ მონაწილეობას, გაიცნობენ ახალ მეგობრებს, გააზიარებენ საკუთარ კულტურას და მიიღებენ მნიშვნელოვან გამოცდილებას გუნდურ მუშაობასა და საგარეო აქტივობებში. (<a href="https://intercamp.info/upcoming-camp/" style="color: yellow ; font-weight: bold; text-decoration: underline;">ვებსაიტი და დამატებითი ინფორმაცია</a>)`,
       youthCard2T: 'დღის ბანაკები',
       youthCard2D: 'მოხალისეობა, საზოგადოებრივი პროექტები და აქტიური მოქალაქეობის მხარდაჭერა.',
       youthCard3T: 'მეგზური',
@@ -252,8 +251,7 @@ export default function App() {
       youthTitle: 'Current projects',
       youthSubtitle: 'Our journey continues! This section features the projects currently in development. These initiatives allow our youth members to learn by doing, as they tackle real-world challenges and support our local community through hands-on service.',
       youthCard1T: 'Intercamp 2026',
-      youthCard1D: `Intercamp 2026 is an international Scout camp that brings together young people from many countries.
-                    Georgian Scouts are excited to join this camp, meet new friends, share their culture, and gain new experiences in teamwork and outdoor activities. (<a href="https://intercamp.info/upcoming-camp/" style="color: yellow ; font-weight: bold; text-decoration: underline;">Website and Additional information</a>)`,
+      youthCard1D: `Intercamp 2026 will take place in Ralsko, Czechia. This international Scout camp brings together young people from many countries. Georgian Scouts are excited to participate, meet new friends, share their culture, and gain valuable experiences in teamwork and outdoor activities. (<a href="https://intercamp.info/upcoming-camp/" style="color: yellow ; font-weight: bold; text-decoration: underline;">Website and Additional information</a>)`,
       youthCard2T: 'Social Initiatives',
       youthCard2D: 'Volunteering, community projects, and support for active citizenship.',
       youthCard3T: 'Cultural & Sports Activities',

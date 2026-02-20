@@ -31,12 +31,14 @@ const galleryPhotos = [
 { id: 7, src: '/assets/photos/chveni-fotoebi/8.jpeg', alt: 'The Avatar camp' },
 { id: 8, src: '/assets/photos/chveni-fotoebi/9.jpeg', alt: 'The Avatar Camp' },
 { id: 9, src: '/assets/photos/chveni-fotoebi/10.jpg', alt: 'The Avatar camp' },
-{ id: 10, src: '/assets/photos/chveni-fotoebi/11.jpeg', alt: 'The Avatar camp' },
+{ id: 10, src: '/assets/photos/chveni-fotoebi/11.jpeg', alt: 'Hiking' },
 { id: 11, src: '/assets/photos/chveni-fotoebi/12.jpeg', alt: 'The Avatar camp' },
 { id: 12, src: '/assets/photos/chveni-fotoebi/13.jpeg', alt: 'The Avatar camp' },
-{ id: 13, src: '/assets/photos/chveni-fotoebi/14.jpeg', alt: 'The Avatar camp' },
+{ id: 13, src: '/assets/photos/chveni-fotoebi/14.jpeg', alt: 'Anaklia - Deja vu' },
 { id: 14, src: '/assets/photos/chveni-fotoebi/15.jpeg', alt: 'The Avatar camp' },
 { id: 15, src: '/assets/photos/chveni-fotoebi/7.jpeg', alt: 'The Avatar camp' },
+{ id: 16, src: '/assets/photos/chveni-fotoebi/16.jpeg', alt: 'Tent City' },
+{ id: 17, src: '/assets/photos/chveni-fotoebi/17.jpeg', alt: 'The Avatar camp' },
 ];
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);

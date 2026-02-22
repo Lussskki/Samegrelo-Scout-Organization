@@ -817,7 +817,7 @@ export default function App() {
           {/* El.Books - ელექტრონული წიგნები */}
           <section id="books" className="books-section">
             <h1 className="section-title">{langContent.bookTitle}</h1>
-            <h2>{langContent.bookSubTitle}</h2>
+            <h2 className='section-subtitle'>{langContent.bookSubTitle}</h2>
             <div className="books-container">
               {langContent.books.map((book) => (
                 <div 

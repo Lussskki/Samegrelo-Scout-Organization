@@ -93,22 +93,22 @@ export default function App() {
       books: [
         {
           id: 1,
-          title: 'სკაუტების გზამკვლევი',
-          cover: '/assets/books/1.png',
-          link: '/assets/books/cv_Luka_Guledani.pdf' // optional if you want PDF later
+          title: ' იყავი მზად სკაუტური ცხოვრებისთვის',
+          cover: '/assets/books/2.png',
+          link: '/assets/books/იყავი მზად სკაუტური ცხოვრებისთვის.წიგნი.pdf' 
         },
-        {
-          id: 2,
-          title: 'ბანაკის პრაქტიკული სახელმძღვანელო',
-          cover: '/assets/books/1.png',
-          link: '/assets/books/camp-handbook.pdf'
-        },
-        {
-          id: 3,
-          title: 'ახალგაზრდობის ლიდერობის სახელმძღვანელო',
-          cover: '/assets/books/1.png',
-          link: '/assets/books/youth-leadership.pdf'
-        }
+        // {
+        //   id: 2,
+        //   title: 'გზამკვლევი   პროფორიენტაცია',
+        //   cover: '/assets/books/2.png',
+        //   link: '/assets/books/სამაგისტრო-ნაშრომი-საბოლოო-ვერსია-30.06.2025.pdf'
+        // },
+        // {
+        //   id: 3,
+        //   title: 'ახალგაზრდობის ლიდერობის სახელმძღვანელო',
+        //   cover: '/assets/books/1.png',
+        //   link: '/assets/books/youth-leadership.pdf'
+        // }
       ],
 
       // განხორციელებული პროექტები -  Completed projects
@@ -222,22 +222,22 @@ export default function App() {
       books: [
         {
           id: 1,
-          title: 'Scout Guide',
-          cover: '/assets/books/1.png',
-          link: '/assets/books/scouts-guide.pdf' // optional if you want PDF later
+          title: ' იყავი მზად სკაუტური ცხოვრებისთვის',
+          cover: '/assets/books/2.png',
+          link: '/assets/books/იყავი მზად სკაუტური ცხოვრებისთვის.წიგნი.pdf' 
         },
-        {
-          id: 2,
-          title: 'Practical camp guide',
-          cover: '/assets/books/1.png',
-          link: '/assets/books/camp-handbook.pdf'
-        },
-        {
-          id: 3,
-          title: 'Youth Leadership Handbook',
-          cover: '/assets/books/1.png',
-          link: '/assets/books/youth-leadership.pdf'
-        }
+        // {
+        //   id: 2,
+        //   title: 'Practical camp guide',
+        //   cover: '/assets/books/1.png',
+        //   link: '/assets/books/camp-handbook.pdf'
+        // },
+        // {
+        //   id: 3,
+        //   title: 'Youth Leadership Handbook',
+        //   cover: '/assets/books/1.png',
+        //   link: '/assets/books/youth-leadership.pdf'
+        // }
       ],      
       // Completed projects - განხორციელებული პროექტები
       eduTitle: 'Completed Projects',

@@ -322,10 +322,29 @@ export default function App() {
       youthSubtitle: 'Our journey continues! This section features the projects currently in development. These initiatives allow our youth members to learn by doing, as they tackle real-world challenges and support our local community through hands-on service.',
       youthCard1T: 'Intercamp 2026',
       youthCard1D: `Intercamp 2026 will take place in Ralsko, Czechia. This international Scout camp brings together young people from many countries. Georgian Scouts are excited to participate, meet new friends, share their culture, and gain valuable experiences in teamwork and outdoor activities. (<a href="https://intercamp.info/upcoming-camp/" style="color: yellow ; font-weight: bold; text-decoration: underline;">Website and Additional information</a>)`,
-      youthCard2T: 'Social Initiatives',
-      youthCard2D: 'Volunteering, community projects, and support for active citizenship.',
-      youthCard3T: 'Cultural & Sports Activities',
-      youthCard3D: 'Sports, hiking, and cultural events for a healthy lifestyle.',
+      youthCard2T: 'Camp of day',
+      youthCard2D: `🌲 Spend a day at the Scout Camp!<br/><br/>
+                    🌊 Day camps are held in Anaklia, at our Scout Village.<br/>
+                    ✨ New adventures and fun activities are waiting for you!<br/><br/>
+                    🤝 Anyone can participate:<br/>
+                    ✅ Kindergartens and Schools<br/>
+                    ✅ Universities<br/>
+                    ✅ Friend and Family groups<br/>
+                    ✅ Companies`,
+      youthCard3T: 'Megzuri (Guide)',
+      youthCard3D: `⚜️ The Scout Movement Organization of Samegrelo, in cooperation with Action Against Hunger South Caucasus and Zugdidi LAG, is launching a large-scale project!<br/><br/>
+                    🥾 "Megzuri" is a scout initiative aimed at identifying and strengthening tourism opportunities in the Zugdidi municipality. 🌲<br/><br/>
+                    📊 Based on working practice, we have identified two priority and strategically important directions:<br/>
+                    👩‍🌾 Rural Tourism<br/>
+                    🏕️ Eco Tourism<br/><br/>
+                    🧑‍💻 Within the framework of the project, 6 interventions are planned to stimulate these types of tourism at the municipal level:<br/><br/>
+                    1️⃣ Creating a guide – "How to get involved in rural tourism?"<br/>
+                    2️⃣ Working meetings with active and potential beneficiaries in rural tourism.<br/>
+                    3️⃣ Trainings for individuals interested in the concept of rural tourism.<br/>
+                    4️⃣ Creating an online platform – "Megzuri - Tourist Route of Zugdidi Municipality"<br/>
+                    5️⃣ 4-day eco-camp for youth<br/>
+                    6️⃣ Guides' Club<br/><br/>
+                    🇬🇪🇦🇹 The initiative is supported within the framework of the "FORWARD" project by the Austrian Development Agency, with the financial support of the Austrian International Partnership.`,
       youthCard4T: 'Youth Leadership',
       youthCard4D: 'Leadership skill development through practical activities and team settings.',
       // Footer

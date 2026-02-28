@@ -12,7 +12,8 @@ import charityLogo from '/assets/CHARITY.png'
 // მიმდინარე პროექტები
 import currentLogo from '/assets/CURRENT.png'
 import interCampLogo from '/assets/Intercamp.png'
-import campOfToday from '/assets/photos/dgis-banaki-logo.jfif'
+import campOfToday from '/assets/photos/dgis-banaki2.jfif'
+import guide from '/assets/photos/megzuri-logo.jfif'
 // ჩვენს შესახებ
 import aboutUsLogo from '/assets/ABOUTUS.png'
 // სერვისები
@@ -137,11 +138,11 @@ export default function App() {
       // სერვისები
       services: 'სერვისები',
       service1: 'სკაუტური სკოლა',
-      service1D: 'საკვირაო სკოლაში რეგისტაცია შეუძლიათ 6 წლიდან 18 წლამდე ასაკის ახალგაზრდებს. კურსის ხანგრძლივობა 3 თვე ( 12 გაკვეთილი). საწევრო გადასახადი 60 ლარი. <a href="https://forms.gle/7NJ5KFZpbnMAD4Wy7" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a>',
+      service1D: 'საკვირაო სკოლაში რეგისტაცია შეუძლიათ 6 წლიდან 18 წლამდე ასაკის ახალგაზრდებს. კურსის ხანგრძლივობა 3 თვე ( 12 გაკვეთილი). საწევრო გადასახადი 60 ლარი. <br><br><br> <a href="https://forms.gle/7NJ5KFZpbnMAD4Wy7" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a>',
       service2: 'ახალგაზრდული ბანაკები',
       service2D: 'რეგიონალური და ნაციონალური ბანაკები წელიწადში 2 ჯერ ტარდება. გარდა დიდი ბანაკებისა ჩვენ ვატარებთ თემატურ ბანაკებს წელიწადის სხვადასხვა დროს ( მეთევზეთა ბანაკი, პროფესიული ორიენტაციის ბანაკი, სამშენებლო, აგრო, ეკო ბანაკები...). <a href="https://forms.gle/7NJ5KFZpbnMAD4Wy7" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a> ',
       service3: 'შეთავაზება სკოლებს',
-      service3D: 'სკოლებს ვთავაზობთ საგანმანათლებლო და სასკოლო ტურიზმის ინოვაციურ პაკეტებს: ვიზიტი სკაუტურ სოფელში, ვორქშოფები სკოლის ბაზაზე, სასკოლო ექსკურსიების დაგეგმვა და ორგანიზება, მინი ბანაკები.  <a href="https://forms.gle/7NJ5KFZpbnMAD4Wy7" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a>',
+      service3D: 'სკოლებს ვთავაზობთ საგანმანათლებლო და სასკოლო ტურიზმის ინოვაციურ პაკეტებს: ვიზიტი სკაუტურ სოფელში, ვორქშოფები სკოლის ბაზაზე, სასკოლო ექსკურსიების დაგეგმვა და ორგანიზება, მინი ბანაკები. <br><br>  <a href="https://forms.gle/7NJ5KFZpbnMAD4Wy7" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a>',
       service4: 'ეკოტურები და ლაშქრობები',
       service4D: 'იმოგზაურე სკაუტებთან ერთად ! ჩვენი ერთ-ერთი წარმატებული პროექტია, რომლის ფარგლებშიც ვაწყობთ ტურებს მთელი საქართველოს მასშტაბით, აღნიშნული სერვისით სარგებლობა ყველა მსურველს შეუძლია. <a href="https://forms.gle/7NJ5KFZpbnMAD4Wy7" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a> ',
       service5: 'ადგილი ღონისძიებისთვის',
@@ -580,6 +581,8 @@ export default function App() {
                                 ? interCampLogo
                                 : i === 1
                                 ? campOfToday
+                                : i === 2
+                                ? guide
                                 : currentLogo
                             }
                             alt={`Project ${i + 1}`}

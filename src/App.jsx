@@ -249,9 +249,14 @@ export default function App() {
                     იხილე ფოტო
                   </a>`,
       youthCard3T: 'მეგზური',
-      youthCard3D: `⚜️სამეგრელოს სკაუტური მოძრაობის ორგანიზაცია Action Against Hunger South Caucasus-და ზუგდიდის LAG-თან თანამშრომლობით მასშტაბური პროქტის განხორციელებას იწყებს!
-🥾,,მეგზური” სკაუტების ინიციატივაა, რომელიც მიზნად ზუგდიდის მუნიციპალიტეტში არსებული ტურისტული შესაძლებლობების გამოვლენასა და გაძლიერებას ისახავს🌲
-🇬🇪🇦🇹ინიციატივა მხარდაჭერილია პროექ ,,FORWARD” ის ფარგლებში, ავსტრიის განვითარების სააგენტოს მიერ, ავსტრიის საერთაშორისო პარტნიორობის ფინანსური მხარდაჭერით.      <br/><br/>
+      youthCard3D: `<p>
+                      ⚜️ სამეგრელოს სკაუტური მოძრაობის ორგანიზაცია Action Against Hunger South Caucasus-თან და ზუგდიდის LAG-თან თანამშრომლობით მასშტაბური პროექტის განხორციელებას იწყებს!
+                      <br /><br />
+                      🥾 „მეგზური“ სკაუტების ინიციატივაა, რომელიც მიზნად ზუგდიდის მუნიციპალიტეტში არსებული ტურისტული შესაძლებლობების გამოვლენასა და გაძლიერებას ისახავს. 🌲
+                      <br /><br />
+                      🇬🇪🇦🇹 ინიციატივა მხარდაჭერილია პროექტ „FORWARD“-ის ფარგლებში, ავსტრიის განვითარების სააგენტოს მიერ, ავსტრიის განვითარების თანამშრომლობის ფინანსური მხარდაჭერით.
+                    </p>
+      <br/><br/>
       <a href="#" class="open-megzuri-photo"
         style="color: yellow; font-weight: bold; text-decoration: underline;">
         იხილე ფოტო
@@ -405,12 +410,13 @@ export default function App() {
                     View Photo
                   </a>`,
       youthCard3T: 'Megzuri (Guide)',
-      youthCard3D: `⚜️The Samegrelo Scout Movement Organization, in cooperation with Action Against Hunger South Caucasus and Zugdidi LAG, is launching the implementation of a large-scale project!
-
-                  🥾“Megzuri” is an initiative of the Scouts aimed at identifying and strengthening the existing tourism opportunities in the Zugdidi Municipality 🌲
-
-                  🇬🇪🇦🇹 The initiative is supported within the framework of the project “FORWARD” by the Austrian Development Agency, with financial support from Austrian Development Cooperation.  
-
+      youthCard3D: ` <p>
+                      ⚜️ The Samegrelo Scout Movement Organization, in cooperation with Action Against Hunger South Caucasus and Zugdidi LAG, is launching the implementation of a large-scale project!
+                      <br /><br />
+                      🥾 “Megzuri” is an initiative of the Scouts aimed at identifying and strengthening the existing tourism opportunities in the Zugdidi Municipality 🌲
+                      <br /><br />
+                      🇬🇪🇦🇹 The initiative is supported within the framework of the project “FORWARD” by the Austrian Development Agency, with financial support from Austrian Development Cooperation.
+                    </p>
                   <br/><br/>
 
                   <a href="#" class="open-megzuri-photo"

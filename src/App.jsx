@@ -249,7 +249,7 @@ export default function App() {
       youthTitle: 'მიმდინარე პროექტები',
       // youthSubtitle: 'ჩვენი მოგზაურობა გრძელდება! ეს განყოფილება მოიცავს ამჟამად შემუშავების პროცესში მყოფ პროექტებს. ეს ინიციატივები საშუალებას აძლევს ჩვენს ახალგაზრდა წევრებს, ისწავლონ პრაქტიკით, უმკლავდებიან რეალურ გამოწვევებს და უჭერენ მხარს ჩვენს ადგილობრივ საზოგადოებას პრაქტიკული მსახურებით.',
       youthCard1T: 'Intercamp 2026',
-      youthCard1D: `  საერთაშორისო სკაუტური ბანაკია რომელიც 1967 წლიდან დღემდე უწყვეტად ტარდება ევროპის სხვადსახვა ქვეყანაში. 
+      youthCard1D: `  საერთაშორისო სკაუტური ბანაკია რომელიც 1967 წლიდან დღემდე უწყვეტად ტარდება ევროპის სხვადსახვა ქვეყანაში. <br><br>
                      წელს ბანაკს ჩეხეთი მასპინძლობს!  <br><br><a href="https://intercamp.info/upcoming-camp/" style="color: yellow ; font-weight: bold; text-decoration: underline;">ვებსაიტი და დამატებითი ინფორმაცია</a>`,
       youthCard2T: 'დღის ბანაკები',
       youthCard2D: `🌲 გაატარე ერთი დღე სკაუტურ ბანაკში!<br/><br/>
@@ -457,7 +457,8 @@ export default function App() {
       youthTitle: 'Current projects',
       // youthSubtitle: 'Our journey continues! This section features the projects currently in development. These initiatives allow our youth members to learn by doing, as they tackle real-world challenges and support our local community through hands-on service.',
       youthCard1T: 'Intercamp 2026',
-      youthCard1D: `Intercamp 2026 will take place in Ralsko, Czechia. This international Scout camp brings together young people from many countries. Georgian Scouts are excited to participate, meet new friends, share their culture, and gain valuable experiences in teamwork and outdoor activities. <br><br> <a href="https://intercamp.info/upcoming-camp/" style="color: yellow ; font-weight: bold; text-decoration: underline;">Website and Additional information</a>`,
+      youthCard1D: `It is an international scout camp that has been held continuously since 1967 in various European countries. <br><br>
+                    This year, the camp is hosted by the Czech Republic! <br><br> <a href="https://intercamp.info/upcoming-camp/" style="color: yellow ; font-weight: bold; text-decoration: underline;">Website and Additional information</a>`,
       youthCard2T: 'Camp of day',
       youthCard2D: `🌲 Spend a day at the Scout Camp!<br/><br/>
                     🌊 Day camps are held in Anaklia, at our Scout Village.<br/>

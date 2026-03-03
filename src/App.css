@@ -6,6 +6,7 @@ html, body, #root {
   scroll-behavior: smooth;
   background-color: #1a0933; 
   overflow-x: hidden; 
+  
 }
 
 section[id] {
@@ -3723,4 +3724,35 @@ body.night .photo-divider img {
 
 .book-card:hover {
   transform: translateY(-10px);
+}
+
+/* === FIX DARK LINE: header height must match page offset === */
+:root { --hdr: 78px; }          /* change 78px if you want */
+
+.header{
+  position: fixed !important;
+  top: 0; left: 0; right: 0;
+  height: var(--hdr) !important; /* THIS removes the gap */
+  padding: 0 24px !important;    /* no vertical padding -> height stays exact */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.container{
+  padding-top: var(--hdr) !important; /* same as header height */
+}
+
+.hero{
+  margin-top: 0 !important;           /* remove old hero margin */
+}
+
+/* ===== FINAL MOBILE FIX (override everything) ===== */
+@media (max-width: 768px) {
+  :root { --hdr: 70px; } /* change to 80px if your mobile header is taller */
+  body { padding-top: 0 !important; }          /* kill old body padding rules */
+  .container { padding-top: var(--hdr) !important; }
 }

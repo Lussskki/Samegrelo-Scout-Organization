@@ -446,7 +446,7 @@ export default function App() {
       service7: 'Event Management',
       service7D: 'If you want to diversify your event, the Scout team offers themed workshops and team games. Each game and activity is considered a means to achieve your organizational goals. <br> <br><br> <a  style="color: yellow ; font-weight: bold; text-decoration: underline;">Contact us - +995 557 28 88 95</a>',
       service8: 'International activities',
-      service8D: '<p>World Scout Jamboree, European Jamboree, INTERCAMP and many other international opportunities await you!</p> <br><br> Contact us - +995 557 28 88 95',
+      service8D: '<p>World Scout Jamboree, European Jamboree, INTERCAMP and many other international opportunities await you!</p> <br><br> <a  style="color: yellow ; font-weight: bold; text-decoration: underline;">Contact us - +995 557 28 88 95</a>',
       // About us
       aboutTitle: 'About Us',
       aboutSubtitle: 'Samegrelo Scout Center is a youth space uniting education, nature, and leadership.',

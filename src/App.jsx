@@ -25,10 +25,10 @@ import './App.css'
 // Gallery
 const galleryPhotos = [
 { id: 1, src: '/assets/photos/chveni-fotoebi/1.jpeg', alt: 'Kintsvisi Monastery' },
-{ id: 2, src: '/assets/photos/chveni-fotoebi/2.jpeg', alt: 'Winter-Cemi Camp' },
+{ id: 2, src: '/assets/photos/chveni-fotoebi/2.jpeg', alt: 'The Avatar Camp - Polar Express' },
 { id: 3, src: '/assets/photos/chveni-fotoebi/3.jpg', alt: 'The Avatar 2025' },
 { id: 4, src: '/assets/photos/chveni-fotoebi/4.jpeg', alt: 'Swiss - MOVA Camp' },
-{ id: 5, src: '/assets/photos/chveni-fotoebi/5.jpeg', alt: 'Winter-Cemi Camp' },
+{ id: 5, src: '/assets/photos/chveni-fotoebi/5.jpeg', alt: 'The Avatar Camp - Polar Express' },
 { id: 6, src: '/assets/photos/chveni-fotoebi/6.jpg', alt: 'The Avatar Camp 2020' },
 { id: 7, src: '/assets/photos/chveni-fotoebi/8.jpeg', alt: 'Colchis National Park - The Avatar Camp 2020' },
 { id: 8, src: '/assets/photos/chveni-fotoebi/9.jpeg', alt: 'The Avatar Camp 2020' },

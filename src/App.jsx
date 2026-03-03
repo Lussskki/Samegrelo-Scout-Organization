@@ -24,14 +24,14 @@ import './App.css'
 
 // Gallery
 const galleryPhotos = [
-{ id: 1, src: '/assets/photos/chveni-fotoebi/1.jpeg', alt: 'Church' },
-{ id: 2, src: '/assets/photos/chveni-fotoebi/2.jpeg', alt: 'Winter Camp' },
+{ id: 1, src: '/assets/photos/chveni-fotoebi/1.jpeg', alt: 'Kintsvisi Monastery' },
+{ id: 2, src: '/assets/photos/chveni-fotoebi/2.jpeg', alt: 'Winter-Cemi Camp' },
 { id: 3, src: '/assets/photos/chveni-fotoebi/3.jpg', alt: 'The Avatar 2025' },
 { id: 4, src: '/assets/photos/chveni-fotoebi/4.jpeg', alt: 'Swiss Camp' },
 { id: 5, src: '/assets/photos/chveni-fotoebi/5.jpeg', alt: 'Winter-Cemi Camp' },
-{ id: 6, src: '/assets/photos/chveni-fotoebi/6.jpg', alt: 'The Avatar Camp' },
-{ id: 7, src: '/assets/photos/chveni-fotoebi/8.jpeg', alt: 'The Avatar camp' },
-{ id: 8, src: '/assets/photos/chveni-fotoebi/9.jpeg', alt: 'The Avatar Camp' },
+{ id: 6, src: '/assets/photos/chveni-fotoebi/6.jpg', alt: 'The Avatar Camp 2020' },
+{ id: 7, src: '/assets/photos/chveni-fotoebi/8.jpeg', alt: 'The Avatar Camp' },
+{ id: 8, src: '/assets/photos/chveni-fotoebi/9.jpeg', alt: 'Colchis National Park - The Avatar Camp 2020' },
 { id: 9, src: '/assets/photos/chveni-fotoebi/10.jpg', alt: 'Temple of the Wise Thief, Dzhama Valley' },
 { id: 10, src: '/assets/photos/chveni-fotoebi/11.jpeg', alt: 'Tobavarchkhili hiking' },
 { id: 11, src: '/assets/photos/chveni-fotoebi/12.jpeg', alt: 'The Avatar camp' },
@@ -45,8 +45,8 @@ const galleryPhotos = [
 { id: 19, src: '/assets/photos/firework.jpg', alt: 'Firework' },
 { id: 20, src: '/assets/photos/megzuri.jpg', alt: 'Megzuri (Guide)' },
 { id: 21, src: '/assets/photos/megzuri-logo.jfif', alt: 'Megzuri (Guide)' },
-{ id: 22, src: '/assets/photos/dgis-banaki2.jfif', alt: 'The day of camp' },
-{ id: 23, src: '/assets/photos/scouts.jfif', alt: 'Disintegration' }
+{ id: 22, src: '/assets/photos/dgis-banaki2.jfif', alt: 'The Day Of Camp' },
+{ id: 23, src: '/assets/photos/scouts.jfif', alt: 'Joining the European Region' }
 ];
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);

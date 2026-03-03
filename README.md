@@ -12,7 +12,7 @@ This project was developed to serve as a **central information hub for scouts, v
 
 # Project Status
 
-✅ **Completed**
+**Completed**
 
 The project has reached its final version and is fully deployed online.
 

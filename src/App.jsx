@@ -243,21 +243,21 @@ export default function App() {
           <p>• ეს ხორციელდება ორგანიზებული სასწავლო გარემოს უზრუნველყოფით, რომელიც ახდენს თითოეული ახალგაზრდის სტიმულირებას მისი განვითარების პერიოდში. </p>
         </>
       ),
-      howTitle: 'როგორ გავხდე სკაუტი',
+      howTitle: 'რას ვაკეთებთ',
       howText: <p>
-                 მოზარდი თაობის განვითარება მათი ფიზიკური, ინტელექტუალური, ემოციური, სოციალური და სულიერი პოტენციალის სრულად გამოვლენის გზით;
+                 • მოზარდი თაობის განვითარება მათი ფიზიკური, ინტელექტუალური, ემოციური, სოციალური და სულიერი პოტენციალის სრულად გამოვლენის გზით;
                 <br />
-                ახალგაზრდების, როგორც პასუხისმგებელი მოქალაქეებისა და ადგილობრივი, ნაციონალური და საერთაშორისო საზოგადოების სრულფასოვან წევრებად ჩამოყალიბება;
+                • ახალგაზრდების, როგორც პასუხისმგებელი მოქალაქეებისა და ადგილობრივი, ნაციონალური და საერთაშორისო საზოგადოების სრულფასოვან წევრებად ჩამოყალიბება;
                 <br />
-                ახალგაზრდების პიროვნებად ჩამოყალიბება ეროვნულ და მსოფლიო კულტურულ ფასეულობათა საფუძველზე;
+                • ახალგაზრდების პიროვნებად ჩამოყალიბება ეროვნულ და მსოფლიო კულტურულ ფასეულობათა საფუძველზე;
                 <br />
-                ქვეყანაში სამოქალაქო კულტურის ამაღლება და სოციალურ-ეკონომიკური განვითარების ხელშეწყობა;
+                • ქვეყანაში სამოქალაქო კულტურის ამაღლება და სოციალურ-ეკონომიკური განვითარების ხელშეწყობა;
                 <br />
-                ადგილობრივი თემის განვითარება და გაძლიერება;
+                • ადგილობრივი თემის განვითარება და გაძლიერება;
                 <br />
-                მოზარდი თაობის თვითგამოხატვისა და საკუთარი თავის დამკვიდრებისთვის შესაბამისი პირობების შექმნა;
+                • მოზარდი თაობის თვითგამოხატვისა და საკუთარი თავის დამკვიდრებისთვის შესაბამისი პირობების შექმნა;
                 <br />
-                პროფესიული ინტერესების ჩამოყალიბება და პრაქტიკული ჩვევების დაუფლება;
+                • პროფესიული ინტერესების ჩამოყალიბება და პრაქტიკული ჩვევების დაუფლება;
               </p>,
       // მიმდინარე პროექტები - Current project
       youthTitle: 'მიმდინარე პროექტები',
@@ -465,8 +465,22 @@ export default function App() {
           <p>• This is achieved by providing an organized learning environment that stimulates each young person during their period of development.</p>
         </>
       ),
-      howTitle: 'How to Become a Scout',
-      howText: 'Register. Engage. Lead. Your journey to becoming a Scout starts the moment you stop watching and start doing.',
+      howTitle: 'What we doing',
+      howText: <p>
+                • Development of the younger generation through the full realization of their physical, intellectual, emotional, social, and spiritual potential;
+                <br />
+                • Formation of young people as responsible citizens and full members of local, national, and international communities;
+                <br />
+                • Shaping young people as individuals based on national and global cultural values;
+                <br />
+                • Promotion of civic culture and support for socio-economic development in the country;
+                <br />
+                • Development and strengthening of the local community;
+                <br />
+                • Creating appropriate conditions for the self-expression and self-establishment of the younger generation;
+                <br />
+                • Formation of professional interests and acquisition of practical skills;
+              </p>,
       // Current project
       youthTitle: 'Current projects',
       // youthSubtitle: 'Our journey continues! This section features the projects currently in development. These initiatives allow our youth members to learn by doing, as they tackle real-world challenges and support our local community through hands-on service.',

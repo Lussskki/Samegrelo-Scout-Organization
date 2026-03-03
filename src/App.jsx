@@ -121,7 +121,7 @@ export default function App() {
 
       // განხორციელებული პროექტები -  Completed projects
       eduTitle: 'განხორციელებული პროექტები',
-      eduSubtitle: 'საზოგადოების მსახურებიდან გარემოს დაცვამდე, ეს ის ინიციატივებია, რომლებიც ჩვენ განვახორციელეთ. გაეცანით ჩვენს ლიდერობის, გუნდური მუშაობისა და ადგილობრივი გავლენის გზას.',
+      // eduSubtitle: 'საზოგადოების მსახურებიდან გარემოს დაცვამდე, ეს ის ინიციატივებია, რომლებიც ჩვენ განვახორციელეთ. გაეცანით ჩვენს ლიდერობის, გუნდური მუშაობისა და ადგილობრივი გავლენის გზას.',
       eduCard1T: 'სკაუტები COVID-19 ის წინააღმდეგ',
       eduCard1D: <p>
                   წითელ ჯვართან პარტნიორობის ფარგლებში, ჩვენი გუნდი პანდემიის დროს წინა ხაზზე იდგა,
@@ -360,7 +360,7 @@ export default function App() {
       ],      
       // Completed projects - განხორციელებული პროექტები
       eduTitle: 'Completed Projects',
-      eduSubtitle: 'From community service to environmental conservation, these are the initiatives we`ve brought to life. Explore our journey of leadership, teamwork, and local impact.',
+      // eduSubtitle: 'From community service to environmental conservation, these are the initiatives we`ve brought to life. Explore our journey of leadership, teamwork, and local impact.',
       eduCard1T: 'Scouts against Covid-19',
       eduCard1D: <p>
                   In partnership with the Red Cross, our team stood on the front lines during the pandemic to support the most vulnerable groups.
@@ -419,9 +419,15 @@ export default function App() {
                 </p>,
       eduCard8T: 'Charity events',
       eduCard8D: <p>
-                  Beyond our large-scale camps, we remain dedicated to consistent community service.
+                  A scout’s duty is to be useful and to help others!
                   <br /><br />
-                  Through various local charity events, our scouts practice empathy and leadership by organizing fundraisers and support drives for those in need within our own neighborhoods.
+                  Since 2014, we have helped more than 200 beneficiaries!
+                  <br /><br />
+                  Scout patrols organize several charitable events each year.
+                  <br /><br />
+                  We support families living below the poverty line, persons with disabilities, and anyone who needs our assistance.
+                  <br /><br />
+                  If you need help or would like to ease someone else's situation, contact us.
                 </p>,
       // Services
       services: 'Services',

@@ -196,7 +196,7 @@ export default function App() {
       service1: 'სკაუტური სკოლა',
       service1D: `საკვირაო სკოლაში რეგისტაცია შეუძლიათ 6-დან 18 წლამდე ასაკის ახალგაზრდებს.<br><br>
                   კურსის ხანგრძლივობა: 3 თვე (12 გაკვეთილი).<br><br>
-                  საწევრო გადასახადი: 60 ლარი.<br><br><br>
+                  საწევრო გადასახადი: 60 ლარი.<br><br>
                   <a href="https://forms.gle/7NJ5KFZpbnMAD4Wy7" style="color: yellow; font-weight: bold; text-decoration: underline;">დაგვიკავშირდით - +995 557 28 88 95</a>`,
       service2: 'ახალგაზრდული ბანაკები',
       service2D: `რეგიონალური და ნაციონალური ბანაკები წელიწადში 2-ჯერ ტარდება.<br><br>
@@ -432,7 +432,7 @@ export default function App() {
       // Services
       services: 'Services',
       service1: 'Scout School',
-      service1D: '<p>Sunday school is open to youth ages 6 to 18.<p/> <p>The course duration is 3 months (12 lessons). <p/> <p>Membership fee is 60 GEL.</p> <a  style="color: yellow ; font-weight: bold; text-decoration: underline;">Contact us</a>',
+      service1D: '<p>Sunday school is open to youth ages 6 to 18.<p/> <p>The course duration is 3 months (12 lessons). <p/> <p>Membership fee is 60 GEL.</p> <br><br> <a  style="color: yellow ; font-weight: bold; text-decoration: underline;">Contact us - +995 557 28 88 95</a>',
       service2: 'Youth Camps',
       service2D: '<p>Regional and national camps are held twice a year.</p> <p>In addition to large camps, we also hold thematic camps at different times of the year (fishing camp, professional orientation camp, construction, agro, eco camps...).</p> <a style="color: yellow ; font-weight: bold; text-decoration: underline;">Contact us - +995 557 28 88 95</a>',
       service3: 'Offer for Schools',

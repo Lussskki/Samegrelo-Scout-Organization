@@ -181,9 +181,15 @@ export default function App() {
                 </p>,
       eduCard8T: 'საქველმოქმედო ღონისძიებები',
       eduCard8D: <p>
-                  ჩვენი მასშტაბური ბანაკების გარდა, ჩვენ კვლავ ერთგულები ვრჩებით საზოგადოების მუდმივ სამსახურს.
+                  სკაუტის მოვალეობაა იყოს სარგებლიანი და დაეხმაროს სხვას!
                   <br /><br />
-                  სხვადასხვა ადგილობრივი საქველმოქმედო ღონისძიებების მეშვეობით, ჩვენი სკაუტები ავლენენ თანაგრძნობასა და ლიდერობას, ორგანიზებენ საქველმოქმედო აქციებს და მხარს უჭერენ ჩვენს სამეზობლოში მცხოვრებ გაჭირვებულებს.
+                  2014 წლიდან დღემდე 200-ზე მეტ ბენეფიციარს დავეხმარეთ!
+                  <br /><br />
+                  სკაუტური პატრულები წელიწადში რამდენიმე საქველმოქმედო ღონისძიებას ატარებენ.
+                  <br /><br />
+                  ჩვენ ვეხმარებით სიღარიბის ზღვარს მიღმა მყოფ ოჯახებს, შეზღუდული შესაძლებლობების მქონე პირებსა და ყველას, ვისაც ჩვენი თანადგომა სჭირდება.
+                  <br /><br />
+                  თუ გჭირდება დახმარება ან გსურს სხვა ადამიანს ყოფა შეუმსუბუქო, დაგვიკავშირდით.
                 </p>,
       // სერვისები
       services: 'სერვისები',
@@ -208,7 +214,7 @@ export default function App() {
       service7: 'ღონისძიებების მენეჯმენტი',
       service7D: 'თუ გსურთ თქვენი ღონისძიება გაამრავალფეროვნოთ სკაუტების გუნდი თემატურ ვორქშოფებსა და გუნდურ თამაშებს გთავაზობენ. თითოეული თამაში და აქტივობა განიხილება, როგორც თქვენი ორგანიზაციული მიზნების მიღწევის საშუალება.<br><br> <a href="https://forms.gle/7NJ5KFZpbnMAD4Wy7" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a>  ',
       service8: 'საერთაშორისო აქტივობები',
-      service8D: 'მსოფლიო სკაუტური ჯემბორი, ევროპის ჯემბორი, INTERCAMP და სხვა უამრავი საერთაშორისო შესაძლებლობა გელოდება შენ ! <br><br> <a href="https://forms.gle/7NJ5KFZpbnMAD4Wy7" style="color: yellow ; font-weight: bold; text-decoration: underline;">რეგისტრაცია და დამატებითი ინფორმაცია</a>',
+      service8D: 'მსოფლიო სკაუტური ჯემბორი, ევროპის ჯემბორი, INTERCAMP და სხვა უამრავი საერთაშორისო შესაძლებლობა გელოდება შენ ! <br><br> დაგვიკავშირდით - +995 557 28 88 95',
       // ჩვენს შესახებ
       aboutTitle: 'ჩვენს შესახებ',
       aboutSubtitle: 'სამეგრელოს სკაუტური ცენტრი არის ახალგაზრდული სივრცე, რომელიც აერთიანებს განათლებას, ბუნებასა და ლიდერობას.',
@@ -434,7 +440,7 @@ export default function App() {
       service7: 'Event Management',
       service7D: 'If you want to diversify your event, the Scout team offers themed workshops and team games. Each game and activity is considered a means to achieve your organizational goals. <br> <br><br> <a href="https://forms.google.com" style="color: yellow ; font-weight: bold; text-decoration: underline;">Registration and additional information</a>',
       service8: 'International activities',
-      service8D: '<p>World Scout Jamboree, European Jamboree, INTERCAMP and many other international opportunities await you!</p> <a href="https://forms.google.com" style="color: yellow ; font-weight: bold; text-decoration: underline;">Registration and additional information</a>',
+      service8D: '<p>World Scout Jamboree, European Jamboree, INTERCAMP and many other international opportunities await you!</p> <br><br> Contact us - +995 557 28 88 95',
       // About us
       aboutTitle: 'About Us',
       aboutSubtitle: 'Samegrelo Scout Center is a youth space uniting education, nature, and leadership.',

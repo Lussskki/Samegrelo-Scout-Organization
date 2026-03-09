@@ -3,6 +3,10 @@
    Full Width + Mobile Optimized
    ============================================ */
 
+/* Google Fonts Import - MUST BE FIRST */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
 /* === CSS VARIABLES === */
 :root {
   /* Primary Purple Palette */
@@ -34,8 +38,8 @@
   /* Spacing */
   --header-height: 80px;
   
-  /* Typography */
-  --font-display: 'Noto Sans Georgian', 'Segoe UI', sans-serif;
+  /* Typography - Georgian Fonts */
+  --font-display: 'Noto Sans Georgian', 'DejaVu Sans', sans-serif;
   --font-body: 'Noto Sans Georgian', system-ui, sans-serif;
   
   /* Transitions */
@@ -200,6 +204,20 @@ body.night .map-container {
 body.night .nav a:hover,
 body.night .nav-link:hover {
   background: rgba(40, 40, 40, 0.8);
+}
+
+body.night .book-card {
+  background: rgba(15, 15, 15, 0.8);
+  border-color: rgba(60, 60, 60, 0.4);
+}
+
+body.night .book-card:hover {
+  background: rgba(25, 25, 25, 0.9);
+  border-color: rgba(100, 100, 100, 0.5);
+}
+
+body.night .book-title {
+  color: var(--white-soft);
 }
 
 #root {
@@ -538,10 +556,8 @@ section {
   font-weight: 700;
   text-align: center;
   margin-bottom: 20px;
-  background: linear-gradient(135deg, var(--white) 0%, var(--violet-soft) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--white);
+  text-shadow: 0 2px 20px rgba(167, 139, 250, 0.3);
 }
 
 .section-subtitle {
@@ -754,38 +770,54 @@ section {
   width: 100%;
   padding: 80px 5%;
   text-align: center;
+  min-height: auto;
+}
+
+.books-section .section-title {
+  margin-bottom: 15px;
+}
+
+.books-section .section-subtitle {
+  margin-bottom: 50px;
 }
 
 .books-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 40px;
   justify-content: center;
   width: 100%;
   margin: 0 auto;
+  padding: 20px 0;
 }
 
 .book-card {
-  width: 200px;
+  width: 220px;
   cursor: pointer;
   transition: all var(--transition-bounce);
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 15px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
 }
 
 .book-card:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: translateY(-12px) scale(1.03);
+  background: var(--glass-hover);
+  border-color: var(--purple-accent);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
 .cover-wrapper {
   width: 100%;
-  height: 280px;
-  border-radius: 16px;
+  height: 300px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  background: var(--purple-main);
 }
 
 .book-cover {
@@ -800,11 +832,13 @@ section {
 }
 
 .book-title {
-  margin-top: 16px;
-  font-size: 0.9rem;
-  color: var(--white-muted);
+  margin-top: 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--white-soft);
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.5;
+  padding: 0 5px;
 }
 
 /* === GALLERY SECTION === */

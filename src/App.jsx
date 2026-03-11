@@ -22,6 +22,77 @@ import servicesLogo from '/assets/SERVICES.png'
 
 import './App.css'
 
+// BackToTop კომპონენტი
+const BackToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  const buttonStyle = {
+    position: 'fixed',
+    bottom: '30px',
+    right: '30px',
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    backgroundColor: '#FFD700',
+    border: 'none',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '24px',
+    fontWeight: 'bold',
+    color: '#333',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+    transition: 'all 0.3s ease',
+    opacity: isVisible ? 1 : 0,
+    visibility: isVisible ? 'visible' : 'hidden',
+    transform: isVisible ? 'scale(1)' : 'scale(0.8)',
+    zIndex: 9999
+  };
+
+  return (
+    <button
+      onClick={scrollToTop}
+      style={buttonStyle}
+      onMouseEnter={(e) => {
+        e.target.style.backgroundColor = '#FFC000';
+        e.target.style.transform = 'scale(1.1)';
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.backgroundColor = '#FFD700';
+        e.target.style.transform = 'scale(1)';
+      }}
+      aria-label="ზემოთ დაბრუნება"
+      title="ზემოთ დაბრუნება"
+    >
+      ↑
+    </button>
+  );
+};
+
 // Gallery
 const galleryPhotos = [
 { id: 1, src: '/assets/photos/chveni-fotoebi/1.jpeg', alt: 'Kintsvisi Monastery' },
@@ -127,7 +198,7 @@ export default function App() {
                   წითელ ჯვართან პარტნიორობის ფარგლებში, ჩვენი გუნდი პანდემიის დროს წინა ხაზზე იდგა,
                   რათა დახმარებოდა ყველაზე მოწყვლად ჯგუფებს.
                   <br /><br />
-                  ჩვენ წამოვიწყეთ ცნობიერების ამაღლებისა და საქველმოქმედო კამპანიაები.
+                  ჩვენ წამოვიწყეთ ცნობიერების ამაღლებისა და საქველმოქმედო კამპანიები.
                   <br /><br />
                   სკაუტები კრიზისის საწყის ეტაპზე ყველაზე ცხელ წერტილებში ვიდექით.
                   <br /><br />
@@ -289,9 +360,9 @@ export default function App() {
       youthCard3D: `<p>
                       ⚜️ სამეგრელოს სკაუტური მოძრაობის ორგანიზაცია Action Against Hunger South Caucasus-თან და ზუგდიდის LAG-თან თანამშრომლობით მასშტაბური პროექტის განხორციელებას იწყებს!
                       <br /><br />
-                      🥾 „მეგზური“ სკაუტების ინიციატივაა, რომელიც მიზნად ზუგდიდის მუნიციპალიტეტში არსებული ტურისტული შესაძლებლობების გამოვლენასა და გაძლიერებას ისახავს. 🌲
+                      🥾 „მეგზური" სკაუტების ინიციატივაა, რომელიც მიზნად ზუგდიდის მუნიციპალიტეტში არსებული ტურისტული შესაძლებლობების გამოვლენასა და გაძლიერებას ისახავს. 🌲
                       <br /><br />
-                      🇬🇪🇦🇹 ინიციატივა მხარდაჭერილია პროექტ „FORWARD“-ის ფარგლებში, ავსტრიის განვითარების სააგენტოს მიერ, ავსტრიის განვითარების თანამშრომლობის ფინანსური მხარდაჭერით.
+                      🇬🇪🇦🇹 ინიციატივა მხარდაჭერილია პროექტ „FORWARD"-ის ფარგლებში, ავსტრიის განვითარების სააგენტოს მიერ, ავსტრიის განვითარების თანამშრომლობის ფინანსური მხარდაჭერით.
                     </p>
       <br/><br/>
       <a href="#" class="open-megzuri-photo"
@@ -369,11 +440,11 @@ export default function App() {
                   <br /><br />
                   Scouts were present in the most critical areas during the early stages of the crisis.
                   <br /><br />
-                  A scout’s duty is to be useful and to help others!
+                  A scout's duty is to be useful and to help others!
                 </p>,
       eduCard2T: 'Scout Camp Avatar',
       eduCard2D: <p>
-                  Camp “Avatar” is a signature event of the Samegrelo Scouts, held twice a year since 2020 — in summer and winter.
+                  Camp "Avatar" is a signature event of the Samegrelo Scouts, held twice a year since 2020 — in summer and winter.
                   <br /><br />
                   The camp is filled with adventurous and educational activities.
                   <br /><br />
@@ -419,7 +490,7 @@ export default function App() {
                 </p>,
       eduCard8T: 'Charity events',
       eduCard8D: <p>
-                  A scout’s duty is to be useful and to help others!
+                  A scout's duty is to be useful and to help others!
                   <br /><br />
                   Since 2014, we have helped more than 200 beneficiaries!
                   <br /><br />
@@ -517,9 +588,9 @@ export default function App() {
       youthCard3D: ` <p>
                       ⚜️ The Samegrelo Scout Movement Organization, in cooperation with Action Against Hunger South Caucasus and Zugdidi LAG, is launching the implementation of a large-scale project!
                       <br /><br />
-                      🥾 “Megzuri” is an initiative of the Scouts aimed at identifying and strengthening the existing tourism opportunities in the Zugdidi Municipality 🌲
+                      🥾 "Megzuri" is an initiative of the Scouts aimed at identifying and strengthening the existing tourism opportunities in the Zugdidi Municipality 🌲
                       <br /><br />
-                      🇬🇪🇦🇹 The initiative is supported within the framework of the project “FORWARD” by the Austrian Development Agency, with financial support from Austrian Development Cooperation.
+                      🇬🇪🇦🇹 The initiative is supported within the framework of the project "FORWARD" by the Austrian Development Agency, with financial support from Austrian Development Cooperation.
                     </p>
                   <br/><br/>
 
@@ -1216,6 +1287,9 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Back to Top ღილაკი */}
+      <BackToTop />
     </div>
   );
 }

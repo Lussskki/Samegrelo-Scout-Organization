@@ -323,7 +323,9 @@ section[id] {
   color: var(--gold-accent);
 }
 
-/* Nav Dropdown */
+/* =============================================
+   NAV DROPDOWN - FIXED HOVER ISSUE
+   ============================================= */
 .nav-dropdown {
   position: relative;
 }
@@ -359,22 +361,34 @@ section[id] {
   transform: rotate(180deg);
 }
 
+/* FIXED: Dropdown panel - removed gap, added bridge */
 .dropdown-panel {
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   min-width: 220px;
   background: var(--purple-dark);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
-  padding: 12px;
+  padding: 20px 12px 12px 12px;
   display: flex;
   flex-direction: column;
   gap: 4px;
   box-shadow: var(--shadow-lg);
   animation: dropdownFade 0.25s ease;
   z-index: 100;
+}
+
+/* Bridge element - connects button to dropdown panel */
+.dropdown-panel::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: transparent;
 }
 
 @keyframes dropdownFade {
@@ -459,20 +473,11 @@ section[id] {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.4) saturate(0.8);
+  filter: none;
 }
 
 .hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(13, 10, 26, 0.7) 0%,
-    rgba(45, 31, 78, 0.5) 50%,
-    rgba(13, 10, 26, 0.9) 100%
-  );
-  pointer-events: none;
+  display: none;
 }
 
 .hero-content {
@@ -1391,6 +1396,10 @@ section {
     margin: 0;
     padding: 0;
     animation: none;
+  }
+  
+  .dropdown-panel::before {
+    display: none;
   }
   
   .dropdown-panel a {

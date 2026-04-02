@@ -3,13 +3,8 @@
    Full Width + Mobile Optimized
    ============================================ */
 
-/* Google Fonts Import - MUST BE FIRST */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
-
 /* === CSS VARIABLES === */
 :root {
-  /* Primary Purple Palette */
   --purple-deep: #0d0a1a;
   --purple-dark: #1a1230;
   --purple-main: #2d1f4e;
@@ -17,45 +12,45 @@
   --purple-light: #6b4d9a;
   --purple-accent: #8b6cc4;
   --purple-glow: #a78bfa;
-  
-  /* Secondary Accents */
   --violet-soft: #c4b5fd;
   --lavender: #ddd6fe;
   --gold-accent: #fbbf24;
   --gold-soft: #fcd34d;
-  
-  /* Neutrals */
   --white: #ffffff;
   --white-soft: rgba(255, 255, 255, 0.95);
   --white-muted: rgba(255, 255, 255, 0.7);
   --white-faded: rgba(255, 255, 255, 0.4);
-  
-  /* Glass Effects */
   --glass-bg: rgba(45, 31, 78, 0.6);
   --glass-border: rgba(139, 108, 196, 0.3);
   --glass-hover: rgba(75, 52, 112, 0.8);
-  
-  /* Spacing */
   --header-height: 80px;
-  
-  /* Typography - Georgian Fonts */
   --font-display: 'Noto Sans Georgian', 'DejaVu Sans', sans-serif;
   --font-body: 'Noto Sans Georgian', system-ui, sans-serif;
-  
-  /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  
-  /* Shadows */
   --shadow-sm: 0 2px 8px rgba(13, 10, 26, 0.3);
   --shadow-md: 0 8px 30px rgba(13, 10, 26, 0.4);
   --shadow-lg: 0 20px 50px rgba(13, 10, 26, 0.5);
   --shadow-glow: 0 0 40px rgba(139, 108, 196, 0.3);
 }
 
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* === RESET & BASE === */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -72,7 +67,6 @@ html {
 body {
   font-family: var(--font-body);
   background: linear-gradient(180deg, var(--purple-deep) 0%, var(--purple-dark) 100%);
-  background-attachment: fixed;
   color: var(--white-soft);
   line-height: 1.6;
   min-height: 100vh;
@@ -83,13 +77,12 @@ body {
   transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* === DAY MODE (Purple Theme) === */
+/* === DAY MODE === */
 body.day {
   background: linear-gradient(180deg, var(--purple-deep) 0%, var(--purple-dark) 100%);
-  background-attachment: fixed;
 }
 
-/* === NIGHT MODE (Dark/Black Theme) === */
+/* === NIGHT MODE === */
 body.night {
   --purple-deep: #000000;
   --purple-dark: #0a0a0a;
@@ -103,25 +96,16 @@ body.night {
   --glass-hover: rgba(40, 40, 40, 0.9);
   --gold-accent: #a78bfa;
   --shadow-glow: 0 0 40px rgba(100, 100, 100, 0.2);
-  
   background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
-  background-attachment: fixed;
 }
 
 body.night .header {
-  background: linear-gradient(180deg, 
-    rgba(0, 0, 0, 0.98) 0%, 
-    rgba(10, 10, 10, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, rgba(10, 10, 10, 0.95) 100%);
   border-bottom-color: rgba(60, 60, 60, 0.5);
 }
 
 body.night .hero::after {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(10, 10, 10, 0.6) 50%,
-    rgba(0, 0, 0, 0.95) 100%
-  );
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(0, 0, 0, 0.95) 100%);
 }
 
 body.night .hero-content {
@@ -226,7 +210,6 @@ body.night .book-title {
   overflow-x: hidden;
 }
 
-/* Scroll offset for fixed header */
 section[id] {
   scroll-margin-top: calc(var(--header-height) + 20px);
 }
@@ -254,9 +237,7 @@ section[id] {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  background: linear-gradient(180deg, 
-    rgba(13, 10, 26, 0.98) 0%, 
-    rgba(26, 18, 48, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(13, 10, 26, 0.98) 0%, rgba(26, 18, 48, 0.95) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
@@ -323,9 +304,7 @@ section[id] {
   color: var(--gold-accent);
 }
 
-/* =============================================
-   NAV DROPDOWN - FIXED HOVER ISSUE
-   ============================================= */
+/* === NAV DROPDOWN === */
 .nav-dropdown {
   position: relative;
 }
@@ -361,7 +340,6 @@ section[id] {
   transform: rotate(180deg);
 }
 
-/* FIXED: Dropdown panel - removed gap, added bridge */
 .dropdown-panel {
   position: absolute;
   top: 100%;
@@ -380,7 +358,6 @@ section[id] {
   z-index: 100;
 }
 
-/* Bridge element - connects button to dropdown panel */
 .dropdown-panel::before {
   content: '';
   position: absolute;
@@ -413,7 +390,6 @@ section[id] {
   background: var(--purple-main);
 }
 
-/* Menu Controls */
 .menu-controls {
   display: flex;
   gap: 6px;
@@ -441,7 +417,6 @@ section[id] {
   transform: translateY(-2px);
 }
 
-/* Hamburger Menu */
 .hamburger {
   display: none;
   font-size: 28px;
@@ -464,6 +439,7 @@ section[id] {
   overflow: hidden;
   padding: 40px 5%;
   margin: 0;
+  content-visibility: visible;
 }
 
 .hero-img-tag {
@@ -473,7 +449,6 @@ section[id] {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: none;
 }
 
 .hero::after {
@@ -493,7 +468,7 @@ section[id] {
   border: 1px solid var(--glass-border);
   border-radius: 32px;
   box-shadow: var(--shadow-lg), var(--shadow-glow);
-  animation: heroFadeIn 1s ease-out;
+  animation: heroFadeIn 0.6s ease-out;
 }
 
 @keyframes heroFadeIn {
@@ -548,12 +523,14 @@ section[id] {
   box-shadow: 0 12px 40px rgba(251, 191, 36, 0.4);
 }
 
-/* === SECTION COMMON STYLES === */
+/* === SECTION COMMON === */
 section {
   width: 100%;
   padding: 80px 5%;
   background: transparent;
   margin: 0;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 
 .section-title {
@@ -574,7 +551,7 @@ section {
   line-height: 1.7;
 }
 
-/* === CAROUSEL CONTAINER === */
+/* === CAROUSEL === */
 .carousel-container {
   position: relative;
   width: 100%;
@@ -614,7 +591,7 @@ section {
   right: calc(50% - 65px);
 }
 
-/* === CARDS GRID (Horizontal Scroll) === */
+/* === CARDS GRID === */
 .youth-projects-grid,
 .edu-projects-grid,
 .services-grid,
@@ -646,8 +623,6 @@ section {
   min-width: 320px;
   scroll-snap-align: start;
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 24px;
   padding: 32px;
@@ -666,7 +641,6 @@ section {
   box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
-/* Card Icon Wrapper */
 .icon-wrapper {
   width: 100px;
   height: 100px;
@@ -692,7 +666,6 @@ section {
   object-fit: contain;
 }
 
-/* Card Text */
 .youth-card h3,
 .edu-card h3,
 .service-card h3,
@@ -718,11 +691,78 @@ section {
   text-align: left;
 }
 
+/* === CARD TEXT CONTENT (dangerouslySetInnerHTML-ის ნაცვლად) === */
+.card-text-content {
+  color: var(--white-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  text-align: left;
+  white-space: normal;
+}
+
+.card-text-content p {
+  color: var(--white-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* === CARD CONTACT LINK (ინლაინ style-ის ნაცვლად) === */
+.card-contact-link {
+  color: var(--gold-accent) !important;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.card-contact-link:hover {
+  color: var(--gold-soft) !important;
+}
+
+/* === BACK TO TOP BUTTON (ინლაინ style-ის ნაცვლად CSS-ში) === */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--gold-accent);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  z-index: 9999;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.back-to-top:hover {
+  background-color: #ffc000;
+  transform: scale(1.1);
+}
+
 /* === PHOTO DIVIDER === */
 .section-photo {
   width: 100%;
   padding: 40px 5%;
   background: transparent;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
 }
 
 .section-photo img {
@@ -737,7 +777,7 @@ section {
   box-shadow: var(--shadow-lg);
 }
 
-/* === REGISTER SECTION === */
+/* === REGISTER === */
 .register-section {
   width: 100%;
   text-align: center;
@@ -770,7 +810,7 @@ section {
   background: linear-gradient(135deg, var(--purple-accent) 0%, var(--purple-glow) 100%);
 }
 
-/* === BOOKS SECTION === */
+/* === BOOKS === */
 .books-section {
   width: 100%;
   padding: 80px 5%;
@@ -846,7 +886,7 @@ section {
   padding: 0 5px;
 }
 
-/* === GALLERY SECTION === */
+/* === GALLERY === */
 .gallery-section {
   width: 100%;
   padding: 80px 5%;
@@ -877,6 +917,7 @@ section {
 
 .masonry-item img {
   width: 100%;
+  height: auto;
   display: block;
   transition: transform var(--transition-smooth);
 }
@@ -986,7 +1027,7 @@ section {
   right: 20px;
 }
 
-/* === DONATION SECTION === */
+/* === DONATION === */
 .donation-simple {
   width: 100%;
   padding: 80px 5%;
@@ -1030,7 +1071,7 @@ section {
   color: var(--white);
 }
 
-/* === DEVELOPER SECTION === */
+/* === DEVELOPER === */
 .developer-section {
   width: 100%;
   padding: 80px 5%;
@@ -1045,7 +1086,6 @@ section {
   gap: 30px;
   padding: 40px;
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 28px;
   box-shadow: var(--shadow-lg);
@@ -1214,10 +1254,14 @@ section {
   border: 1px solid var(--glass-border);
 }
 
+/* === MAP IFRAME (ინლაინ style-ის ნაცვლად CSS-ში) === */
+.map-iframe,
 .map-container iframe {
   display: block;
   width: 100%;
   height: 250px;
+  border: 0;
+  border-radius: 12px;
 }
 
 .partner-logos {
@@ -1233,7 +1277,7 @@ section {
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - TABLET
+   TABLET
    ============================================ */
 @media (max-width: 1200px) {
   .nav a,
@@ -1241,16 +1285,16 @@ section {
     font-size: 0.75rem;
     padding: 5px 6px;
   }
-  
+
   .control-btn {
     padding: 5px 8px;
     font-size: 0.7rem;
   }
-  
+
   .logo-img {
     height: 35px;
   }
-  
+
   .logo-sec-img {
     height: 40px;
   }
@@ -1262,17 +1306,17 @@ section {
     font-size: 0.7rem;
     padding: 4px 5px;
   }
-  
+
   .menu-controls {
     gap: 4px;
     margin-left: 8px;
   }
-  
+
   .control-btn {
     padding: 4px 6px;
     font-size: 0.65rem;
   }
-  
+
   .youth-card,
   .edu-card,
   .service-card,
@@ -1280,44 +1324,45 @@ section {
     flex: 0 0 calc(50% - 12px);
     min-width: 280px;
   }
-  
+
   .masonry-grid {
     column-count: 2;
   }
-  
+
   .footer {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - MOBILE
+   MOBILE
    ============================================ */
 @media (max-width: 768px) {
   :root {
     --header-height: 70px;
   }
-  
-  /* === MOBILE HEADER === */
+
   .header {
     padding: 0 15px;
     justify-content: center;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
-  
+
   .logo-group {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
   }
-  
+
   .logo-img {
     height: 38px;
   }
-  
+
   .logo-sec-img {
     height: 42px;
   }
-  
+
   .hamburger {
     display: flex;
     align-items: center;
@@ -1331,8 +1376,7 @@ section {
     font-size: 26px;
     z-index: 1100;
   }
-  
-  /* === MOBILE NAVIGATION === */
+
   .nav {
     position: fixed;
     top: 0;
@@ -1354,11 +1398,11 @@ section {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .nav.open {
     transform: translateY(0);
   }
-  
+
   .nav a {
     width: 100%;
     text-align: center;
@@ -1368,15 +1412,15 @@ section {
     white-space: normal;
     word-wrap: break-word;
   }
-  
+
   .nav a:last-child {
     border-bottom: none;
   }
-  
+
   .nav-dropdown {
     width: 100%;
   }
-  
+
   .nav-link {
     width: 100%;
     justify-content: center;
@@ -1384,7 +1428,7 @@ section {
     padding: 16px 20px;
     border-bottom: 1px solid var(--glass-border);
   }
-  
+
   .dropdown-panel {
     position: static;
     transform: none;
@@ -1397,18 +1441,18 @@ section {
     padding: 0;
     animation: none;
   }
-  
+
   .dropdown-panel::before {
     display: none;
   }
-  
+
   .dropdown-panel a {
     font-size: 1rem;
     padding: 14px 20px;
     border-radius: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
-  
+
   .menu-controls {
     margin: 30px 0;
     justify-content: center;
@@ -1416,37 +1460,38 @@ section {
     width: 100%;
     padding: 0 20px;
   }
-  
+
   .control-btn {
     flex: 1;
     max-width: 120px;
     padding: 12px 20px;
     font-size: 0.9rem;
   }
-  
-  /* === MOBILE HERO === */
+
   .hero {
     min-height: 100vh;
     min-height: 100dvh;
     padding: 20px 15px;
   }
-  
+
   .hero-content {
     padding: 30px 20px;
     border-radius: 20px;
     width: 100%;
     max-width: 100%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
-  
+
   .hero-content p {
     font-size: 1.5rem;
     line-height: 1.4;
   }
-  
+
   .hero-content h1 {
     font-size: 0.95rem;
   }
-  
+
   .hero-btn {
     padding: 14px 30px;
     font-size: 1rem;
@@ -1454,28 +1499,26 @@ section {
     max-width: 280px;
     justify-content: center;
   }
-  
-  /* === MOBILE SECTIONS === */
+
   section {
     padding: 60px 15px;
   }
-  
+
   .section-title {
     font-size: 1.6rem;
     padding: 0 10px;
   }
-  
+
   .section-subtitle {
     font-size: 0.95rem;
     padding: 0 10px;
     margin-bottom: 30px;
   }
-  
-  /* === MOBILE CARDS === */
+
   .carousel-container {
     padding-bottom: 80px;
   }
-  
+
   .youth-projects-grid,
   .edu-projects-grid,
   .services-grid,
@@ -1483,7 +1526,7 @@ section {
     padding: 10px 5px 20px;
     gap: 15px;
   }
-  
+
   .youth-card,
   .edu-card,
   .service-card,
@@ -1495,18 +1538,18 @@ section {
     padding: 25px 20px;
     border-radius: 20px;
   }
-  
+
   .icon-wrapper {
     width: 80px;
     height: 80px;
     margin-bottom: 20px;
   }
-  
+
   .icon-wrapper.logo-crop {
     width: 100px;
     height: 100px;
   }
-  
+
   .youth-card h3,
   .edu-card h3,
   .service-card h3,
@@ -1515,113 +1558,108 @@ section {
     min-height: auto;
     margin-bottom: 12px;
   }
-  
+
   .youth-card p,
   .edu-card p,
   .service-card p,
-  .about-block p {
+  .about-block p,
+  .card-text-content {
     font-size: 0.9rem;
   }
-  
-  /* === MOBILE CAROUSEL BUTTONS === */
+
   .carousel-btn {
     width: 45px;
     height: 45px;
     font-size: 18px;
     bottom: 10px;
   }
-  
+
   .carousel-btn.left {
     left: calc(50% - 55px);
   }
-  
+
   .carousel-btn.right {
     right: calc(50% - 55px);
   }
-  
-  /* === MOBILE PHOTO DIVIDER === */
+
   .section-photo {
     padding: 20px 15px;
   }
-  
+
   .section-photo img {
     height: 35vh;
     min-height: 200px;
     border-radius: 16px;
   }
-  
-  /* === MOBILE GALLERY === */
+
   .masonry-grid {
     column-count: 1;
     column-gap: 15px;
   }
-  
+
   .masonry-item {
     margin-bottom: 15px;
     border-radius: 12px;
   }
-  
-  /* === MOBILE LIGHTBOX === */
+
   .lightbox-content {
     max-width: 95%;
     max-height: 95%;
     padding: 10px;
   }
-  
+
   .lightbox-content img {
     max-height: 70vh;
     border-radius: 8px;
   }
-  
+
   .close-btn {
     top: 10px;
     right: 15px;
     font-size: 35px;
   }
-  
+
   .nav-btn {
     padding: 12px;
     font-size: 18px;
   }
-  
+
   .nav-btn.prev {
     left: 10px;
   }
-  
+
   .nav-btn.next {
     right: 10px;
   }
-  
+
   .caption {
     font-size: 0.95rem;
     margin-top: 15px;
     padding: 0 10px;
   }
-  
-  /* === MOBILE BOOKS === */
+
   .books-container {
     gap: 20px;
   }
-  
+
   .book-card {
     width: 150px;
   }
-  
+
   .cover-wrapper {
     height: 210px;
     border-radius: 12px;
   }
-  
+
   .book-title {
     font-size: 0.85rem;
     margin-top: 12px;
   }
-  
-  /* === MOBILE REGISTER === */
+
   .register-section {
     padding: 60px 15px;
   }
-  
+
   .register-btn {
     padding: 16px 35px;
     font-size: 1rem;
@@ -1629,148 +1667,154 @@ section {
     max-width: 300px;
     justify-content: center;
   }
-  
-  /* === MOBILE DONATION === */
+
   .donation-simple {
     padding: 60px 15px;
   }
-  
+
   .iban-text {
     font-size: 0.85rem;
     padding: 15px 20px;
     max-width: 100%;
   }
-  
-  /* === MOBILE DEVELOPER === */
+
   .developer-section {
     padding: 60px 15px;
   }
-  
+
   .developer-card {
     padding: 25px 20px;
     border-radius: 20px;
   }
-  
+
   .developer-header {
     flex-direction: column;
     gap: 25px;
     text-align: center;
   }
-  
+
   .developer-photo {
     width: 120px;
     height: 120px;
   }
-  
+
   .developer-text {
     text-align: center;
   }
-  
+
   .developer-text h3 {
     font-size: 1.3rem;
   }
-  
+
   .developer-text p {
     font-size: 0.9rem;
   }
-  
+
   .developer-contact {
     flex-direction: column;
     gap: 20px;
     padding-top: 25px;
   }
-  
+
   .phone-number {
     font-size: 1rem;
   }
-  
+
   .social-links {
     flex-direction: column;
     gap: 10px;
   }
-  
-  /* === MOBILE FOOTER === */
+
   .footer {
     grid-template-columns: 1fr;
     gap: 40px;
     padding: 50px 20px;
     text-align: center;
   }
-  
+
   .footer-col {
     align-items: center;
   }
-  
+
   .footer-col h4 {
     margin-bottom: 20px;
   }
-  
+
   .social-icons {
     justify-content: center;
   }
-  
+
   .contact-details {
     align-items: center;
   }
-  
+
   .contact-details a {
     justify-content: center;
   }
-  
+
+  .map-iframe,
   .map-container iframe {
     height: 200px;
   }
-  
+
   .dejavu {
     max-width: 200px;
+  }
+
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
   }
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - SMALL MOBILE
+   SMALL MOBILE
    ============================================ */
 @media (max-width: 400px) {
   .hero-content p {
     font-size: 1.3rem;
   }
-  
+
   .hero-btn {
     padding: 12px 25px;
     font-size: 0.95rem;
   }
-  
+
   .section-title {
     font-size: 1.4rem;
   }
-  
+
   .youth-card,
   .edu-card,
   .service-card,
   .about-block {
     padding: 20px 15px;
   }
-  
+
   .book-card {
     width: 130px;
   }
-  
+
   .cover-wrapper {
     height: 180px;
   }
-  
+
   .nav a,
   .nav-link {
     font-size: 1.1rem;
     padding: 14px 15px;
   }
-  
+
   .dropdown-panel a {
     font-size: 0.95rem;
     padding: 12px 15px;
   }
 }
 
-/* === SCROLLBAR STYLING === */
+/* === SCROLLBAR === */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -1789,7 +1833,6 @@ section {
   background: var(--purple-light);
 }
 
-/* === SELECTION STYLING === */
 ::selection {
   background: var(--purple-accent);
   color: var(--white);
@@ -1798,12 +1841,14 @@ section {
 /* === FOCUS STATES === */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--purple-glow);
+  outline: 2px solid var(--gold-accent);
   outline-offset: 3px;
 }
 
-/* === PREVENT HORIZONTAL SCROLL === */
-html, body, #root, .container {
+html,
+body,
+#root,
+.container {
   max-width: 100vw;
   overflow-x: hidden;
 }

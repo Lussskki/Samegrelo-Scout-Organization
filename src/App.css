@@ -24,8 +24,8 @@
   --glass-border: rgba(139, 108, 196, 0.3);
   --glass-hover: rgba(75, 52, 112, 0.8);
   --header-height: 80px;
-  --font-display: 'Noto Sans Georgian', 'DejaVu Sans', sans-serif;
-  --font-body: 'Noto Sans Georgian', system-ui, sans-serif;
+  --font-display: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'DejaVu Sans', sans-serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'DejaVu Sans', sans-serif;
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -468,7 +468,6 @@ section[id] {
   border: 1px solid var(--glass-border);
   border-radius: 32px;
   box-shadow: var(--shadow-lg), var(--shadow-glow);
-  animation: heroFadeIn 0.6s ease-out;
 }
 
 @keyframes heroFadeIn {
@@ -487,10 +486,7 @@ section[id] {
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--white) 0%, var(--lavender) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--white);
 }
 
 .hero-content h1 {
@@ -529,8 +525,6 @@ section {
   padding: 80px 5%;
   background: transparent;
   margin: 0;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
 }
 
 .section-title {
@@ -598,7 +592,7 @@ section {
 .about-content {
   display: flex;
   gap: 24px;
-  overflow-x: auto;
+  overflow-x: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   padding: 20px 10px 30px;
@@ -761,8 +755,6 @@ section {
   width: 100%;
   padding: 40px 5%;
   background: transparent;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 400px;
 }
 
 .section-photo img {
@@ -1172,7 +1164,9 @@ section {
 
 .icons a {
   color: var(--white-muted);
-  font-size: 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
   transition: color var(--transition-fast);
 }
 

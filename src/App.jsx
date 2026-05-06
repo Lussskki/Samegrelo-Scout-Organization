@@ -100,7 +100,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
   }, [menuOpen]);
 
   useEffect(() => {
@@ -138,6 +138,12 @@ export default function App() {
           title: 'პროფორიენტაციის გზამკლევი მასწავლებლისთვის',
           cover: '/assets/books/4.png',
           link: '/assets/books/გზამკვლევი.პროფორიენტაცია2.pdf'
+        },
+        {
+          id: 4,
+          title: 'გზამკვლევი: როგორ ჩავერთო სოფლის ტურიზმში',
+          cover: '/assets/books/1.png',
+          link: '/assets/books/გზამკლევი. როგორ ჩავერთო სოფლის ტურიზმში..pdf'
         }
       ],
       eduTitle: 'განხორციელებული პროექტები',
@@ -375,6 +381,12 @@ export default function App() {
           title: 'Career Guidance Guide for Teachers',
           cover: '/assets/books/4.png',
           link: '/assets/books/გზამკვლევი.პროფორიენტაცია2.pdf'
+        },
+        {
+          id: 4,
+          title: 'Guide: How to Get Involved in Rural Tourism',
+          cover: '/assets/books/1.png',
+          link: '/assets/books/გზამკლევი. როგორ ჩავერთო სოფლის ტურიზმში..pdf'
         }
       ],
       eduTitle: 'Completed Projects',
@@ -695,7 +707,7 @@ export default function App() {
           src="/assets/photos/first.jpg" 
           alt="Scouts" 
           className="hero-img-tag" 
-          fetchpriority="high"
+          fetchPriority="high"
           width="1920" 
           height="1080"
         />
@@ -952,15 +964,15 @@ export default function App() {
           </div>
           <div className="developer-contact">
             <div className="phone-number">
-              <i className="fas fa-phone-alt"></i>
+              <span aria-hidden="true">Tel.</span>
               <span>+995 557 463 444</span>
             </div>
             <div className="social-links">
               <span>{langContent.developerContact}</span>
               <div className="icons">
-                <a href="https://www.linkedin.com/in/lukaguledani/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
-                <a href="https://x.com/UnknownPass7" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
-                <a href="https://github.com/Lussskki" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/lukaguledani/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://x.com/UnknownPass7" target="_blank" rel="noopener noreferrer">X</a>
+                <a href="https://github.com/Lussskki" target="_blank" rel="noopener noreferrer">GitHub</a>
               </div>
             </div>
           </div>

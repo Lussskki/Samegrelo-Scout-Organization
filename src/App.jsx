@@ -923,13 +923,23 @@ export default function App() {
       {/* LIGHTBOX */}
       {selectedImgIndex !== null && (
         <div className="lightbox" onClick={() => setSelectedImgIndex(null)}>
-          <button className="close-btn">&times;</button>
-          <button className="nav-btn prev" onClick={prevPhoto}>&#10094;</button>
+          <button
+            type="button"
+            className="close-btn"
+            aria-label="Close gallery"
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImgIndex(null);
+            }}
+          >
+            &times;
+          </button>
+          <button type="button" className="nav-btn prev" aria-label="Previous photo" onClick={prevPhoto}>&#10094;</button>
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
             <img src={galleryPhotos[selectedImgIndex].src} alt="Selected" />
             <p className="caption">{galleryPhotos[selectedImgIndex].alt}</p>
           </div>
-          <button className="nav-btn next" onClick={nextPhoto}>&#10095;</button>
+          <button type="button" className="nav-btn next" aria-label="Next photo" onClick={nextPhoto}>&#10095;</button>
         </div>
       )}
 

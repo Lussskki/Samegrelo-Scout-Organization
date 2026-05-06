@@ -986,7 +986,8 @@ section {
   border: none;
   cursor: pointer;
   transition: transform var(--transition-fast);
-  z-index: 10;
+  z-index: 2010;
+  touch-action: manipulation;
 }
 
 .close-btn:hover {
@@ -1005,6 +1006,13 @@ section {
   cursor: pointer;
   border-radius: 50%;
   transition: all var(--transition-fast);
+  z-index: 2010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  touch-action: manipulation;
 }
 
 .nav-btn:hover {
@@ -1614,16 +1622,20 @@ section {
   }
 
   .nav-btn {
-    padding: 12px;
+    padding: 0;
     font-size: 18px;
+    width: 48px;
+    height: 48px;
+    background: rgba(45, 31, 78, 0.78);
+    border-color: rgba(255, 255, 255, 0.25);
   }
 
   .nav-btn.prev {
-    left: 10px;
+    left: max(10px, env(safe-area-inset-left));
   }
 
   .nav-btn.next {
-    right: 10px;
+    right: max(10px, env(safe-area-inset-right));
   }
 
   .caption {

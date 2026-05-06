@@ -612,9 +612,19 @@ export default function App() {
   };
 
   const toggleDropdown = (dropdown) => {
+    if (canUseHoverMenu() && !menuOpen) return;
     setAboutOpen((current) => (dropdown === 'about' ? !current : false));
     setServicesOpen((current) => (dropdown === 'services' ? !current : false));
     setContactOpen((current) => (dropdown === 'contact' ? !current : false));
+  };
+
+  const copyIban = async () => {
+    try {
+      await navigator.clipboard.writeText('GE09BG0000000601167751');
+      alert('Copied!');
+    } catch {
+      alert('Could not copy IBAN automatically.');
+    }
   };
 
   return (
@@ -914,12 +924,12 @@ export default function App() {
         <h2 className="section-subtitle">{langContent.bookSubTitle}</h2>
         <div className="books-container">
           {langContent.books.map((book) => (
-            <div key={book.id} className="book-card" onClick={() => window.open(book.link, '_blank')}>
+            <a key={book.id} className="book-card" href={book.link} target="_blank" rel="noopener noreferrer">
               <div className="cover-wrapper">
                 <img src={book.cover} alt={book.title} className="book-cover" loading="lazy" width="220" height="300" />
               </div>
               <p className="book-title">{book.title}</p>
-            </div>
+            </a>
           ))}
         </div>
       </section>
@@ -972,10 +982,7 @@ export default function App() {
           <p className="iban-text">{langContent.donationText}</p>
           <button 
             className="copy-btn-simple" 
-            onClick={() => {
-              navigator.clipboard.writeText('GE09BG0000000601167751');
-              alert('Copied!');
-            }}
+            onClick={copyIban}
           >
             Copy IBAN
           </button>

@@ -82,6 +82,7 @@ export default function App() {
   const [lang, setLang] = useState('ქარ');
   const [theme, setTheme] = useState('day');
   const [selectedImgIndex, setSelectedImgIndex] = useState(null);
+  const [showFullPage, setShowFullPage] = useState(false);
 
   const nextPhoto = (e) => {
     e.stopPropagation();
@@ -109,6 +110,11 @@ export default function App() {
   useEffect(() => {
     document.body.className = theme === 'day' ? 'day' : 'night';
   }, [theme]);
+
+  useEffect(() => {
+    const loadPage = window.setTimeout(() => setShowFullPage(true), 1200);
+    return () => window.clearTimeout(loadPage);
+  }, []);
 
   // Language content
   const content = {
@@ -633,7 +639,7 @@ export default function App() {
       <header className="header">
         <div className="logo-group">
           <a href="#hero" onClick={closeMobileMenu}>
-            <img src="/assets/icon.ico" alt="Logo" className="logo-img" width="40" height="40" />
+            <img src="/assets/icon-64.png" alt="Logo" className="logo-img" width="40" height="40" />
             <img src="assets/mountain-logo.ico" className="logo-sec-img" alt="Mountain Logo" width="45" height="45" />
           </a>
         </div>
@@ -734,14 +740,6 @@ export default function App() {
 
       {/* HERO */}
       <section id="hero" className="hero">
-        <img 
-          src="/assets/photos/first.jpg" 
-          alt="Scouts" 
-          className="hero-img-tag" 
-          fetchPriority="high"
-          width="1920" 
-          height="1080"
-        />
         <div className="hero-content">
           <p>{langContent.heroText}</p>
           <h1>{langContent.heroTitle}</h1>
@@ -750,6 +748,9 @@ export default function App() {
           </a>
         </div>
       </section>
+
+      {showFullPage && (
+        <>
 
       {/* მიმდინარე პროექტები */}
       <section id="target" className="youth-projects-section">
@@ -1061,6 +1062,8 @@ export default function App() {
           </div>
         </div>
       </footer>
+        </>
+      )}
 
       <BackToTop />
     </div>

@@ -440,6 +440,7 @@ section[id] {
   padding: 40px 5%;
   margin: 0;
   content-visibility: visible;
+  background: #0d0a1a url('/assets/photos/first.jpg') center / cover no-repeat;
 }
 
 .hero-img-tag {
@@ -592,7 +593,7 @@ section {
 .about-content {
   display: flex;
   gap: 24px;
-  overflow-x: auto;
+  overflow-x: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   padding: 20px 10px 30px;

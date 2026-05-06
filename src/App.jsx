@@ -101,6 +101,9 @@ export default function App() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [menuOpen]);
 
   useEffect(() => {
@@ -599,43 +602,61 @@ export default function App() {
     setContactOpen(false);
   };
 
+  const closeMobileMenu = () => {
+    setMenuOpen(false);
+    closeAllDropdowns();
+  };
+
+  const canUseHoverMenu = () => {
+    return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  };
+
+  const toggleDropdown = (dropdown) => {
+    setAboutOpen((current) => (dropdown === 'about' ? !current : false));
+    setServicesOpen((current) => (dropdown === 'services' ? !current : false));
+    setContactOpen((current) => (dropdown === 'contact' ? !current : false));
+  };
+
   return (
     <div className="container">
       {/* HEADER */}
       <header className="header">
         <div className="logo-group">
-          <a href="#hero" onClick={() => setMenuOpen(false)}>
+          <a href="#hero" onClick={closeMobileMenu}>
             <img src="/assets/icon.ico" alt="Logo" className="logo-img" width="40" height="40" />
             <img src="assets/mountain-logo.ico" className="logo-sec-img" alt="Mountain Logo" width="45" height="45" />
           </a>
         </div>
 
-        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        <button type="button" className="hamburger" aria-label="Toggle navigation" onClick={() => {
+          if (menuOpen) closeAllDropdowns();
+          setMenuOpen((current) => !current);
+        }}>
           {menuOpen ? '✕' : '☰'}
-        </div>
+        </button>
 
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
-          <a href="#hero" onClick={() => setMenuOpen(false)}>
+          <a href="#hero" onClick={closeMobileMenu}>
             {langContent.home}
           </a>
 
           {/* ABOUT US DROPDOWN */}
           <div 
             className={`nav-dropdown ${aboutOpen ? 'open' : ''}`}
-            onMouseEnter={() => { closeAllDropdowns(); setAboutOpen(true); }}
-            onMouseLeave={() => setAboutOpen(false)}
+            onMouseEnter={() => { if (canUseHoverMenu()) { closeAllDropdowns(); setAboutOpen(true); } }}
+            onMouseLeave={() => { if (canUseHoverMenu()) setAboutOpen(false); }}
           >
-            <button className="nav-link">
+            <button type="button" className="nav-link" aria-expanded={aboutOpen} onClick={() => toggleDropdown('about')}>
               {langContent.join}
               <span className={`dropdown-arrow ${aboutOpen ? 'rotate' : ''}`}>▾</span>
             </button>
             {aboutOpen && (
               <div className="dropdown-panel">
-                <a href="#who" onClick={() => { setMenuOpen(false); setAboutOpen(false); }}>{langContent.whoTitle}</a>
-                <a href="#history" onClick={() => { setMenuOpen(false); setAboutOpen(false); }}>{langContent.histTitle}</a>
-                <a href="#mission" onClick={() => { setMenuOpen(false); setAboutOpen(false); }}>{langContent.missTitle}</a>
-                <a href="#become" onClick={() => { setMenuOpen(false); setAboutOpen(false); }}>{langContent.howTitle}</a>
-                <a href="#books" onClick={() => { setMenuOpen(false); setAboutOpen(false); }}>{langContent.bookTitle}</a>
+                <a href="#who" onClick={closeMobileMenu}>{langContent.whoTitle}</a>
+                <a href="#history" onClick={closeMobileMenu}>{langContent.histTitle}</a>
+                <a href="#mission" onClick={closeMobileMenu}>{langContent.missTitle}</a>
+                <a href="#become" onClick={closeMobileMenu}>{langContent.howTitle}</a>
+                <a href="#books" onClick={closeMobileMenu}>{langContent.bookTitle}</a>
               </div>
             )}
           </div>
@@ -643,49 +664,49 @@ export default function App() {
           {/* SERVICES DROPDOWN */}
           <div 
             className={`nav-dropdown ${servicesOpen ? 'open' : ''}`}
-            onMouseEnter={() => { closeAllDropdowns(); setServicesOpen(true); }}
-            onMouseLeave={() => setServicesOpen(false)}
+            onMouseEnter={() => { if (canUseHoverMenu()) { closeAllDropdowns(); setServicesOpen(true); } }}
+            onMouseLeave={() => { if (canUseHoverMenu()) setServicesOpen(false); }}
           >
-            <button type="button" className="nav-link">
+            <button type="button" className="nav-link" aria-expanded={servicesOpen} onClick={() => toggleDropdown('services')}>
               {langContent.services}
               <span className={`dropdown-arrow ${servicesOpen ? 'rotate' : ''}`}>▾</span>
             </button>
             {servicesOpen && (
               <div className="dropdown-panel">
-                <a href="#service-school" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>{langContent.service1}</a>
-                <a href="#service-camps" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>{langContent.service2}</a>
-                <a href="#service-schools" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>{langContent.service3}</a>
-                <a href="#service-eco" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>{langContent.service4}</a>
-                <a href="#service-venue" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>{langContent.service5}</a>
-                <a href="#service-event" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>{langContent.service6}</a>
-                <a href="#service-international" onClick={() => { setMenuOpen(false); setServicesOpen(false); }}>{langContent.service7}</a>
+                <a href="#service-school" onClick={closeMobileMenu}>{langContent.service1}</a>
+                <a href="#service-camps" onClick={closeMobileMenu}>{langContent.service2}</a>
+                <a href="#service-schools" onClick={closeMobileMenu}>{langContent.service3}</a>
+                <a href="#service-eco" onClick={closeMobileMenu}>{langContent.service4}</a>
+                <a href="#service-venue" onClick={closeMobileMenu}>{langContent.service5}</a>
+                <a href="#service-event" onClick={closeMobileMenu}>{langContent.service6}</a>
+                <a href="#service-international" onClick={closeMobileMenu}>{langContent.service7}</a>
               </div>
             )}
           </div>
 
-          <a href="#target" onClick={() => setMenuOpen(false)}>{langContent.youthTitle}</a>
-          <a href="#education" onClick={() => setMenuOpen(false)}>{langContent.eduTitle}</a>
-          <a href="#gallery" onClick={() => setMenuOpen(false)}>{langContent.sponsors}</a>
-          <a href="#donation" onClick={() => setMenuOpen(false)}>{langContent.donation}</a>
+          <a href="#target" onClick={closeMobileMenu}>{langContent.youthTitle}</a>
+          <a href="#education" onClick={closeMobileMenu}>{langContent.eduTitle}</a>
+          <a href="#gallery" onClick={closeMobileMenu}>{langContent.sponsors}</a>
+          <a href="#donation" onClick={closeMobileMenu}>{langContent.donation}</a>
 
           {/* CONTACT DROPDOWN */}
           <div 
             className={`nav-dropdown ${contactOpen ? 'open' : ''}`}
-            onMouseEnter={() => { closeAllDropdowns(); setContactOpen(true); }}
-            onMouseLeave={() => setContactOpen(false)}
+            onMouseEnter={() => { if (canUseHoverMenu()) { closeAllDropdowns(); setContactOpen(true); } }}
+            onMouseLeave={() => { if (canUseHoverMenu()) setContactOpen(false); }}
           >
-            <button type="button" className="nav-link">
+            <button type="button" className="nav-link" aria-expanded={contactOpen} onClick={() => toggleDropdown('contact')}>
               {langContent.contact}
               <span className={`dropdown-arrow ${contactOpen ? 'rotate' : ''}`}>▾</span>
             </button>
             {contactOpen && (
               <div className="dropdown-panel">
-                <a href="#contact" onClick={() => { setMenuOpen(false); setContactOpen(false); }}>{langContent.socialMedia}</a>
-                <a href="#location" onClick={() => { setMenuOpen(false); setContactOpen(false); }}>{langContent.location}</a>
-                <a href="#register" onClick={() => { setMenuOpen(false); setContactOpen(false); }}>{langContent.register}</a>
-                <a href="#donation" onClick={() => { setMenuOpen(false); setContactOpen(false); }}>{langContent.donation}</a>
-                <a href="#developer" onClick={() => { setMenuOpen(false); setContactOpen(false); }}>{langContent.developer}</a>
-                <a href="#partner" onClick={() => { setMenuOpen(false); setContactOpen(false); }}>{langContent.partner}</a>
+                <a href="#contact" onClick={closeMobileMenu}>{langContent.socialMedia}</a>
+                <a href="#location" onClick={closeMobileMenu}>{langContent.location}</a>
+                <a href="#register" onClick={closeMobileMenu}>{langContent.register}</a>
+                <a href="#donation" onClick={closeMobileMenu}>{langContent.donation}</a>
+                <a href="#developer" onClick={closeMobileMenu}>{langContent.developer}</a>
+                <a href="#partner" onClick={closeMobileMenu}>{langContent.partner}</a>
               </div>
             )}
           </div>

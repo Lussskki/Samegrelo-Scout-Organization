@@ -738,6 +738,7 @@ export default function App() {
         </nav>
       </header>
 
+      <main>
       {/* HERO */}
       <section id="hero" className="hero">
         <div className="hero-content">
@@ -1064,6 +1065,7 @@ export default function App() {
       </footer>
         </>
       )}
+      </main>
 
       <BackToTop />
     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { translations } from '../translations';
-import { ALL_PHOTOS } from '../photos';
+import { translations } from '../Language/translations';
+import { ALL_PHOTOS } from './photos';
 
 export function FullGallery({ lang }) {
     const [selectedYear, setSelectedYear] = useState('All');

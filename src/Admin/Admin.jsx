@@ -1,6 +1,15 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { defaultSiteContent, loadSiteContent, saveSiteContent } from '../siteContent'
+import {
+  buildTranslationDrafts,
+  parseTranslationValue,
+} from '../Content/siteContentSchema'
+import {
+  fetchSiteContent,
+  loadSiteContent,
+  saveSiteContent,
+  uploadSiteImage,
+} from '../Content/siteContent'
 import './Admin.css'
 
 const AUTH_KEY = 'samegrelo-admin-authenticated'
@@ -12,6 +21,7 @@ const ADMIN_ACCOUNT = {
 const sections = [
   { id: 'dashboard', label: 'მიმოხილვა' },
   { id: 'hero', label: 'მთავარი ბანერი' },
+  { id: 'texts', label: 'საიტის ტექსტები' },
   { id: 'gallery', label: 'გალერეა' },
   { id: 'donation', label: 'დონაცია' },
   { id: 'contact', label: 'კონტაქტი' },
@@ -36,31 +46,54 @@ function emptyPhoto() {
   }
 }
 
+function createEmptyTextEntry() {
+  return {
+    key: '',
+    ka: '',
+    en: '',
+  }
+}
+
 export function Admin() {
-  const didMount = useRef(false)
   const [isAuthenticated, setIsAuthenticated] = useState(loadAdminSession)
   const [loginForm, setLoginForm] = useState({ username: '', password: '' })
   const [loginError, setLoginError] = useState('')
   const [activeSection, setActiveSection] = useState('dashboard')
   const [content, setContent] = useState(loadSiteContent)
+  const [translationDrafts, setTranslationDrafts] = useState(() => buildTranslationDrafts(loadSiteContent().translations))
+  const [newEntry, setNewEntry] = useState(createEmptyTextEntry)
   const [status, setStatus] = useState('')
+  const [textFilter, setTextFilter] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
+  const [isSaving, setIsSaving] = useState(false)
+  const [uploadingPhotoId, setUploadingPhotoId] = useState(null)
+
+  useEffect(() => {
+    fetchSiteContent({ fallbackToDefault: false })
+      .then((nextContent) => {
+        setContent(nextContent)
+        setTranslationDrafts(buildTranslationDrafts(nextContent.translations))
+      })
+      .catch((error) => {
+        setStatus(`მონაცემთა ბაზასთან კავშირი ვერ მოხერხდა: ${error.message}`)
+      })
+      .finally(() => setIsLoading(false))
+  }, [])
 
   const galleryCount = content.gallery.filter((photo) => photo.src).length
 
+  const textKeys = useMemo(() => {
+    const keys = new Set([
+      ...Object.keys(content.translations.ka ?? {}),
+      ...Object.keys(content.translations.en ?? {}),
+    ])
+
+    return [...keys]
+      .filter((key) => key.toLowerCase().includes(textFilter.trim().toLowerCase()))
+      .sort((left, right) => left.localeCompare(right))
+  }, [content.translations, textFilter])
+
   const jsonPreview = useMemo(() => JSON.stringify(content, null, 2), [content])
-
-  useEffect(() => {
-    if (!didMount.current) {
-      didMount.current = true
-      return
-    }
-
-    saveSiteContent(content)
-    setStatus('ავტომატურად შენახულია')
-    const statusTimer = window.setTimeout(() => setStatus(''), 1200)
-
-    return () => window.clearTimeout(statusTimer)
-  }, [content])
 
   const handleLogin = (event) => {
     event.preventDefault()
@@ -82,6 +115,11 @@ export function Admin() {
   const handleLogout = () => {
     sessionStorage.removeItem(AUTH_KEY)
     setIsAuthenticated(false)
+  }
+
+  const setTimedStatus = (message) => {
+    setStatus(message)
+    window.setTimeout(() => setStatus(''), 2200)
   }
 
   const updateGroup = (group, field, value) => {
@@ -117,16 +155,148 @@ export function Admin() {
     }))
   }
 
-  const saveContent = () => {
-    saveSiteContent(content)
-    setStatus('შენახულია')
-    window.setTimeout(() => setStatus(''), 1800)
+  const uploadPhoto = async (id, file) => {
+    if (!file) {
+      return
+    }
+
+    try {
+      setUploadingPhotoId(id)
+      const { src } = await uploadSiteImage(file)
+      updatePhoto(id, 'src', src)
+      setTimedStatus('ფოტო აიტვირთა, შესანახად დააჭირე შენახვას')
+    } catch (error) {
+      setTimedStatus(`ფოტოს ატვირთვა ვერ შესრულდა: ${error.message}`)
+    } finally {
+      setUploadingPhotoId(null)
+    }
   }
 
-  const resetContent = () => {
-    setContent(defaultSiteContent)
-    setStatus('გასუფთავდა')
-    window.setTimeout(() => setStatus(''), 1800)
+  const updateDraft = (lang, key, value) => {
+    setTranslationDrafts((current) => ({
+      ...current,
+      [`${lang}:${key}`]: value,
+    }))
+  }
+
+  const addTextEntry = () => {
+    const normalizedKey = newEntry.key.trim()
+
+    if (!normalizedKey) {
+      setTimedStatus('ახალი ტექსტისთვის key მიუთითე')
+      return
+    }
+
+    if (content.translations.ka[normalizedKey] !== undefined || content.translations.en[normalizedKey] !== undefined) {
+      setTimedStatus('ასეთი key უკვე არსებობს')
+      return
+    }
+
+    setContent((current) => ({
+      ...current,
+      translations: {
+        ka: {
+          ...current.translations.ka,
+          [normalizedKey]: '',
+        },
+        en: {
+          ...current.translations.en,
+          [normalizedKey]: '',
+        },
+      },
+    }))
+
+    setTranslationDrafts((current) => ({
+      ...current,
+      [`ka:${normalizedKey}`]: newEntry.ka,
+      [`en:${normalizedKey}`]: newEntry.en,
+    }))
+
+    setNewEntry(createEmptyTextEntry())
+    setTimedStatus('ახალი ტექსტი დაემატა')
+  }
+
+  const removeTextEntry = (key) => {
+    setContent((current) => {
+      const nextKa = { ...current.translations.ka }
+      const nextEn = { ...current.translations.en }
+      delete nextKa[key]
+      delete nextEn[key]
+
+      return {
+        ...current,
+        translations: {
+          ka: nextKa,
+          en: nextEn,
+        },
+      }
+    })
+
+    setTranslationDrafts((current) => {
+      const nextDrafts = { ...current }
+      delete nextDrafts[`ka:${key}`]
+      delete nextDrafts[`en:${key}`]
+      return nextDrafts
+    })
+
+    setTimedStatus('ტექსტი წაიშალა')
+  }
+
+  const buildContentForSave = () => {
+    const nextKa = {}
+    const nextEn = {}
+    const allKeys = new Set([
+      ...Object.keys(content.translations.ka ?? {}),
+      ...Object.keys(content.translations.en ?? {}),
+    ])
+
+    for (const key of allKeys) {
+      nextKa[key] = parseTranslationValue(
+        translationDrafts[`ka:${key}`] ?? '',
+        content.translations.ka[key],
+      )
+      nextEn[key] = parseTranslationValue(
+        translationDrafts[`en:${key}`] ?? '',
+        content.translations.en[key],
+      )
+    }
+
+    return {
+      ...content,
+      translations: {
+        ka: nextKa,
+        en: nextEn,
+      },
+    }
+  }
+
+  const persistContent = async () => {
+    try {
+      setIsSaving(true)
+      const nextContent = buildContentForSave()
+      const savedContent = await saveSiteContent(nextContent)
+      setContent(savedContent)
+      setTranslationDrafts(buildTranslationDrafts(savedContent.translations))
+      setTimedStatus('მონაცემები შენახულია')
+    } catch (error) {
+      setTimedStatus(`შენახვა ვერ შესრულდა: ${error.message}`)
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
+  const handleReset = async () => {
+    try {
+      setIsSaving(true)
+      const refreshedContent = await fetchSiteContent()
+      setContent(refreshedContent)
+      setTranslationDrafts(buildTranslationDrafts(refreshedContent.translations))
+      setTimedStatus('მონაცემები ბაზიდან განახლდა')
+    } catch (error) {
+      setTimedStatus(`განახლება ვერ შესრულდა: ${error.message}`)
+    } finally {
+      setIsSaving(false)
+    }
   }
 
   if (!isAuthenticated) {
@@ -212,7 +382,7 @@ export function Admin() {
       <div className="admin-workspace">
         <header className="admin-header">
           <div>
-            <p>ადმინის როუტი</p>
+            <p>ადმინის სივრცე</p>
             <h1>საიტის მართვა</h1>
           </div>
           <div className="admin-actions">
@@ -220,16 +390,25 @@ export function Admin() {
             <button className="admin-secondary" type="button" onClick={handleLogout}>
               გამოსვლა
             </button>
-            <button className="admin-secondary" type="button" onClick={resetContent}>
-              გასუფთავება
+            <button className="admin-secondary" type="button" onClick={handleReset} disabled={isSaving}>
+              განახლება
             </button>
-            <button className="admin-primary" type="button" onClick={saveContent}>
-              შენახვა
+            <button className="admin-primary" type="button" onClick={persistContent} disabled={isSaving}>
+              {isSaving ? 'ინახება...' : 'შენახვა'}
             </button>
           </div>
         </header>
 
-        {activeSection === 'dashboard' && (
+        {isLoading && (
+          <section className="admin-section">
+            <div className="admin-card">
+              <h2>იტვირთება</h2>
+              <p>MongoDB-დან კონტენტი იტვირთება...</p>
+            </div>
+          </section>
+        )}
+
+        {!isLoading && activeSection === 'dashboard' && (
           <section className="admin-section">
             <div className="admin-grid">
               <article className="admin-stat">
@@ -241,23 +420,23 @@ export function Admin() {
                 <strong>{galleryCount} ფოტო</strong>
               </article>
               <article className="admin-stat">
-                <span>კონტაქტი</span>
-                <strong>{content.contact.email}</strong>
+                <span>ტექსტები</span>
+                <strong>{textKeys.length} key</strong>
               </article>
             </div>
 
             <div className="admin-card">
               <h2>როგორ მუშაობს</h2>
               <p>
-                შეავსე ველები, დააჭირე შენახვას და დაბრუნდი საიტზე. ამ ეტაპზე ცვლილებები ინახება
-                ბრაუზერის localStorage-ში, ამიტომ შეგიძლია ტექსტები და გალერეის ბმულები კოდის
-                გახსნის გარეშე მართო.
+                ახლა ტექსტები, კონტაქტი, დონაცია და გალერეა MongoDB-ში ინახება.
+                ტექსტების სექციაში შეგიძლია ახალი key დაამატო, არსებულები შეცვალო ან წაშალო,
+                მერე კი ერთი ღილაკით შეინახო ყველაფერი.
               </p>
             </div>
           </section>
         )}
 
-        {activeSection === 'hero' && (
+        {!isLoading && activeSection === 'hero' && (
           <section className="admin-section">
             <div className="admin-card">
               <h2>მთავარი ბანერი</h2>
@@ -287,7 +466,88 @@ export function Admin() {
           </section>
         )}
 
-        {activeSection === 'gallery' && (
+        {!isLoading && activeSection === 'texts' && (
+          <section className="admin-section">
+            <div className="admin-card">
+              <div className="admin-card-header">
+                <h2>საიტის ტექსტები</h2>
+                <input
+                  className="admin-inline-input"
+                  value={textFilter}
+                  onChange={(event) => setTextFilter(event.target.value)}
+                  placeholder="ძებნა key-ით"
+                />
+              </div>
+
+              <div className="admin-add-text">
+                <label>
+                  ახალი key
+                  <input
+                    value={newEntry.key}
+                    onChange={(event) => setNewEntry((current) => ({ ...current, key: event.target.value }))}
+                    placeholder="exampleKey"
+                  />
+                </label>
+                <label>
+                  ქართული
+                  <textarea
+                    rows="2"
+                    value={newEntry.ka}
+                    onChange={(event) => setNewEntry((current) => ({ ...current, ka: event.target.value }))}
+                  />
+                </label>
+                <label>
+                  English
+                  <textarea
+                    rows="2"
+                    value={newEntry.en}
+                    onChange={(event) => setNewEntry((current) => ({ ...current, en: event.target.value }))}
+                  />
+                </label>
+                <button className="admin-secondary" type="button" onClick={addTextEntry}>
+                  ტექსტის დამატება
+                </button>
+              </div>
+
+              {textKeys.length === 0 && (
+                <p className="admin-empty">ამ ფილტრით ტექსტი ვერ მოიძებნა.</p>
+              )}
+
+              <div className="admin-text-list">
+                {textKeys.map((key) => (
+                  <article className="admin-text-editor" key={key}>
+                    <div className="admin-text-head">
+                      <strong>{key}</strong>
+                      <button className="admin-danger" type="button" onClick={() => removeTextEntry(key)}>
+                        წაშლა
+                      </button>
+                    </div>
+                    <div className="admin-two-col">
+                      <label>
+                        ქართული
+                        <textarea
+                          rows="5"
+                          value={translationDrafts[`ka:${key}`] ?? ''}
+                          onChange={(event) => updateDraft('ka', key, event.target.value)}
+                        />
+                      </label>
+                      <label>
+                        English
+                        <textarea
+                          rows="5"
+                          value={translationDrafts[`en:${key}`] ?? ''}
+                          onChange={(event) => updateDraft('en', key, event.target.value)}
+                        />
+                      </label>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {!isLoading && activeSection === 'gallery' && (
           <section className="admin-section">
             <div className="admin-card">
               <div className="admin-card-header">
@@ -315,6 +575,20 @@ export function Admin() {
                           onChange={(event) => updatePhoto(photo.id, 'src', event.target.value)}
                         />
                       </label>
+                      <label>
+                        ფოტო ფაილიდან
+                        <input
+                          type="file"
+                          accept="image/png,image/jpeg,image/webp,image/gif"
+                          onChange={(event) => {
+                            uploadPhoto(photo.id, event.target.files?.[0])
+                            event.target.value = ''
+                          }}
+                        />
+                      </label>
+                      {uploadingPhotoId === photo.id && (
+                        <p className="admin-upload-status">ფოტო იტვირთება...</p>
+                      )}
                       <label>
                         სათაური
                         <input
@@ -349,7 +623,7 @@ export function Admin() {
           </section>
         )}
 
-        {activeSection === 'donation' && (
+        {!isLoading && activeSection === 'donation' && (
           <section className="admin-section">
             <div className="admin-card">
               <h2>დონაცია</h2>
@@ -372,7 +646,7 @@ export function Admin() {
           </section>
         )}
 
-        {activeSection === 'contact' && (
+        {!isLoading && activeSection === 'contact' && (
           <section className="admin-section">
             <div className="admin-card">
               <h2>კონტაქტი</h2>
@@ -401,7 +675,7 @@ export function Admin() {
           </section>
         )}
 
-        {activeSection === 'data' && (
+        {!isLoading && activeSection === 'data' && (
           <section className="admin-section">
             <div className="admin-card">
               <h2>მონაცემების ნახვა</h2>

@@ -64,20 +64,21 @@ export function Admin() {
   const [newEntry, setNewEntry] = useState(createEmptyTextEntry)
   const [status, setStatus] = useState('')
   const [textFilter, setTextFilter] = useState('')
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
   const [uploadingPhotoId, setUploadingPhotoId] = useState(null)
 
   useEffect(() => {
+    setStatus('MongoDB-დან განახლებული კონტენტი იტვირთება...')
     fetchSiteContent({ fallbackToDefault: false })
       .then((nextContent) => {
         setContent(nextContent)
         setTranslationDrafts(buildTranslationDrafts(nextContent.translations))
+        setStatus('')
       })
       .catch((error) => {
         setStatus(`მონაცემთა ბაზასთან კავშირი ვერ მოხერხდა: ${error.message}`)
       })
-      .finally(() => setIsLoading(false))
   }, [])
 
   const galleryCount = content.gallery.filter((photo) => photo.src).length

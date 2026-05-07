@@ -6,11 +6,16 @@ import {
 function sendJson(response, statusCode, body) {
   response.statusCode = statusCode
   response.setHeader('Content-Type', 'application/json')
+  response.setHeader('Cache-Control', 'no-store, max-age=0')
   response.end(JSON.stringify(body))
 }
 
 function readRequestBody(request) {
   if (request.body) {
+    if (typeof request.body === 'string') {
+      return Promise.resolve(JSON.parse(request.body))
+    }
+
     return Promise.resolve(request.body)
   }
 

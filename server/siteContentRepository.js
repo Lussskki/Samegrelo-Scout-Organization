@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient, ServerApiVersion } from 'mongodb'
 import { defaultSiteContent, normalizeSiteContent } from '../src/Content/siteContentSchema.js'
 
 const CONTENT_ID = 'primary'
@@ -11,7 +11,7 @@ function getMongoUri() {
     throw new Error('Missing MONGODB_URI in .env')
   }
 
-  return process.env.MONGODB_URI
+  return process.env.MONGODB_URI.trim()
 }
 
 function getDatabaseName() {
@@ -20,7 +20,17 @@ function getDatabaseName() {
 
 async function getCollection() {
   if (!clientPromise) {
-    const client = new MongoClient(getMongoUri())
+    const client = new MongoClient(getMongoUri(), {
+      connectTimeoutMS: 10000,
+      maxPoolSize: 1,
+      serverApi: {
+        version: ServerApiVersion.v1,
+        strict: false,
+        deprecationErrors: false,
+      },
+      serverSelectionTimeoutMS: 10000,
+      tls: true,
+    })
     clientPromise = client.connect()
   }
 

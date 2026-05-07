@@ -7,7 +7,15 @@ import {
 async function parseResponse(response) {
   if (!response.ok) {
     const message = await response.text()
-    throw new Error(message || 'Request failed')
+    let parsedMessage
+
+    try {
+      parsedMessage = JSON.parse(message)
+    } catch {
+      parsedMessage = null
+    }
+
+    throw new Error(parsedMessage?.message || message || 'Request failed')
   }
 
   return response.json()
@@ -19,7 +27,7 @@ export function loadSiteContent() {
 
 export async function fetchSiteContent({ fallbackToDefault = true } = {}) {
   try {
-    const response = await fetch('/api/site-content')
+    const response = await fetch('/api/site-content', { cache: 'no-store' })
     const content = await parseResponse(response)
     return normalizeSiteContent(content)
   } catch (error) {
@@ -34,6 +42,7 @@ export async function fetchSiteContent({ fallbackToDefault = true } = {}) {
 export async function saveSiteContent(content) {
   const response = await fetch('/api/site-content', {
     method: 'PUT',
+    cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
     },

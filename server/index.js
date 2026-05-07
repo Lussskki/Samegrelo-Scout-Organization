@@ -41,6 +41,7 @@ function slugifyFileName(fileName) {
 
 app.get('/api/site-content', async (_request, response) => {
   try {
+    response.set('Cache-Control', 'no-store, max-age=0')
     response.json(await getSiteContent())
   } catch (error) {
     response.status(500).send(error.message)
@@ -49,6 +50,7 @@ app.get('/api/site-content', async (_request, response) => {
 
 app.put('/api/site-content', async (request, response) => {
   try {
+    response.set('Cache-Control', 'no-store, max-age=0')
     response.json(await saveSiteContent(request.body))
   } catch (error) {
     response.status(500).send(error.message)

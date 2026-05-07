@@ -19,6 +19,7 @@ import aboutUsLogo from '/assets/ABOUTUS.png'
 // სერვისები
 import servicesLogo from '/assets/SERVICES.png'
 
+import { loadSiteContent, SITE_CONTENT_UPDATED_EVENT } from '../siteContent'
 import './App.css'
 
 // BackToTop კომპონენტი
@@ -50,48 +51,22 @@ const BackToTop = () => {
   );
 };
 
-// Gallery
-const galleryPhotos = [
-  { id: 1, src: '/assets/photos/chveni-fotoebi/1.jpeg', alt: 'Kintsvisi Monastery' },
-  { id: 2, src: '/assets/photos/chveni-fotoebi/2.jpeg', alt: 'The Avatar Camp - Polar Express' },
-  { id: 3, src: '/assets/photos/chveni-fotoebi/3.jpg', alt: 'The Avatar 2025' },
-  { id: 4, src: '/assets/photos/chveni-fotoebi/4.jpeg', alt: 'Swiss - MOVA Camp' },
-  { id: 5, src: '/assets/photos/chveni-fotoebi/5.jpeg', alt: 'The Avatar Camp - Polar Express' },
-  { id: 6, src: '/assets/photos/chveni-fotoebi/6.jpg', alt: 'The Avatar Camp 2020' },
-  { id: 7, src: '/assets/photos/chveni-fotoebi/8.jpeg', alt: 'Kolkheti National Park - The Avatar Camp 2020' },
-  { id: 8, src: '/assets/photos/chveni-fotoebi/9.jpeg', alt: 'The Avatar Camp 2020' },
-  { id: 9, src: '/assets/photos/chveni-fotoebi/10.jpg', alt: 'Temple of the Wise Thief, Dzhama Valley' },
-  { id: 10, src: '/assets/photos/chveni-fotoebi/11.jpeg', alt: 'Tobavarchkhili hiking' },
-  { id: 11, src: '/assets/photos/chveni-fotoebi/12.jpeg', alt: 'The Avatar Camp 2020' },
-  { id: 12, src: '/assets/photos/chveni-fotoebi/13.jpeg', alt: 'The Avatar Camp 2020' },
-  { id: 13, src: '/assets/photos/chveni-fotoebi/14.jpeg', alt: 'The Avatar Camp 2020' },
-  { id: 14, src: '/assets/photos/chveni-fotoebi/15.jpeg', alt: 'Bateti Lake, Dzama Gorge' },
-  { id: 15, src: '/assets/photos/chveni-fotoebi/7.jpeg', alt: 'The Avatar camp' },
-  { id: 16, src: '/assets/photos/chveni-fotoebi/16.jpeg', alt: 'Tent City - Deja Vu' },
-  { id: 17, src: '/assets/photos/chveni-fotoebi/17.jpeg', alt: 'Cub scouts camp' },
-  { id: 18, src: '/assets/photos/dgis-banaki.jpg', alt: 'Camp of day' },
-  { id: 19, src: '/assets/photos/firework.jpg', alt: 'Firework - The Avatar Camp 2020' },
-  { id: 20, src: '/assets/photos/megzuri.jpg', alt: 'Megzuri (Guide)' },
-  { id: 21, src: '/assets/photos/megzuri-logo.jfif', alt: 'Megzuri (Guide)' },
-  { id: 22, src: '/assets/photos/dgis-banaki2.jfif', alt: 'The Day Of Camp' },
-  { id: 23, src: '/assets/photos/scouts.jfif', alt: 'Joining the European Region' }
-];
-
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [lang, setLang] = useState('ქარ');
   const [theme, setTheme] = useState('day');
   const [selectedImgIndex, setSelectedImgIndex] = useState(null);
   const [showFullPage, setShowFullPage] = useState(false);
+  const [adminContent, setAdminContent] = useState(loadSiteContent);
 
   const nextPhoto = (e) => {
     e.stopPropagation();
-    setSelectedImgIndex((prev) => (prev + 1) % galleryPhotos.length);
+    setSelectedImgIndex((prev) => (prev + 1) % visibleGalleryPhotos.length);
   };
 
   const prevPhoto = (e) => {
     e.stopPropagation();
-    setSelectedImgIndex((prev) => (prev - 1 + galleryPhotos.length) % galleryPhotos.length);
+    setSelectedImgIndex((prev) => (prev - 1 + visibleGalleryPhotos.length) % visibleGalleryPhotos.length);
   };
 
   useEffect(() => {
@@ -114,6 +89,18 @@ export default function App() {
   useEffect(() => {
     const loadPage = window.setTimeout(() => setShowFullPage(true), 1200);
     return () => window.clearTimeout(loadPage);
+  }, []);
+
+  useEffect(() => {
+    const refreshAdminContent = () => setAdminContent(loadSiteContent());
+
+    window.addEventListener('storage', refreshAdminContent);
+    window.addEventListener(SITE_CONTENT_UPDATED_EVENT, refreshAdminContent);
+
+    return () => {
+      window.removeEventListener('storage', refreshAdminContent);
+      window.removeEventListener(SITE_CONTENT_UPDATED_EVENT, refreshAdminContent);
+    };
   }, []);
 
   // Language content
@@ -588,7 +575,26 @@ export default function App() {
     }
   };
 
-  const langContent = content[lang];
+  const langContent = {
+    ...content[lang],
+    ...(adminContent?.hero?.text ? { heroText: adminContent.hero.text } : {}),
+    ...(adminContent?.hero?.title ? { heroTitle: adminContent.hero.title } : {}),
+    ...(adminContent?.hero?.button ? { heroButton: adminContent.hero.button } : {}),
+    ...(adminContent?.donation?.iban ? { accountNum: adminContent.donation.iban } : {}),
+    ...(adminContent?.donation?.text ? { donationText: adminContent.donation.text } : {}),
+  };
+  const visibleGalleryPhotos = adminContent.gallery
+    .filter((photo) => photo.src)
+    .map((photo) => ({
+      id: photo.id,
+      src: photo.src,
+      alt: photo.alt || photo.type || 'Scout photo',
+    }));
+  const contactContent = {
+    phone: adminContent.contact.phone,
+    email: adminContent.contact.email,
+    website: adminContent.contact.website,
+  };
   const [aboutOpen, setAboutOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
@@ -941,7 +947,7 @@ export default function App() {
         <h2 className="section-title">{langContent.sponsors}</h2>
         <div className="masonry-wrapper">
           <div className="masonry-grid">
-            {galleryPhotos.map((photo, index) => (
+            {visibleGalleryPhotos.map((photo, index) => (
               <div key={photo.id} className="masonry-item" onClick={() => setSelectedImgIndex(index)}>
                 <img src={photo.src} alt={photo.alt} loading="lazy" width="400" height="300" />
                 <div className="masonry-overlay">
@@ -969,8 +975,8 @@ export default function App() {
           </button>
           <button type="button" className="nav-btn prev" aria-label="Previous photo" onClick={prevPhoto}>&#10094;</button>
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <img src={galleryPhotos[selectedImgIndex].src} alt="Selected" />
-            <p className="caption">{galleryPhotos[selectedImgIndex].alt}</p>
+            <img src={visibleGalleryPhotos[selectedImgIndex].src} alt="Selected" />
+            <p className="caption">{visibleGalleryPhotos[selectedImgIndex].alt}</p>
           </div>
           <button type="button" className="nav-btn next" aria-label="Next photo" onClick={nextPhoto}>&#10095;</button>
         </div>
@@ -1035,9 +1041,9 @@ export default function App() {
             </a>
           </div>
           <div className="contact-details">
-            <p><a href="tel:+995557288895"><img src="assets/phone.png" alt="Phone" className="contact-icon-small" width="20" height="20" loading="lazy" /> +995 557 28 88 95</a></p>
-            <p><a href="mailto:scoutsofsamegrelo@gmail.com"><img src="assets/mail.png" alt="Email" className="contact-icon-small" width="20" height="20" loading="lazy" /> scoutsofsamegrelo@gmail.com</a></p>
-            <p><a href="https://scoutsofsamegrelo.com" target="_blank" rel="noreferrer"><img src="assets/web.png" alt="Web" className="contact-icon-small" width="20" height="20" loading="lazy" /> scoutsofsamegrelo.com</a></p>
+            <p><a href={`tel:${contactContent.phone.replace(/\s/g, '')}`}><img src="assets/phone.png" alt="Phone" className="contact-icon-small" width="20" height="20" loading="lazy" /> {contactContent.phone}</a></p>
+            <p><a href={`mailto:${contactContent.email}`}><img src="assets/mail.png" alt="Email" className="contact-icon-small" width="20" height="20" loading="lazy" /> {contactContent.email}</a></p>
+            <p><a href={`https://${contactContent.website.replace(/^https?:\/\//, '')}`} target="_blank" rel="noreferrer"><img src="assets/web.png" alt="Web" className="contact-icon-small" width="20" height="20" loading="lazy" /> {contactContent.website}</a></p>
           </div>
         </div>
 

@@ -4,6 +4,50 @@ export const SITE_CONTENT_UPDATED_EVENT = 'site-content-updated'
 
 export const defaultSiteContent = contentSource
 
+export function looksLikeHtml(value) {
+  return typeof value === 'string' && /<[a-z][^>]*>/i.test(value)
+}
+
+export function isHtmlField(key) {
+  const defaultKa = defaultSiteContent.translations?.ka?.[key]
+  const defaultEn = defaultSiteContent.translations?.en?.[key]
+  return looksLikeHtml(defaultKa) || looksLikeHtml(defaultEn)
+}
+
+export function unwrapSingleParagraph(value) {
+  if (typeof value !== 'string') {
+    return value
+  }
+
+  const match = value.trim().match(/^<p[^>]*>([\s\S]*?)<\/p>$/i)
+
+  if (!match || /<[a-z]/i.test(match[1])) {
+    return value
+  }
+
+  return match[1].trim()
+}
+
+function cleanTranslationsForStorage(translations) {
+  const cleaned = { ka: {}, en: {} }
+
+  for (const lang of ['ka', 'en']) {
+    const source = translations[lang] ?? {}
+    for (const key of Object.keys(source)) {
+      const value = source[key]
+
+      if (typeof value !== 'string' || isHtmlField(key)) {
+        cleaned[lang][key] = value
+        continue
+      }
+
+      cleaned[lang][key] = unwrapSingleParagraph(value)
+    }
+  }
+
+  return cleaned
+}
+
 function normalizeGalleryPhoto(photo, fallbackId) {
   return {
     ...photo,
@@ -22,6 +66,15 @@ export function normalizeSiteContent(content) {
     ? source.gallery.map((photo, index) => normalizeGalleryPhoto(photo, Date.now() + index))
     : []
 
+  const rawTranslations = {
+    ka: translationSource.ka && typeof translationSource.ka === 'object'
+      ? { ...translationSource.ka }
+      : {},
+    en: translationSource.en && typeof translationSource.en === 'object'
+      ? { ...translationSource.en }
+      : {},
+  }
+
   return {
     ...defaultSiteContent,
     ...source,
@@ -37,14 +90,7 @@ export function normalizeSiteContent(content) {
       ...defaultSiteContent.contact,
       ...source.contact,
     },
-    translations: {
-      ka: translationSource.ka && typeof translationSource.ka === 'object'
-        ? { ...translationSource.ka }
-        : {},
-      en: translationSource.en && typeof translationSource.en === 'object'
-        ? { ...translationSource.en }
-        : {},
-    },
+    translations: cleanTranslationsForStorage(rawTranslations),
     gallery,
   }
 }

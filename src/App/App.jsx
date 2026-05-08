@@ -202,6 +202,7 @@ export default function App() {
   return (
     <div className="container">
       <header className="header">
+        <div className="header-inner">
         <div className="logo-group">
           <a href="#hero" onClick={closeMobileMenu}>
             <img src="/assets/icon-64.png" alt="Logo" className="logo-img" width="40" height="40" />
@@ -332,6 +333,7 @@ export default function App() {
             </button>
           </div>
         </nav>
+        </div>
       </header>
 
       <main>

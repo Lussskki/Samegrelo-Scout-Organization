@@ -16,6 +16,9 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@tiptap/extension-link": "^3.22.5",
+    "@tiptap/react": "^3.22.5",
+    "@tiptap/starter-kit": "^3.22.5",
     "cloudinary": "^2.9.0",
     "dotenv": "^16.6.1",
     "express": "^5.1.0",

@@ -5,6 +5,7 @@ import {
   parseTranslationValue,
 } from '../Content/siteContentSchema'
 import {
+  defaultSiteContent,
   fetchSiteContent,
   loadSiteContent,
   saveSiteContent,
@@ -12,6 +13,44 @@ import {
 } from '../Content/siteContent'
 import { RichTextEditor } from './RichTextEditor'
 import './Admin.css'
+
+function looksLikeHtml(value) {
+  return typeof value === 'string' && /<[a-z][^>]*>/i.test(value)
+}
+
+function isHtmlField(key) {
+  const defaultKa = defaultSiteContent.translations?.ka?.[key]
+  const defaultEn = defaultSiteContent.translations?.en?.[key]
+  return looksLikeHtml(defaultKa) || looksLikeHtml(defaultEn)
+}
+
+function unwrapSingleParagraph(value) {
+  if (typeof value !== 'string') {
+    return value
+  }
+
+  const match = value.trim().match(/^<p>([\s\S]*?)<\/p>$/i)
+
+  if (!match || /<[a-z]/i.test(match[1])) {
+    return value
+  }
+
+  return match[1].trim()
+}
+
+function normalizeAdminDrafts(translations) {
+  const drafts = buildTranslationDrafts(translations)
+
+  for (const compositeKey of Object.keys(drafts)) {
+    const key = compositeKey.split(':')[1]
+
+    if (!isHtmlField(key)) {
+      drafts[compositeKey] = unwrapSingleParagraph(drafts[compositeKey])
+    }
+  }
+
+  return drafts
+}
 
 const AUTH_KEY = 'samegrelo-admin-authenticated'
 const ADMIN_ACCOUNT = {
@@ -65,7 +104,7 @@ export function Admin() {
   const [loginError, setLoginError] = useState('')
   const [activeSection, setActiveSection] = useState('dashboard')
   const [content, setContent] = useState(loadSiteContent)
-  const [translationDrafts, setTranslationDrafts] = useState(() => buildTranslationDrafts(loadSiteContent().translations))
+  const [translationDrafts, setTranslationDrafts] = useState(() => normalizeAdminDrafts(loadSiteContent().translations))
   const [newEntry, setNewEntry] = useState(createEmptyTextEntry)
   const [status, setStatus] = useState('')
   const [textFilter, setTextFilter] = useState('')
@@ -78,7 +117,7 @@ export function Admin() {
     fetchSiteContent({ fallbackToDefault: false })
       .then((nextContent) => {
         setContent(nextContent)
-        setTranslationDrafts(buildTranslationDrafts(nextContent.translations))
+        setTranslationDrafts(normalizeAdminDrafts(nextContent.translations))
         setStatus('')
       })
       .catch((error) => {
@@ -257,12 +296,16 @@ export function Admin() {
     ])
 
     for (const key of allKeys) {
+      const isHtml = isHtmlField(key)
+      const kaDraft = translationDrafts[`ka:${key}`] ?? ''
+      const enDraft = translationDrafts[`en:${key}`] ?? ''
+
       nextKa[key] = parseTranslationValue(
-        translationDrafts[`ka:${key}`] ?? '',
+        isHtml ? kaDraft : unwrapSingleParagraph(kaDraft),
         content.translations.ka[key],
       )
       nextEn[key] = parseTranslationValue(
-        translationDrafts[`en:${key}`] ?? '',
+        isHtml ? enDraft : unwrapSingleParagraph(enDraft),
         content.translations.en[key],
       )
     }
@@ -282,7 +325,7 @@ export function Admin() {
       const nextContent = buildContentForSave()
       const savedContent = await saveSiteContent(nextContent)
       setContent(savedContent)
-      setTranslationDrafts(buildTranslationDrafts(savedContent.translations))
+      setTranslationDrafts(normalizeAdminDrafts(savedContent.translations))
       setTimedStatus(successMessage)
     } catch (error) {
       setTimedStatus(`შენახვა ვერ შესრულდა: ${error.message}`)
@@ -296,7 +339,7 @@ export function Admin() {
       setSavingCard('reset')
       const refreshedContent = await fetchSiteContent()
       setContent(refreshedContent)
-      setTranslationDrafts(buildTranslationDrafts(refreshedContent.translations))
+      setTranslationDrafts(normalizeAdminDrafts(refreshedContent.translations))
       setTimedStatus('მონაცემები ბაზიდან განახლდა')
     } catch (error) {
       setTimedStatus(`განახლება ვერ შესრულდა: ${error.message}`)
@@ -554,12 +597,51 @@ export function Admin() {
                   const enValue = content.translations.en[key]
                   const kaIsStructured = isStructuredValue(kaValue)
                   const enIsStructured = isStructuredValue(enValue)
+                  const richField = isHtmlField(key)
                   const cardId = `text:${key}`
+
+                  const renderLanguageField = (lang, isStructured) => {
+                    const draftKey = `${lang}:${key}`
+                    const draftValue = translationDrafts[draftKey] ?? ''
+
+                    if (isStructured) {
+                      return (
+                        <textarea
+                          className="admin-json-textarea"
+                          rows="6"
+                          value={draftValue}
+                          onChange={(event) => updateDraft(lang, key, event.target.value)}
+                        />
+                      )
+                    }
+
+                    if (richField) {
+                      return (
+                        <RichTextEditor
+                          ariaLabel={`${lang} text for ${key}`}
+                          value={draftValue}
+                          onChange={(value) => updateDraft(lang, key, value)}
+                        />
+                      )
+                    }
+
+                    return (
+                      <textarea
+                        className="admin-plain-textarea"
+                        rows={draftValue.length > 80 ? 4 : 2}
+                        value={draftValue}
+                        onChange={(event) => updateDraft(lang, key, event.target.value)}
+                      />
+                    )
+                  }
 
                   return (
                     <article className="admin-text-editor" key={key}>
                       <div className="admin-text-head">
                         <strong className="admin-key-tag">{key}</strong>
+                        <span className={`admin-mode-tag ${richField ? 'is-rich' : 'is-plain'}`}>
+                          {richField ? 'Rich text' : 'Plain text'}
+                        </span>
                         <button className="admin-danger" type="button" onClick={() => removeTextEntry(key)}>
                           🗑 წაშლა
                         </button>
@@ -567,37 +649,11 @@ export function Admin() {
                       <div className="admin-two-col">
                         <div className="admin-field">
                           <span className="admin-field-label">🇬🇪 ქართული</span>
-                          {kaIsStructured ? (
-                            <textarea
-                              className="admin-json-textarea"
-                              rows="6"
-                              value={translationDrafts[`ka:${key}`] ?? ''}
-                              onChange={(event) => updateDraft('ka', key, event.target.value)}
-                            />
-                          ) : (
-                            <RichTextEditor
-                              ariaLabel={`Georgian text for ${key}`}
-                              value={translationDrafts[`ka:${key}`] ?? ''}
-                              onChange={(value) => updateDraft('ka', key, value)}
-                            />
-                          )}
+                          {renderLanguageField('ka', kaIsStructured)}
                         </div>
                         <div className="admin-field">
                           <span className="admin-field-label">🇬🇧 English</span>
-                          {enIsStructured ? (
-                            <textarea
-                              className="admin-json-textarea"
-                              rows="6"
-                              value={translationDrafts[`en:${key}`] ?? ''}
-                              onChange={(event) => updateDraft('en', key, event.target.value)}
-                            />
-                          ) : (
-                            <RichTextEditor
-                              ariaLabel={`English text for ${key}`}
-                              value={translationDrafts[`en:${key}`] ?? ''}
-                              onChange={(value) => updateDraft('en', key, value)}
-                            />
-                          )}
+                          {renderLanguageField('en', enIsStructured)}
                         </div>
                       </div>
                       <div className="admin-card-footer">

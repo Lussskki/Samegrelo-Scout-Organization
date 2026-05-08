@@ -2,10 +2,11 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   buildTranslationDrafts,
+  isHtmlField,
   parseTranslationValue,
+  unwrapSingleParagraph,
 } from '../Content/siteContentSchema'
 import {
-  defaultSiteContent,
   fetchSiteContent,
   loadSiteContent,
   saveSiteContent,
@@ -13,30 +14,6 @@ import {
 } from '../Content/siteContent'
 import { RichTextEditor } from './RichTextEditor'
 import './Admin.css'
-
-function looksLikeHtml(value) {
-  return typeof value === 'string' && /<[a-z][^>]*>/i.test(value)
-}
-
-function isHtmlField(key) {
-  const defaultKa = defaultSiteContent.translations?.ka?.[key]
-  const defaultEn = defaultSiteContent.translations?.en?.[key]
-  return looksLikeHtml(defaultKa) || looksLikeHtml(defaultEn)
-}
-
-function unwrapSingleParagraph(value) {
-  if (typeof value !== 'string') {
-    return value
-  }
-
-  const match = value.trim().match(/^<p>([\s\S]*?)<\/p>$/i)
-
-  if (!match || /<[a-z]/i.test(match[1])) {
-    return value
-  }
-
-  return match[1].trim()
-}
 
 function normalizeAdminDrafts(translations) {
   const drafts = buildTranslationDrafts(translations)

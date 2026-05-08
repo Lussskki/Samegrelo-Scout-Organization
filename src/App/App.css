@@ -235,13 +235,22 @@ section[id] {
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
+  justify-content: center;
+  padding: 0 32px;
   background: linear-gradient(180deg, rgba(13, 10, 26, 0.98) 0%, rgba(26, 18, 48, 0.95) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
-  gap: 10px;
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1600px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .logo-group {
@@ -601,6 +610,7 @@ section {
 .carousel-container {
   position: relative;
   width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   padding-bottom: 70px;
 }
@@ -644,13 +654,15 @@ section {
 .about-content {
   display: flex;
   gap: 24px;
-  overflow-x: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   padding: 20px 10px 30px;
   scrollbar-width: none;
   -ms-overflow-style: none;
   width: 100%;
+  scroll-padding: 10px;
 }
 
 .youth-projects-grid::-webkit-scrollbar,
@@ -665,13 +677,13 @@ section {
 .edu-card,
 .service-card,
 .about-block {
-  flex: 0 0 calc((100% - 48px) / 3);
-  min-width: 320px;
+  flex: 0 0 340px;
+  max-width: 340px;
   scroll-snap-align: start;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 24px;
-  padding: 32px;
+  padding: 28px;
   transition: all var(--transition-smooth);
   display: flex;
   flex-direction: column;
@@ -862,6 +874,11 @@ section {
   min-height: auto;
 }
 
+.books-section .books-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .books-section .section-title {
   margin-bottom: 15px;
 }
@@ -940,6 +957,7 @@ section {
 
 .masonry-wrapper {
   width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -1245,6 +1263,14 @@ section {
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   border-top: 1px solid var(--glass-border);
+  max-width: 1600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.section-photo {
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .footer-col {

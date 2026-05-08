@@ -574,8 +574,12 @@
 .admin-text-head {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.admin-text-head .admin-danger {
+  margin-left: auto;
 }
 
 .admin-key-tag {
@@ -588,6 +592,31 @@
   font-size: 0.86rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+}
+
+.admin-mode-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.admin-mode-tag.is-rich {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.admin-mode-tag.is-plain {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.admin-plain-textarea {
+  font-family: inherit;
+  line-height: 1.55;
 }
 
 .admin-field {

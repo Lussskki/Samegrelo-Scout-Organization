@@ -10,6 +10,7 @@ import {
   saveSiteContent,
   uploadSiteImage,
 } from '../Content/siteContent'
+import { RichTextEditor } from './RichTextEditor'
 import './Admin.css'
 
 const AUTH_KEY = 'samegrelo-admin-authenticated'
@@ -54,6 +55,10 @@ function createEmptyTextEntry() {
   }
 }
 
+function isStructuredValue(value) {
+  return Array.isArray(value) || (value !== null && typeof value === 'object')
+}
+
 export function Admin() {
   const [isAuthenticated, setIsAuthenticated] = useState(loadAdminSession)
   const [loginForm, setLoginForm] = useState({ username: '', password: '' })
@@ -65,11 +70,11 @@ export function Admin() {
   const [status, setStatus] = useState('')
   const [textFilter, setTextFilter] = useState('')
   const [isLoading] = useState(false)
-  const [isSaving, setIsSaving] = useState(false)
+  const [savingCard, setSavingCard] = useState(null)
   const [uploadingPhotoId, setUploadingPhotoId] = useState(null)
 
   useEffect(() => {
-    setStatus('MongoDB-დან განახლებული კონტენტი იტვირთება...')
+    setStatus('MongoDB-დან კონტენტი იტვირთება...')
     fetchSiteContent({ fallbackToDefault: false })
       .then((nextContent) => {
         setContent(nextContent)
@@ -120,7 +125,7 @@ export function Admin() {
 
   const setTimedStatus = (message) => {
     setStatus(message)
-    window.setTimeout(() => setStatus(''), 2200)
+    window.setTimeout(() => setStatus(''), 2400)
   }
 
   const updateGroup = (group, field, value) => {
@@ -214,7 +219,7 @@ export function Admin() {
     }))
 
     setNewEntry(createEmptyTextEntry())
-    setTimedStatus('ახალი ტექსტი დაემატა')
+    setTimedStatus('ახალი ტექსტი დაემატა — დააჭირე შენახვას')
   }
 
   const removeTextEntry = (key) => {
@@ -240,7 +245,7 @@ export function Admin() {
       return nextDrafts
     })
 
-    setTimedStatus('ტექსტი წაიშალა')
+    setTimedStatus('ტექსტი წაიშალა — დააჭირე შენახვას')
   }
 
   const buildContentForSave = () => {
@@ -271,24 +276,24 @@ export function Admin() {
     }
   }
 
-  const persistContent = async () => {
+  const persistCard = async (cardId, successMessage = 'შენახულია ✓') => {
     try {
-      setIsSaving(true)
+      setSavingCard(cardId)
       const nextContent = buildContentForSave()
       const savedContent = await saveSiteContent(nextContent)
       setContent(savedContent)
       setTranslationDrafts(buildTranslationDrafts(savedContent.translations))
-      setTimedStatus('მონაცემები შენახულია')
+      setTimedStatus(successMessage)
     } catch (error) {
       setTimedStatus(`შენახვა ვერ შესრულდა: ${error.message}`)
     } finally {
-      setIsSaving(false)
+      setSavingCard(null)
     }
   }
 
   const handleReset = async () => {
     try {
-      setIsSaving(true)
+      setSavingCard('reset')
       const refreshedContent = await fetchSiteContent()
       setContent(refreshedContent)
       setTranslationDrafts(buildTranslationDrafts(refreshedContent.translations))
@@ -296,8 +301,25 @@ export function Admin() {
     } catch (error) {
       setTimedStatus(`განახლება ვერ შესრულდა: ${error.message}`)
     } finally {
-      setIsSaving(false)
+      setSavingCard(null)
     }
+  }
+
+  const renderSaveButton = (cardId, label = 'შენახვა') => {
+    const isBusy = savingCard === cardId
+    return (
+      <button
+        type="button"
+        className="admin-save-btn"
+        onClick={() => persistCard(cardId)}
+        disabled={savingCard !== null}
+      >
+        <span className="admin-save-btn-icon" aria-hidden>
+          {isBusy ? '…' : '✓'}
+        </span>
+        {isBusy ? 'ინახება...' : label}
+      </button>
+    )
   }
 
   if (!isAuthenticated) {
@@ -388,14 +410,16 @@ export function Admin() {
           </div>
           <div className="admin-actions">
             {status && <span className="admin-status">{status}</span>}
+            <button
+              className="admin-secondary"
+              type="button"
+              onClick={handleReset}
+              disabled={savingCard !== null}
+            >
+              ბაზიდან განახლება
+            </button>
             <button className="admin-secondary" type="button" onClick={handleLogout}>
               გამოსვლა
-            </button>
-            <button className="admin-secondary" type="button" onClick={handleReset} disabled={isSaving}>
-              განახლება
-            </button>
-            <button className="admin-primary" type="button" onClick={persistContent} disabled={isSaving}>
-              {isSaving ? 'ინახება...' : 'შენახვა'}
             </button>
           </div>
         </header>
@@ -429,9 +453,11 @@ export function Admin() {
             <div className="admin-card">
               <h2>როგორ მუშაობს</h2>
               <p>
-                ახლა ტექსტები, კონტაქტი, დონაცია და გალერეა MongoDB-ში ინახება.
-                ტექსტების სექციაში შეგიძლია ახალი key დაამატო, არსებულები შეცვალო ან წაშალო,
-                მერე კი ერთი ღილაკით შეინახო ყველაფერი.
+                თითოეული ბარათის ცვლილების შესანახად დააჭირე ბარათის ქვედა მარჯვენა ღილაკს —
+                <strong> შენახვა</strong>. ცვლილება მაშინვე ჩაიწერება MongoDB-ში
+                და საიტზე უკვე ეჩვენებათ მომხმარებლებს.
+                ფორმატირებული ტექსტები (Bold, Italic, ბმულები) რედაქტირდება ღილაკებით —
+                HTML-თან მუშაობა აღარ გჭირდება.
               </p>
             </div>
           </section>
@@ -440,7 +466,9 @@ export function Admin() {
         {!isLoading && activeSection === 'hero' && (
           <section className="admin-section">
             <div className="admin-card">
-              <h2>მთავარი ბანერი</h2>
+              <div className="admin-card-header">
+                <h2>მთავარი ბანერი</h2>
+              </div>
               <label>
                 ზედა ტექსტი
                 <input
@@ -463,6 +491,9 @@ export function Admin() {
                   onChange={(event) => updateGroup('hero', 'button', event.target.value)}
                 />
               </label>
+              <div className="admin-card-footer">
+                {renderSaveButton('hero')}
+              </div>
             </div>
           </section>
         )}
@@ -481,6 +512,7 @@ export function Admin() {
               </div>
 
               <div className="admin-add-text">
+                <p className="admin-add-text-title">ახალი ტექსტის დამატება</p>
                 <label>
                   ახალი key
                   <input
@@ -489,24 +521,26 @@ export function Admin() {
                     placeholder="exampleKey"
                   />
                 </label>
-                <label>
-                  ქართული
-                  <textarea
-                    rows="2"
-                    value={newEntry.ka}
-                    onChange={(event) => setNewEntry((current) => ({ ...current, ka: event.target.value }))}
-                  />
-                </label>
-                <label>
-                  English
-                  <textarea
-                    rows="2"
-                    value={newEntry.en}
-                    onChange={(event) => setNewEntry((current) => ({ ...current, en: event.target.value }))}
-                  />
-                </label>
+                <div className="admin-two-col">
+                  <label>
+                    ქართული
+                    <textarea
+                      rows="2"
+                      value={newEntry.ka}
+                      onChange={(event) => setNewEntry((current) => ({ ...current, ka: event.target.value }))}
+                    />
+                  </label>
+                  <label>
+                    English
+                    <textarea
+                      rows="2"
+                      value={newEntry.en}
+                      onChange={(event) => setNewEntry((current) => ({ ...current, en: event.target.value }))}
+                    />
+                  </label>
+                </div>
                 <button className="admin-secondary" type="button" onClick={addTextEntry}>
-                  ტექსტის დამატება
+                  ➕ ტექსტის დამატება
                 </button>
               </div>
 
@@ -515,34 +549,63 @@ export function Admin() {
               )}
 
               <div className="admin-text-list">
-                {textKeys.map((key) => (
-                  <article className="admin-text-editor" key={key}>
-                    <div className="admin-text-head">
-                      <strong>{key}</strong>
-                      <button className="admin-danger" type="button" onClick={() => removeTextEntry(key)}>
-                        წაშლა
-                      </button>
-                    </div>
-                    <div className="admin-two-col">
-                      <label>
-                        ქართული
-                        <textarea
-                          rows="5"
-                          value={translationDrafts[`ka:${key}`] ?? ''}
-                          onChange={(event) => updateDraft('ka', key, event.target.value)}
-                        />
-                      </label>
-                      <label>
-                        English
-                        <textarea
-                          rows="5"
-                          value={translationDrafts[`en:${key}`] ?? ''}
-                          onChange={(event) => updateDraft('en', key, event.target.value)}
-                        />
-                      </label>
-                    </div>
-                  </article>
-                ))}
+                {textKeys.map((key) => {
+                  const kaValue = content.translations.ka[key]
+                  const enValue = content.translations.en[key]
+                  const kaIsStructured = isStructuredValue(kaValue)
+                  const enIsStructured = isStructuredValue(enValue)
+                  const cardId = `text:${key}`
+
+                  return (
+                    <article className="admin-text-editor" key={key}>
+                      <div className="admin-text-head">
+                        <strong className="admin-key-tag">{key}</strong>
+                        <button className="admin-danger" type="button" onClick={() => removeTextEntry(key)}>
+                          🗑 წაშლა
+                        </button>
+                      </div>
+                      <div className="admin-two-col">
+                        <div className="admin-field">
+                          <span className="admin-field-label">🇬🇪 ქართული</span>
+                          {kaIsStructured ? (
+                            <textarea
+                              className="admin-json-textarea"
+                              rows="6"
+                              value={translationDrafts[`ka:${key}`] ?? ''}
+                              onChange={(event) => updateDraft('ka', key, event.target.value)}
+                            />
+                          ) : (
+                            <RichTextEditor
+                              ariaLabel={`Georgian text for ${key}`}
+                              value={translationDrafts[`ka:${key}`] ?? ''}
+                              onChange={(value) => updateDraft('ka', key, value)}
+                            />
+                          )}
+                        </div>
+                        <div className="admin-field">
+                          <span className="admin-field-label">🇬🇧 English</span>
+                          {enIsStructured ? (
+                            <textarea
+                              className="admin-json-textarea"
+                              rows="6"
+                              value={translationDrafts[`en:${key}`] ?? ''}
+                              onChange={(event) => updateDraft('en', key, event.target.value)}
+                            />
+                          ) : (
+                            <RichTextEditor
+                              ariaLabel={`English text for ${key}`}
+                              value={translationDrafts[`en:${key}`] ?? ''}
+                              onChange={(value) => updateDraft('en', key, value)}
+                            />
+                          )}
+                        </div>
+                      </div>
+                      <div className="admin-card-footer">
+                        {renderSaveButton(cardId)}
+                      </div>
+                    </article>
+                  )
+                })}
               </div>
             </div>
           </section>
@@ -554,7 +617,7 @@ export function Admin() {
               <div className="admin-card-header">
                 <h2>გალერეა</h2>
                 <button className="admin-secondary" type="button" onClick={addPhoto}>
-                  ფოტოს დამატება
+                  ➕ ფოტოს დამატება
                 </button>
               </div>
 
@@ -613,9 +676,12 @@ export function Admin() {
                           />
                         </label>
                       </div>
-                      <button className="admin-danger" type="button" onClick={() => removePhoto(photo.id)}>
-                        წაშლა
-                      </button>
+                      <div className="admin-photo-actions">
+                        <button className="admin-danger" type="button" onClick={() => removePhoto(photo.id)}>
+                          🗑 წაშლა
+                        </button>
+                        {renderSaveButton(`photo:${photo.id}`)}
+                      </div>
                     </div>
                   </article>
                 ))}
@@ -627,7 +693,9 @@ export function Admin() {
         {!isLoading && activeSection === 'donation' && (
           <section className="admin-section">
             <div className="admin-card">
-              <h2>დონაცია</h2>
+              <div className="admin-card-header">
+                <h2>დონაცია</h2>
+              </div>
               <label>
                 IBAN
                 <input
@@ -643,6 +711,9 @@ export function Admin() {
                   onChange={(event) => updateGroup('donation', 'text', event.target.value)}
                 />
               </label>
+              <div className="admin-card-footer">
+                {renderSaveButton('donation')}
+              </div>
             </div>
           </section>
         )}
@@ -650,7 +721,9 @@ export function Admin() {
         {!isLoading && activeSection === 'contact' && (
           <section className="admin-section">
             <div className="admin-card">
-              <h2>კონტაქტი</h2>
+              <div className="admin-card-header">
+                <h2>კონტაქტი</h2>
+              </div>
               <label>
                 ტელეფონი
                 <input
@@ -672,6 +745,9 @@ export function Admin() {
                   onChange={(event) => updateGroup('contact', 'website', event.target.value)}
                 />
               </label>
+              <div className="admin-card-footer">
+                {renderSaveButton('contact')}
+              </div>
             </div>
           </section>
         )}
@@ -679,7 +755,9 @@ export function Admin() {
         {!isLoading && activeSection === 'data' && (
           <section className="admin-section">
             <div className="admin-card">
-              <h2>მონაცემების ნახვა</h2>
+              <div className="admin-card-header">
+                <h2>მონაცემების ნახვა (JSON)</h2>
+              </div>
               <textarea
                 className="admin-json"
                 value={jsonPreview}

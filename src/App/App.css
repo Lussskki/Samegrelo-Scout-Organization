@@ -1725,11 +1725,21 @@ section {
   }
 
   .books-container {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     gap: 20px;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 20px 15px 28px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
   }
 
   .book-card {
+    flex: 0 0 150px;
     width: 150px;
+    scroll-snap-align: start;
   }
 
   .cover-wrapper {
@@ -1881,6 +1891,7 @@ section {
   }
 
   .book-card {
+    flex-basis: 130px;
     width: 130px;
   }
 

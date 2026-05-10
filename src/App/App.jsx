@@ -18,6 +18,8 @@ import servicesLogo from '/assets/SERVICES.png'
 import { fetchSiteContent, loadSiteContent, SITE_CONTENT_UPDATED_EVENT } from '../Content/siteContent'
 import './App.css'
 
+const RURAL_TOURISM_BOOK_COVER = '/assets/books/rural-tourism-guide-2026-cover.svg'
+
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false)
 
@@ -53,6 +55,10 @@ function renderHtml(html) {
 function extractIbanValue(ibanText) {
   const matchedValue = ibanText.match(/[A-Z]{2}\d{2}[A-Z0-9]+/)
   return matchedValue ? matchedValue[0] : ibanText
+}
+
+function getBookCover(book) {
+  return book.id === 4 ? RURAL_TOURISM_BOOK_COVER : book.cover
 }
 
 export default function App() {
@@ -513,7 +519,7 @@ export default function App() {
                 {langContent.books.map((book) => (
                   <a key={book.id} className="book-card" href={book.link} target="_blank" rel="noopener noreferrer">
                     <div className="cover-wrapper">
-                      <img src={book.cover} alt={book.title} className="book-cover" loading="lazy" width="220" height="300" />
+                      <img src={getBookCover(book)} alt={book.title} className="book-cover" loading="lazy" width="220" height="300" />
                     </div>
                     <p className="book-title">{book.title}</p>
                   </a>

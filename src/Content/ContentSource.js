@@ -207,7 +207,7 @@ export const contentSource = {
         {
           "id": 4,
           "title": "გზამკვლევი: როგორ ჩავერთო სოფლის ტურიზმში",
-          "cover": "/assets/books/1.png",
+          "cover": "/assets/books/rural-tourism-guide-2026-cover.svg",
           "link": "/assets/books/გზამკლევი. როგორ ჩავერთო სოფლის ტურიზმში..pdf"
         }
       ],
@@ -309,7 +309,7 @@ export const contentSource = {
         {
           "id": 4,
           "title": "Guide: How to Get Involved in Rural Tourism",
-          "cover": "/assets/books/1.png",
+          "cover": "/assets/books/rural-tourism-guide-2026-cover.svg",
           "link": "/assets/books/გზამკლევი. როგორ ჩავერთო სოფლის ტურიზმში..pdf"
         }
       ],

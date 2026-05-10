@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 837 1142" role="img" aria-labelledby="title desc">
+  <title id="title">ზუგდიდის მუნიციპალიტეტში არსებული ტურისტული შესაძლებლობების გამოვლენისა და გაძლიერების პროგრამა</title>
+  <desc id="desc">მწვანე ილუსტრირებული ქავერი სოფლის ტურიზმის გზამკვლევისთვის, სახლით, ბილიკებით, მთებითა და 2026 წარწერით.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#d3f7bd"/>
+      <stop offset="0.55" stop-color="#aee590"/>
+      <stop offset="1" stop-color="#72bd42"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#8cdb56"/>
+      <stop offset="1" stop-color="#45a636"/>
+    </linearGradient>
+    <linearGradient id="hillDark" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#62be43"/>
+      <stop offset="1" stop-color="#2f7f32"/>
+    </linearGradient>
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="28" stdDeviation="18" flood-color="#24421c" flood-opacity="0.42"/>
+    </filter>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="9" flood-color="#23421c" flood-opacity="0.25"/>
+    </filter>
+    <pattern id="tinyDots" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.1" fill="#4b9b35" opacity="0.28"/>
+    </pattern>
+  </defs>
+
+  <rect width="837" height="1142" fill="url(#bg)"/>
+
+  <g fill="none" stroke="#6fb25b" stroke-width="5" opacity="0.24">
+    <path d="M-70 226C57 174 176 182 173 78 170-20 205-62 309-50"/>
+    <path d="M25 1127C80 1042-60 963-20 846 22 726 174 741 189 606"/>
+    <path d="M842 118C735 247 741 367 779 459 821 560 674 582 650 489 626 397 621 274 501 279 390 284 416 380 464 426"/>
+    <path d="M277-50C258 78 300 167 363 174 481 186 550 51 580-50"/>
+    <path d="M506 1013C622 935 721 972 872 942"/>
+    <path d="M-49 387C101 317 188 330 230 416 275 508 168 562 49 546"/>
+  </g>
+
+  <text x="418.5" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="600" fill="#2e6632">
+    <tspan x="418.5" dy="0">ზუგდიდის მუნიციპალიტეტში არსებული ტურისტული</tspan>
+    <tspan x="418.5" dy="38">შესაძლებლობების გამოვლენისა და გაძლიერების პროგრამა</tspan>
+  </text>
+
+  <g transform="translate(74 302)" filter="url(#shadow)">
+    <polygon points="344,16 686,196 346,376 4,196" fill="#6bb642"/>
+    <polygon points="4,196 346,376 346,442 4,262" fill="#4d8a2e"/>
+    <polygon points="686,196 346,376 346,442 686,262" fill="#376f2a"/>
+
+    <g>
+      <path d="M26 190C72 86 155 62 223 126 281 26 389-6 464 83 536 37 621 78 666 185L346 354Z" fill="url(#hill)"/>
+      <path d="M226 128C286 95 339 117 371 187 417 93 501 71 555 145 605 135 646 154 666 185L346 354Z" fill="url(#hillDark)" opacity="0.88"/>
+      <path d="M76 191C124 147 168 153 207 197 149 226 98 226 76 191Z" fill="#6fcf4b"/>
+      <path d="M470 92C510 118 526 151 509 195 468 162 451 129 470 92Z" fill="#78d557" opacity="0.74"/>
+      <path d="M34 198L344 360 670 190" fill="url(#tinyDots)" opacity="0.35"/>
+    </g>
+
+    <path d="M355 44C411 52 376 101 428 115 490 132 432 181 476 206 522 232 590 203 626 247" fill="none" stroke="#e7e2a7" stroke-width="8" stroke-linecap="round"/>
+    <path d="M216 179C250 155 282 165 299 196 321 236 381 214 398 258" fill="none" stroke="#f3edb4" stroke-width="7" stroke-linecap="round"/>
+    <path d="M483 165C525 196 571 197 617 166" fill="none" stroke="#eee8ad" stroke-width="7" stroke-linecap="round"/>
+
+    <path d="M505 185C531 207 550 240 534 265 516 292 489 295 472 321" fill="none" stroke="#8e78f5" stroke-width="25" stroke-linecap="round"/>
+    <path d="M507 187C532 208 546 241 532 263 516 286 492 292 474 316" fill="none" stroke="#a890ff" stroke-width="18" stroke-linecap="round"/>
+
+    <g fill="#1d6d2b">
+      <circle cx="76" cy="244" r="22"/>
+      <circle cx="104" cy="228" r="21"/>
+      <circle cx="127" cy="250" r="24"/>
+      <circle cx="100" cy="263" r="22"/>
+    </g>
+
+    <g fill="#e04d31">
+      <circle cx="198" cy="285" r="5"/>
+      <circle cx="215" cy="298" r="5"/>
+      <circle cx="233" cy="282" r="5"/>
+      <circle cx="250" cy="295" r="5"/>
+      <circle cx="267" cy="280" r="5"/>
+      <circle cx="284" cy="294" r="5"/>
+    </g>
+    <g fill="#2f8a31">
+      <rect x="189" y="276" width="105" height="42" rx="7"/>
+      <path d="M197 276c24 30 70 30 94 0" fill="none" stroke="#61b844" stroke-width="8"/>
+    </g>
+
+    <g transform="translate(186 206)" filter="url(#softShadow)">
+      <polygon points="0,71 168,0 345,81 174,158" fill="#a55a22"/>
+      <polygon points="26,84 174,21 315,86 174,148" fill="#b46b2b"/>
+      <polygon points="48,94 174,39 290,94 174,142" fill="#c57a35" opacity="0.55"/>
+      <polygon points="58,104 174,151 174,238 58,190" fill="#79421f"/>
+      <polygon points="174,151 303,96 303,184 174,238" fill="#62351b"/>
+      <g stroke="#d39b58" stroke-width="3" opacity="0.65">
+        <line x1="86" y1="116" x2="86" y2="201"/>
+        <line x1="118" y1="130" x2="118" y2="216"/>
+        <line x1="205" y1="137" x2="205" y2="222"/>
+        <line x1="242" y1="121" x2="242" y2="205"/>
+        <line x1="275" y1="107" x2="275" y2="190"/>
+      </g>
+      <g fill="#f3c743" stroke="#5a2c14" stroke-width="4">
+        <rect x="79" y="129" width="22" height="31"/>
+        <rect x="126" y="149" width="22" height="31"/>
+        <rect x="219" y="145" width="24" height="31"/>
+      </g>
+      <rect x="259" y="132" width="31" height="54" fill="#3a2316"/>
+      <polygon points="300,185 332,200 294,221 263,205" fill="#c2b9a6"/>
+      <path d="M267 206l29 13m-20-17 30 14m-18-17 29 14" stroke="#817967" stroke-width="3"/>
+      <g fill="#6f4d2c">
+        <rect x="68" y="190" width="9" height="61"/>
+        <rect x="117" y="210" width="9" height="63"/>
+        <rect x="212" y="206" width="9" height="63"/>
+        <rect x="273" y="183" width="9" height="59"/>
+      </g>
+    </g>
+
+    <g transform="translate(272 389)">
+      <g fill="#80c54d" stroke="#fff3bd" stroke-width="4">
+        <polygon points="6,44 62,24 118,45 60,68"/>
+        <polygon points="130,48 188,26 246,49 186,73"/>
+        <polygon points="69,92 128,68 188,91 127,116"/>
+      </g>
+      <g fill="#d85535">
+        <circle cx="37" cy="44" r="5"/>
+        <circle cx="58" cy="51" r="5"/>
+        <circle cx="83" cy="44" r="5"/>
+        <circle cx="163" cy="52" r="5"/>
+        <circle cx="187" cy="59" r="5"/>
+        <circle cx="217" cy="52" r="5"/>
+        <circle cx="105" cy="92" r="5"/>
+        <circle cx="129" cy="101" r="5"/>
+        <circle cx="154" cy="91" r="5"/>
+      </g>
+    </g>
+
+    <g fill="#1d6d2b">
+      <path d="M305 84l-22 56h44z"/><rect x="300" y="137" width="9" height="24" fill="#74451f"/>
+      <path d="M348 50l-24 64h48z"/><rect x="343" y="110" width="9" height="29" fill="#74451f"/>
+      <path d="M382 85l-19 52h38z"/><rect x="378" y="132" width="8" height="22" fill="#74451f"/>
+      <path d="M458 98l-23 58h46z"/><rect x="453" y="152" width="8" height="27" fill="#74451f"/>
+      <path d="M573 113l-20 54h40z"/><rect x="569" y="162" width="8" height="24" fill="#74451f"/>
+      <path d="M623 145l-22 56h44z"/><rect x="619" y="197" width="8" height="24" fill="#74451f"/>
+      <path d="M160 156l-22 56h44z"/><rect x="156" y="208" width="8" height="24" fill="#74451f"/>
+      <path d="M118 171l-20 50h40z"/><rect x="114" y="217" width="8" height="22" fill="#74451f"/>
+    </g>
+
+    <g>
+      <g transform="translate(531 214)">
+        <rect x="0" y="24" width="44" height="13" rx="2" fill="#9b5b2b"/>
+        <path d="M2 24l21-17 21 17" fill="#c8863b"/>
+      </g>
+      <g fill="#f7d241">
+        <circle cx="468" cy="211" r="5"/>
+        <circle cx="503" cy="218" r="5"/>
+        <circle cx="560" cy="174" r="5"/>
+        <circle cx="594" cy="167" r="5"/>
+        <circle cx="408" cy="114" r="5"/>
+        <circle cx="448" cy="151" r="5"/>
+        <circle cx="157" cy="344" r="5"/>
+        <circle cx="104" cy="303" r="5"/>
+      </g>
+      <g stroke="#276a37" stroke-width="4" stroke-linecap="round">
+        <line x1="468" y1="216" x2="468" y2="234"/>
+        <line x1="503" y1="223" x2="503" y2="241"/>
+        <line x1="560" y1="179" x2="560" y2="197"/>
+        <line x1="594" y1="172" x2="594" y2="190"/>
+        <line x1="408" y1="119" x2="408" y2="137"/>
+        <line x1="448" y1="156" x2="448" y2="174"/>
+        <line x1="157" y1="349" x2="157" y2="366"/>
+        <line x1="104" y1="308" x2="104" y2="325"/>
+      </g>
+      <g fill="#dd4130">
+        <circle cx="467" cy="235" r="4"/>
+        <circle cx="503" cy="242" r="4"/>
+        <circle cx="560" cy="198" r="4"/>
+        <circle cx="594" cy="191" r="4"/>
+        <circle cx="408" cy="138" r="4"/>
+        <circle cx="448" cy="175" r="4"/>
+        <circle cx="157" cy="367" r="4"/>
+        <circle cx="104" cy="326" r="4"/>
+      </g>
+    </g>
+  </g>
+
+  <text x="418.5" y="1066" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="500" fill="#2d6934" opacity="0.92">2026</text>
+</svg>

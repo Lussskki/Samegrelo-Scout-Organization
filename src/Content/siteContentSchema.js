@@ -68,11 +68,11 @@ export function normalizeSiteContent(content) {
 
   const rawTranslations = {
     ka: translationSource.ka && typeof translationSource.ka === 'object'
-      ? { ...translationSource.ka }
-      : {},
+      ? { ...defaultSiteContent.translations.ka, ...translationSource.ka }
+      : { ...defaultSiteContent.translations.ka },
     en: translationSource.en && typeof translationSource.en === 'object'
-      ? { ...translationSource.en }
-      : {},
+      ? { ...defaultSiteContent.translations.en, ...translationSource.en }
+      : { ...defaultSiteContent.translations.en },
   }
 
   return {

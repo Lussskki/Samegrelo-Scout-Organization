@@ -143,6 +143,11 @@ export default function App() {
 
   const langCode = getLangCode(lang)
   const langContent = adminContent.translations[langCode] ?? adminContent.translations.ka
+  const heroContent = {
+    title: langContent.heroTitle || adminContent.hero.title,
+    text: langContent.heroText || adminContent.hero.text,
+    button: langContent.heroButton || adminContent.hero.button,
+  }
   const visibleGalleryPhotos = adminContent.gallery
     .filter((photo) => photo.src)
     .map((photo) => ({
@@ -346,10 +351,10 @@ export default function App() {
       <main>
         <section id="hero" className="hero">
           <div className="hero-content">
-            <p>{adminContent.hero.text}</p>
-            <h1>{adminContent.hero.title}</h1>
+            <p>{heroContent.text}</p>
+            <h1>{heroContent.title}</h1>
             <a href={SUMMER_CAMP_FORM_URL} target="_blank" rel="noopener noreferrer" className="hero-btn">
-              {adminContent.hero.button}
+              {heroContent.button}
             </a>
           </div>
         </section>

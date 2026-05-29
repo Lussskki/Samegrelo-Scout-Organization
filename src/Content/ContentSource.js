@@ -172,13 +172,16 @@ export const contentSource = {
     }
   ],
   "hero": {
-    "title": "სამეგრელოს საზაფხულო სკაუტური ბანაკის რეგისტრაცია იწყება!",
-    "text": "გაატარე ზაფხული თავგადასავლებით, მეგობრებით და სკაუტური აქტივობებით!",
-    "button": "საზაფხულო ბანაკზე რეგისტრაცია"
+    "title": "სამეგრელოს სკაუტური ორგანიზაციის საზაფხულო ბანაკების სერია",
+    "text": "გაიარე რეგისტრაცია და შექმენი სკაუტური თავგადასავალი",
+    "button": "დარეგისტრირდი"
   },
   "translations": {
     "ka": {
       "title": "სამეგრელოს ორგანიზაციის სკაუტები",
+      "heroTitle": "სამეგრელოს სკაუტური ორგანიზაციის საზაფხულო ბანაკების სერია",
+      "heroText": "გაიარე რეგისტრაცია და შექმენი სკაუტური თავგადასავალი",
+      "heroButton": "დარეგისტრირდი",
       "home": "მთავარი",
       "about": "ჩვენი ცენტრი ინგირში",
       "join": "ჩვენს შესახებ",
@@ -281,6 +284,9 @@ export const contentSource = {
     },
     "en": {
       "title": "Samegrelo Organization Scouts",
+      "heroTitle": "Samegrelo Scout Organization Summer Camp Series",
+      "heroText": "Register and create your scout adventure",
+      "heroButton": "Register",
       "home": "Home",
       "about": "About Ingiri Center",
       "join": "About Us",

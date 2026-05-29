@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import movaLogo from '/assets/MOVA.jpg'
 import avatarLogo from '/assets/AVATAR2020.jpg'
@@ -73,6 +73,7 @@ export default function App() {
   const [aboutOpen, setAboutOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [contactOpen, setContactOpen] = useState(false)
+  const lightboxTouchStart = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
     fetchSiteContent()
@@ -84,15 +85,30 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    const handleEsc = (event) => {
+    const handleGalleryKey = (event) => {
+      const photoCount = adminContent.gallery.filter((photo) => photo.src).length
+
       if (event.key === 'Escape') {
         setSelectedImgIndex(null)
+        return
+      }
+
+      if (selectedImgIndex === null || photoCount === 0) {
+        return
+      }
+
+      if (event.key === 'ArrowRight') {
+        setSelectedImgIndex((previous) => (previous + 1) % photoCount)
+      }
+
+      if (event.key === 'ArrowLeft') {
+        setSelectedImgIndex((previous) => (previous - 1 + photoCount) % photoCount)
       }
     }
 
-    window.addEventListener('keydown', handleEsc)
-    return () => window.removeEventListener('keydown', handleEsc)
-  }, [])
+    window.addEventListener('keydown', handleGalleryKey)
+    return () => window.removeEventListener('keydown', handleGalleryKey)
+  }, [adminContent.gallery, selectedImgIndex])
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -193,13 +209,49 @@ export default function App() {
   }
 
   const nextPhoto = (event) => {
-    event.stopPropagation()
+    event?.stopPropagation()
+    if (visibleGalleryPhotos.length === 0) {
+      return
+    }
+
     setSelectedImgIndex((previous) => (previous + 1) % visibleGalleryPhotos.length)
   }
 
   const prevPhoto = (event) => {
-    event.stopPropagation()
+    event?.stopPropagation()
+    if (visibleGalleryPhotos.length === 0) {
+      return
+    }
+
     setSelectedImgIndex((previous) => (previous - 1 + visibleGalleryPhotos.length) % visibleGalleryPhotos.length)
+  }
+
+  const handleLightboxTouchStart = (event) => {
+    const touch = event.changedTouches[0]
+
+    lightboxTouchStart.current = {
+      x: touch.clientX,
+      y: touch.clientY,
+    }
+  }
+
+  const handleLightboxTouchEnd = (event) => {
+    event.stopPropagation()
+
+    const touch = event.changedTouches[0]
+    const deltaX = touch.clientX - lightboxTouchStart.current.x
+    const deltaY = touch.clientY - lightboxTouchStart.current.y
+
+    if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY)) {
+      return
+    }
+
+    if (deltaX < 0) {
+      nextPhoto()
+      return
+    }
+
+    prevPhoto()
   }
 
   const copyIban = async () => {
@@ -351,8 +403,8 @@ export default function App() {
       <main>
         <section id="hero" className="hero">
           <div className="hero-content">
-            <p>{heroContent.text}</p>
             <h1>{heroContent.title}</h1>
+            <p>{heroContent.text}</p>
             <a href={SUMMER_CAMP_FORM_URL} target="_blank" rel="noopener noreferrer" className="hero-btn">
               {heroContent.button}
             </a>
@@ -521,7 +573,7 @@ export default function App() {
             <section id="books" className="books-section">
               <h1 className="section-title">{langContent.bookTitle}</h1>
               <h2 className="section-subtitle">{langContent.bookSubTitle}</h2>
-              <div className="books-container">
+              <div className="books-container" id="books-carousel">
                 {langContent.books.map((book) => (
                   <a key={book.id} className="book-card" href={book.link} target="_blank" rel="noopener noreferrer">
                     <div className="cover-wrapper">
@@ -530,6 +582,14 @@ export default function App() {
                     <p className="book-title">{book.title}</p>
                   </a>
                 ))}
+              </div>
+              <div className="book-scroll-controls" aria-label="Book navigation">
+                <button type="button" className="book-scroll-btn" aria-label="Previous books" onClick={() => scrollCarousel('left', 'books-carousel')}>
+                  &#10094;
+                </button>
+                <button type="button" className="book-scroll-btn" aria-label="Next books" onClick={() => scrollCarousel('right', 'books-carousel')}>
+                  &#10095;
+                </button>
               </div>
             </section>
 
@@ -563,7 +623,12 @@ export default function App() {
                   &times;
                 </button>
                 <button type="button" className="nav-btn prev" aria-label="Previous photo" onClick={prevPhoto}>&#10094;</button>
-                <div className="lightbox-content" onClick={(event) => event.stopPropagation()}>
+                <div
+                  className="lightbox-content"
+                  onClick={(event) => event.stopPropagation()}
+                  onTouchStart={handleLightboxTouchStart}
+                  onTouchEnd={handleLightboxTouchEnd}
+                >
                   <img src={visibleGalleryPhotos[selectedImgIndex].src} alt="Selected" />
                   <p className="caption">{visibleGalleryPhotos[selectedImgIndex].alt}</p>
                 </div>

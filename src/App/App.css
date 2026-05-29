@@ -5,24 +5,24 @@
 
 /* === CSS VARIABLES === */
 :root {
-  --purple-deep: #0d0a1a;
-  --purple-dark: #1a1230;
-  --purple-main: #2d1f4e;
-  --purple-mid: #4a3470;
-  --purple-light: #6b4d9a;
-  --purple-accent: #8b6cc4;
-  --purple-glow: #a78bfa;
+  --purple-deep: #21143d;
+  --purple-dark: #2c1b52;
+  --purple-main: #3a2565;
+  --purple-mid: #5f4290;
+  --purple-light: #8a6cc2;
+  --purple-accent: #c4b5fd;
+  --purple-glow: #ddd6fe;
   --violet-soft: #c4b5fd;
   --lavender: #ddd6fe;
-  --gold-accent: #fbbf24;
-  --gold-soft: #fcd34d;
+  --gold-accent: #f4d06f;
+  --gold-soft: #f7df9e;
   --white: #ffffff;
   --white-soft: rgba(255, 255, 255, 0.95);
   --white-muted: rgba(255, 255, 255, 0.7);
   --white-faded: rgba(255, 255, 255, 0.4);
-  --glass-bg: rgba(45, 31, 78, 0.6);
-  --glass-border: rgba(139, 108, 196, 0.3);
-  --glass-hover: rgba(75, 52, 112, 0.8);
+  --glass-bg: rgba(58, 37, 101, 0.68);
+  --glass-border: rgba(196, 181, 253, 0.36);
+  --glass-hover: rgba(95, 66, 144, 0.82);
   --header-height: 80px;
   --font-display: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'DejaVu Sans', sans-serif;
   --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'DejaVu Sans', sans-serif;
@@ -32,7 +32,7 @@
   --shadow-sm: 0 2px 8px rgba(13, 10, 26, 0.3);
   --shadow-md: 0 8px 30px rgba(13, 10, 26, 0.4);
   --shadow-lg: 0 20px 50px rgba(13, 10, 26, 0.5);
-  --shadow-glow: 0 0 40px rgba(139, 108, 196, 0.3);
+  --shadow-glow: 0 0 40px rgba(196, 181, 253, 0.28);
 }
 
 /* === REDUCED MOTION === */
@@ -94,7 +94,8 @@ body.night {
   --glass-bg: rgba(20, 20, 20, 0.8);
   --glass-border: rgba(80, 80, 80, 0.4);
   --glass-hover: rgba(40, 40, 40, 0.9);
-  --gold-accent: #a78bfa;
+  --gold-accent: #f1d27a;
+  --gold-soft: #f7e3aa;
   --shadow-glow: 0 0 40px rgba(100, 100, 100, 0.2);
   background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
 }
@@ -237,7 +238,7 @@ section[id] {
   align-items: center;
   justify-content: center;
   padding: 0 32px;
-  background: linear-gradient(180deg, rgba(13, 10, 26, 0.98) 0%, rgba(26, 18, 48, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(61, 39, 104, 0.96) 0%, rgba(45, 28, 82, 0.94) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
@@ -306,7 +307,7 @@ section[id] {
 
 .nav a:hover {
   color: var(--white);
-  background: var(--glass-bg);
+  background: rgba(196, 181, 253, 0.16);
 }
 
 .nav a.active {
@@ -337,7 +338,7 @@ section[id] {
 
 .nav-link:hover {
   color: var(--white);
-  background: var(--glass-bg);
+  background: rgba(196, 181, 253, 0.16);
 }
 
 .dropdown-arrow {
@@ -355,7 +356,7 @@ section[id] {
   left: 50%;
   transform: translateX(-50%);
   min-width: 220px;
-  background: var(--purple-dark);
+  background: rgba(50, 31, 91, 0.98);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   padding: 20px 12px 12px 12px;
@@ -396,7 +397,7 @@ section[id] {
 }
 
 .dropdown-panel a:hover {
-  background: var(--purple-main);
+  background: rgba(196, 181, 253, 0.14);
 }
 
 .menu-controls {
@@ -407,7 +408,7 @@ section[id] {
 }
 
 .control-btn {
-  background: var(--glass-bg);
+  background: rgba(196, 181, 253, 0.14);
   border: 1px solid var(--glass-border);
   color: var(--white);
   padding: 6px 10px;
@@ -421,7 +422,7 @@ section[id] {
 }
 
 .control-btn:hover {
-  background: var(--purple-mid);
+  background: rgba(196, 181, 253, 0.24);
   border-color: var(--purple-accent);
   transform: translateY(-2px);
 }
@@ -491,7 +492,7 @@ section[id] {
   }
 }
 
-.hero-content p {
+.hero-content h1 {
   font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 700;
   line-height: 1.3;
@@ -499,7 +500,7 @@ section[id] {
   color: var(--white);
 }
 
-.hero-content h1 {
+.hero-content p {
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 400;
   color: var(--white-muted);
@@ -521,12 +522,12 @@ section[id] {
   border: none;
   cursor: pointer;
   transition: all var(--transition-bounce);
-  box-shadow: 0 8px 30px rgba(251, 191, 36, 0.3);
+  box-shadow: 0 8px 30px rgba(196, 181, 253, 0.32);
 }
 
 .hero-btn:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(251, 191, 36, 0.4);
+  box-shadow: 0 12px 40px rgba(196, 181, 253, 0.42);
 }
 
 /* === MAINTENANCE === */
@@ -677,16 +678,55 @@ section {
 .edu-card,
 .service-card,
 .about-block {
+  position: relative;
   flex: 0 0 340px;
   max-width: 340px;
+  height: 430px;
   scroll-snap-align: start;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 24px;
-  padding: 28px;
+  padding: 24px;
   transition: all var(--transition-smooth);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.youth-card::after,
+.edu-card::after,
+.service-card::after,
+.about-block::after {
+  content: '↓';
+  position: absolute;
+  right: 22px;
+  bottom: 18px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(247, 223, 158, 0.16);
+  border: 1px solid rgba(247, 223, 158, 0.34);
+  color: var(--gold-soft);
+  font-size: 1rem;
+  font-weight: 800;
+  pointer-events: none;
+  box-shadow: 0 8px 20px rgba(13, 10, 26, 0.22);
+  animation: scrollHint 2.8s ease-in-out infinite;
+}
+
+@keyframes scrollHint {
+  0%,
+  100% {
+    opacity: 0.68;
+    transform: translateY(-1px);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: translateY(4px);
+  }
 }
 
 .youth-card:hover,
@@ -702,7 +742,7 @@ section {
 .icon-wrapper {
   width: 100px;
   height: 100px;
-  margin: 0 auto 24px;
+  margin: 0 auto 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -713,8 +753,8 @@ section {
 
 .icon-wrapper.logo-crop {
   background: transparent;
-  width: 120px;
-  height: 120px;
+  width: 104px;
+  height: 104px;
 }
 
 .mova-icon,
@@ -728,12 +768,12 @@ section {
 .edu-card h3,
 .service-card h3,
 .about-block h3 {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--gold-accent);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   text-align: center;
-  min-height: 3rem;
+  min-height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -751,18 +791,28 @@ section {
 
 /* === CARD TEXT CONTENT (dangerouslySetInnerHTML-ის ნაცვლად) === */
 .card-text-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+  padding-bottom: 42px;
   color: var(--white-muted);
-  font-size: 0.92rem;
-  line-height: 1.7;
+  font-size: 0.88rem;
+  line-height: 1.6;
   text-align: left;
   white-space: normal;
+  scrollbar-width: none;
+  mask-image: linear-gradient(180deg, #000 0%, #000 calc(100% - 36px), transparent 100%);
 }
 
 .card-text-content p {
   color: var(--white-muted);
-  font-size: 0.92rem;
-  line-height: 1.7;
+  font-size: 0.88rem;
+  line-height: 1.6;
   text-align: left;
+}
+
+.card-text-content::-webkit-scrollbar {
+  display: none;
 }
 
 /* === CARD CONTACT LINK (ინლაინ style-ის ნაცვლად) === */
@@ -810,7 +860,7 @@ section {
 }
 
 .back-to-top:hover {
-  background-color: #ffc000;
+  background-color: var(--gold-soft);
   transform: scale(1.1);
 }
 
@@ -868,6 +918,7 @@ section {
 
 /* === BOOKS === */
 .books-section {
+  position: relative;
   width: 100%;
   padding: 80px 5%;
   text-align: center;
@@ -895,6 +946,37 @@ section {
   width: 100%;
   margin: 0 auto;
   padding: 20px 0;
+}
+
+.book-scroll-controls {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.book-scroll-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(196, 181, 253, 0.42);
+  background: rgba(196, 181, 253, 0.12);
+  color: var(--white);
+  font-size: 1.15rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(13, 10, 26, 0.18);
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.book-scroll-btn:hover {
+  background: rgba(196, 181, 253, 0.22);
+  border-color: rgba(247, 223, 158, 0.5);
+  transform: translateY(-2px);
 }
 
 .book-card {
@@ -1032,6 +1114,8 @@ section {
   flex-direction: column;
   align-items: center;
   cursor: default;
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .lightbox-content img {
@@ -1180,7 +1264,7 @@ section {
   border-radius: 50%;
   border: 3px solid var(--gold-accent);
   object-fit: cover;
-  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);
+  box-shadow: 0 10px 30px rgba(196, 181, 253, 0.24);
   flex-shrink: 0;
 }
 
@@ -1256,6 +1340,8 @@ section {
 
 /* === FOOTER === */
 .footer {
+  position: relative;
+  isolation: isolate;
   width: 100%;
   background: linear-gradient(180deg, var(--purple-dark) 0%, var(--purple-deep) 100%);
   padding: 60px 5%;
@@ -1266,6 +1352,17 @@ section {
   max-width: 1600px;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
+  background: linear-gradient(180deg, var(--purple-dark) 0%, var(--purple-deep) 100%);
+  z-index: -1;
 }
 
 .section-photo {
@@ -1405,6 +1502,7 @@ section {
   .about-block {
     flex: 0 0 calc(50% - 12px);
     min-width: 280px;
+    height: 410px;
   }
 
   .masonry-grid {
@@ -1565,12 +1663,12 @@ section {
     -webkit-backdrop-filter: blur(10px);
   }
 
-  .hero-content p {
+  .hero-content h1 {
     font-size: 1.5rem;
     line-height: 1.4;
   }
 
-  .hero-content h1 {
+  .hero-content p {
     font-size: 0.95rem;
   }
 
@@ -1616,8 +1714,9 @@ section {
     flex: 0 0 calc(100% - 20px);
     min-width: unset;
     width: calc(100% - 20px);
+    height: 390px;
     margin: 0 10px;
-    padding: 25px 20px;
+    padding: 22px 18px;
     border-radius: 20px;
   }
 
@@ -1628,15 +1727,15 @@ section {
   }
 
   .icon-wrapper.logo-crop {
-    width: 100px;
-    height: 100px;
+    width: 92px;
+    height: 92px;
   }
 
   .youth-card h3,
   .edu-card h3,
   .service-card h3,
   .about-block h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     min-height: auto;
     margin-bottom: 12px;
   }
@@ -1646,7 +1745,7 @@ section {
   .service-card p,
   .about-block p,
   .card-text-content {
-    font-size: 0.9rem;
+    font-size: 0.86rem;
   }
 
   .carousel-btn {
@@ -1731,9 +1830,19 @@ section {
     max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 20px 15px 28px;
+    padding: 20px 15px 26px;
     scroll-snap-type: x proximity;
+    scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    mask-image: linear-gradient(90deg, #000 0%, #000 calc(100% - 44px), transparent 100%);
+  }
+
+  .books-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .book-scroll-controls {
+    display: flex;
   }
 
   .book-card {
@@ -1870,7 +1979,7 @@ section {
    SMALL MOBILE
    ============================================ */
 @media (max-width: 400px) {
-  .hero-content p {
+  .hero-content h1 {
     font-size: 1.3rem;
   }
 
@@ -1887,6 +1996,7 @@ section {
   .edu-card,
   .service-card,
   .about-block {
+    height: 370px;
     padding: 20px 15px;
   }
 

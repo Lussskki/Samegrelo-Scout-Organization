@@ -946,6 +946,11 @@ section {
   width: 100%;
   margin: 0 auto;
   padding: 20px 0;
+  scrollbar-width: none;
+}
+
+.books-container::-webkit-scrollbar {
+  display: none;
 }
 
 .book-scroll-controls {
@@ -957,24 +962,24 @@ section {
 }
 
 .book-scroll-btn {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 34px;
   display: grid;
   place-items: center;
-  border-radius: 999px;
-  border: 1px solid rgba(196, 181, 253, 0.42);
-  background: rgba(196, 181, 253, 0.12);
+  border-radius: 12px;
+  border: 1px solid rgba(196, 181, 253, 0.34);
+  background: rgba(58, 37, 101, 0.72);
   color: var(--white);
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 900;
   line-height: 1;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(13, 10, 26, 0.18);
+  box-shadow: 0 8px 18px rgba(13, 10, 26, 0.2);
   transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .book-scroll-btn:hover {
-  background: rgba(196, 181, 253, 0.22);
+  background: rgba(95, 66, 144, 0.86);
   border-color: rgba(247, 223, 158, 0.5);
   transform: translateY(-2px);
 }

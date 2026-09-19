@@ -19,7 +19,7 @@ import { fetchSiteContent, loadSiteContent, SITE_CONTENT_UPDATED_EVENT } from '.
 import './App.css'
 
 const RURAL_TOURISM_BOOK_COVER = '/assets/books/rural-tourism-guide-2026-cover.svg'
-const SUMMER_CAMP_FORM_URL = 'https://docs.google.com/forms/d/1wjWq9M9FP_lCsykAkaXbkEqk7X2VavGrbz0Rzqda52A/viewform'
+const SUMMER_CAMP_FORM_URL = 'https://forms.gle/FC92hJMe5K2QnSpr5'
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -564,7 +564,7 @@ export default function App() {
               <h2 className="section-title">{langContent.register}</h2>
               <p className="section-subtitle">{langContent.registerSubtitle}</p>
               <div className="register-content">
-                <a href="https://forms.gle/7NJ5KFZpbnMAD4Wy7" target="_blank" rel="noopener noreferrer" className="register-btn">
+                <a href="https://forms.gle/FC92hJMe5K2QnSpr5" target="_blank" rel="noopener noreferrer" className="register-btn">
                   {langContent.register}
                 </a>
               </div>

@@ -172,14 +172,14 @@ export const contentSource = {
     }
   ],
   "hero": {
-    "title": "სამეგრელოს სკაუტური ორგანიზაციის საზაფხულო ბანაკების სერია",
+    "title": "სამეგრელოს სკაუტების შემოდგომა-ზამთრის სასწავლო კურსი",
     "text": "გაიარე რეგისტრაცია და შექმენი სკაუტური თავგადასავალი",
     "button": "დარეგისტრირდი"
   },
   "translations": {
     "ka": {
       "title": "სამეგრელოს ორგანიზაციის სკაუტები",
-      "heroTitle": "სამეგრელოს სკაუტური ორგანიზაციის საზაფხულო ბანაკების სერია",
+      "heroTitle": "სამეგრელოს სკაუტების შემოდგომა-ზამთრის სასწავლო კურსი",
       "heroText": "გაიარე რეგისტრაცია და შექმენი სკაუტური თავგადასავალი",
       "heroButton": "დარეგისტრირდი",
       "home": "მთავარი",
@@ -284,7 +284,7 @@ export const contentSource = {
     },
     "en": {
       "title": "Samegrelo Organization Scouts",
-      "heroTitle": "Samegrelo Scout Organization Summer Camp Series",
+      "heroTitle": "Samegrelo Scouts Autumn-Winter Training Course",
       "heroText": "Register and create your scout adventure",
       "heroButton": "Register",
       "home": "Home",

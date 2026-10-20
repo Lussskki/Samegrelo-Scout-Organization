@@ -233,7 +233,7 @@ section[id] {
   right: 0;
   width: 100%;
   height: var(--header-height);
-  z-index: 1000;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,6 +242,7 @@ section[id] {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
+  transform: translateZ(0); /* fix scroll rendering bug */
 }
 
 .header-inner {

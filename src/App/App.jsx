@@ -19,7 +19,7 @@ import { fetchSiteContent, loadSiteContent, SITE_CONTENT_UPDATED_EVENT } from '.
 import './App.css'
 
 const RURAL_TOURISM_BOOK_COVER = '/assets/books/rural-tourism-guide-2026-cover.svg'
-const SUMMER_CAMP_FORM_URL = 'https://forms.gle/FC92hJMe5K2QnSpr5'
+const SUMMER_CAMP_FORM_URL = 'https://forms.gle/eXG26qUKjm3jxCbC7'
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false)
